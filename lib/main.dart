@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/shopping_app_bar.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -12,22 +14,16 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: ShoppingAppBar(),
         body: Column(
           children: [
-            Expanded(flex: 1, child: Placeholder()),
             Expanded(
-              flex: 10,
-              child: Column(
-                children: [
-                  Expanded(
-                      flex: 8,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Placeholder(),
-                      )),
-                  Expanded(flex: 1, child: Placeholder()),
-                ],
-              ),
+                child: Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Placeholder(),
+            )),
+            Placeholder(
+              fallbackHeight: 60,
             ),
           ],
         ),
