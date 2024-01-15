@@ -19,7 +19,12 @@ class MainApp extends StatelessWidget {
               flex: 10,
               child: Column(
                 children: [
-                  Expanded(flex: 8, child: Placeholder()),
+                  Expanded(
+                      flex: 8,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        child: Placeholder(),
+                      )),
                   Expanded(flex: 1, child: Placeholder()),
                 ],
               ),
