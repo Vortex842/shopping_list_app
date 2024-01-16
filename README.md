@@ -4,6 +4,7 @@ Anota los productos de tu compra de forma limpia. Puedes visualizarlos ya sea si
 
 ## TODO
 * Agragar tema light / dark
+    * Font Montserrat
     * Colores:
         * Page Background: FFFFFF / 1D1B20
         * Cards Color: F3EDF7 / 211F26
@@ -17,8 +18,6 @@ Anota los productos de tu compra de forma limpia. Puedes visualizarlos ya sea si
         * Foreground Primary Color (in light mode): 1D1B20
         * Foreground Primary Color (in dark mode): D2C2EB
         * Icon Foreground: 21005D
-
-    * Font Moncerrat
 * Implementar
     * Clean Architecture
     * Principios SOLID

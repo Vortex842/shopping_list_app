@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/shopping_app_bar.dart';
+import 'widgets/shopping/shopping.barrel.dart';
 
 void main() {
   runApp(const MainApp());
@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
             Expanded(
                 child: Padding(
               padding: EdgeInsets.only(bottom: 10),
-              child: Placeholder(),
+              child: ShoppingBody(),
             )),
             Placeholder(
               fallbackHeight: 60,
