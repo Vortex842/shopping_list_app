@@ -18,3 +18,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: 'Foslin'
+      fonts:
+        - asset: 'fonts/Foslin-Regular.ttf'
+        - asset: 'fonts/Foslin-Italic.ttf'
+          style: italic
+        - asset: 'fonts/Foslin-Bold.ttf'
+          weight: 700
+          
