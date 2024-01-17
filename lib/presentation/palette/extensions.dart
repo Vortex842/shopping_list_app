@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 enum ShoppingSizeText {
   title(25),
   product(20),
-  amount(16),
-  price(12);
+  price(12),
+  amount(16);
 
   final double size;
 

@@ -17,7 +17,11 @@ class ShoppingBody extends StatelessWidget {
             runSpacing: 10,
             children: List.generate(
               10,
-              (index) => const ShoppingButton(),
+              (index) => ShoppingButton(
+                name: "Product ${index + 1}",
+                price: index * 3.333999,
+                amount: index,
+              ),
             ),
           ),
         ),

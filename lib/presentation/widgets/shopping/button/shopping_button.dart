@@ -3,7 +3,16 @@ import 'package:flutter/material.dart';
 import '../../../palette/extensions.dart';
 
 class ShoppingButton extends StatelessWidget {
-  const ShoppingButton({super.key});
+  final String name;
+  final double price;
+  final int amount;
+
+  const ShoppingButton({
+    super.key,
+    required this.name,
+    required this.price,
+    required this.amount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +31,11 @@ class ShoppingButton extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Arroz",
+                      name,
                       style: context.pruductText(ShoppingSizeText.product),
                     ),
                     Text(
-                      "\$847",
+                      "\$${price.toStringAsFixed(2)}",
                       style: context.pruductText(ShoppingSizeText.price),
                     ),
                   ],
@@ -37,7 +46,7 @@ class ShoppingButton extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "12",
+                  "$amount",
                   style: context.pruductText(ShoppingSizeText.amount),
                 ),
               ),
