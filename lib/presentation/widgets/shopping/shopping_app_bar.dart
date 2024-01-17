@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:shopping_list_app/presentation/palette/extensions.dart';
 
 class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ShoppingAppBar({super.key});
@@ -23,10 +24,10 @@ class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
                   ),
                 ),
               ),
-              const Center(
+              Center(
                 child: Text(
                   "Shopping List",
-                  style: TextStyle(fontSize: 25),
+                  style: context.pruductText(ShoppingSizeText.title),
                 ),
               ),
             ],

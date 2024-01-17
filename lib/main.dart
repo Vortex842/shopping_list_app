@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/shopping/shopping.barrel.dart';
+import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,17 +11,21 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Foslin',
+      ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
+      home: const Scaffold(
         appBar: ShoppingAppBar(),
         body: Column(
           children: [
             Expanded(
-                child: Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: ShoppingBody(),
-            )),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: ShoppingBody(),
+              ),
+            ),
             Placeholder(
               fallbackHeight: 60,
             ),

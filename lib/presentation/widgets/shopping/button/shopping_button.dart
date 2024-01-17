@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'shopping_text.dart';
+import '../../../palette/extensions.dart';
 
 class ShoppingButton extends StatelessWidget {
   const ShoppingButton({super.key});
@@ -9,24 +9,25 @@ class ShoppingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.blue,
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+      color: Colors.amber,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
           children: [
             Expanded(
               flex: 4,
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ShoppingProductText("Fideos"),
+                    Text(
+                      "Arroz",
+                      style: context.pruductText(ShoppingSizeText.product),
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: ShoppingPriceText("\$54222"),
+                    Text(
+                      "\$847",
+                      style: context.pruductText(ShoppingSizeText.price),
                     ),
                   ],
                 ),
@@ -35,7 +36,10 @@ class ShoppingButton extends StatelessWidget {
             Expanded(
               child: Align(
                 alignment: Alignment.centerRight,
-                child: ShoppingAmountText("4"),
+                child: Text(
+                  "12",
+                  style: context.pruductText(ShoppingSizeText.amount),
+                ),
               ),
             ),
           ],
