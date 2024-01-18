@@ -18,7 +18,7 @@ class ShoppingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
+      height: 50,
       color: context.buttonColor(true),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -26,21 +26,18 @@ class ShoppingButton extends StatelessWidget {
           children: [
             Expanded(
               flex: 4,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: context.pruductText(ShoppingSizeText.product),
-                    ),
-                    Text(
-                      "\$${price.toStringAsFixed(2)}",
-                      style: context.pruductText(ShoppingSizeText.price),
-                    ),
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: context.pruductText(ShoppingSizeText.product),
+                  ),
+                  Text(
+                    "\$${price.toStringAsFixed(2)}",
+                    style: context.pruductText(ShoppingSizeText.price),
+                  ),
+                ],
               ),
             ),
             Expanded(

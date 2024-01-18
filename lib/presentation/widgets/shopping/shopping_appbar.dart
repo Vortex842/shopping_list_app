@@ -30,9 +30,7 @@ class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
               Center(
                 child: Text(
                   "Shopping List",
-                  style: context
-                      .pruductText(ShoppingSizeText.title)
-                      .copyWith(color: context.foregroundColor(true)),
+                  style: context.pruductText(ShoppingSizeText.title),
                 ),
               ),
             ],

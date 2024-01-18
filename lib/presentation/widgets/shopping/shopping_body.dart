@@ -12,7 +12,10 @@ class ShoppingBody extends StatelessWidget {
       color: context.bodyColor(true),
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 15,
+          ),
           child: Wrap(
             direction: Axis.horizontal,
             runSpacing: 10,
