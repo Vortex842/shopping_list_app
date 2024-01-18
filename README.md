@@ -1,22 +1,51 @@
 # Shopping List App
-Anota los productos de tu compra de forma limpia. Puedes visualizarlos ya sea si estan tachados o esten pendientes a comprar. Ademas podras borrar completamente la lista o solamente los productos que esten tachados de la misma.
 
+La **Shopping List App** te permite organizar tus compras de manera clara. Puedes visualizar y gestionar tus productos, ya sea marcándolos como comprados o manteniéndolos en tu lista pendiente. Además, tienes la opción de borrar la lista completa o solo los productos marcados.
 
-## TODO
-* Implementar
-    * Clean Architecture
-    * Principios SOLID
-* Class *Product*
+## Funcionalidades Principales
+
+* **Implementación**
+  * **Clean Architecture**
+  * Principios **SOLID**
+
+* **Clase Product**
+  * Atributos:
     * name
     * amount
     * price
-* *List< Product >*
-    * Add
-    * Delete
-    * Filter
-* Al agregar o eliminar un producto, esto debera tener una persistencia de datos al cerrar por completo la aplicacion.
-* Para estas acciones tambien que se muestre el modal correspondiente.
-* Agregar funcionalidadad de multi seleccion de productos
-* Agregar un Side Menu contranformaciones
-* Seleccionar varios productos o toda la lista
-* Agregar seleccion de lenguaje español/english
+
+* **Lista de Productos**
+  * Métodos:
+    * Agregar
+    * Eliminar
+    * Filtrar
+
+* **Persistencia de Datos**
+  * Los productos se guardarán automáticamente al agregar o eliminar, asegurando que los datos persistan al cerrar la aplicación.
+
+* **Interfaz de Usuario**
+  * Modal: Se mostrará un modal correspondiente al agregar o eliminar un producto.
+
+* **Funcionalidad de Selección Múltiple**
+  * Posibilidad de seleccionar varios productos a la vez.
+
+* **Side Menu**
+  * Agregar un menú lateral con transformaciones visuales.
+
+* **Selección de Idioma**
+  * Permite a los usuarios elegir entre español e inglés.
+
+## Pasos para Ejecutar la Aplicación
+
+Clona el repositorio.
+   ```bash
+   git clone https://github.com/Vortex842/shopping_list_app
+   ```
+
+## Contribuciones
+¡Las contribuciones son bienvenidas! Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Haz un fork del proyecto.
+2. Crea una rama para tus cambios.
+3. Realiza las modificaciones.
+4. Envía un pull request.
