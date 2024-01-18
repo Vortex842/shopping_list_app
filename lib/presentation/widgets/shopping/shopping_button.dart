@@ -19,7 +19,7 @@ class ShoppingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: context.buttonColor(false),
+      color: context.buttonColor(true),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/presentation/palette/color_theme.dart';
 
+import 'presentation/palette/color_theme.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() {
@@ -18,11 +18,11 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: context.pageColor(false),
+        backgroundColor: context.pageColor(true),
         appBar: const ShoppingAppBar(),
-        body: const Column(
+        body: Column(
           children: [
-            Expanded(
+            const Expanded(
               child: Padding(
                 padding: EdgeInsets.only(bottom: 10),
                 child: ShoppingBody(),
@@ -30,6 +30,7 @@ class MainApp extends StatelessWidget {
             ),
             Placeholder(
               fallbackHeight: 60,
+              color: context.foregroundColor(true),
             ),
           ],
         ),

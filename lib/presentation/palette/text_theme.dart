@@ -16,7 +16,7 @@ enum ShoppingSizeText {
 extension ShoppingText on BuildContext {
   TextStyle pruductText(ShoppingSizeText text) => TextStyle(
         fontSize: text.size,
-        fontWeight: FontWeight.w700,
-        color: foregroundColor(false),
+        fontWeight: FontWeight.normal,
+        color: foregroundColor(true),
       );
 }
