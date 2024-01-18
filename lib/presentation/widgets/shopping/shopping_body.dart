@@ -20,7 +20,7 @@ class ShoppingBody extends StatelessWidget {
             direction: Axis.horizontal,
             runSpacing: 10,
             children: List.generate(
-              10,
+              15,
               (index) => ShoppingButton(
                 name: "Product ${index + 1}",
                 price: index * 3.333999,

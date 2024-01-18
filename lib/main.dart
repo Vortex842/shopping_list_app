@@ -17,22 +17,24 @@ class MainApp extends StatelessWidget {
         fontFamily: 'Foslin',
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: context.pageColor(true),
-        appBar: const ShoppingAppBar(),
-        body: Column(
-          children: [
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
-                child: ShoppingBody(),
+      home: SafeArea(
+        child: Scaffold(
+          backgroundColor: context.pageColor(true),
+          appBar: const ShoppingAppBar(),
+          body: Column(
+            children: [
+              const Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 10),
+                  child: ShoppingBody(),
+                ),
               ),
-            ),
-            Placeholder(
-              fallbackHeight: 60,
-              color: context.foregroundColor(true),
-            ),
-          ],
+              Placeholder(
+                fallbackHeight: 60,
+                color: context.foregroundColor(true),
+              ),
+            ],
+          ),
         ),
       ),
     );
