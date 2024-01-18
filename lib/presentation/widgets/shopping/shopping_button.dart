@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../palette/text_theme.dart';
+import '../../palette/color_theme.dart';
+import '../../palette/text_theme.dart';
 
 class ShoppingButton extends StatelessWidget {
   final String name;
@@ -18,7 +19,7 @@ class ShoppingButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 60,
-      color: Colors.amber,
+      color: context.buttonColor(false),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(

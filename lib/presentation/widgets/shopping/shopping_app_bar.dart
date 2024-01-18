@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:shopping_list_app/presentation/palette/text_theme.dart';
+
+import '../../palette/color_theme.dart';
+import '../../palette/text_theme.dart';
 
 class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ShoppingAppBar({super.key});
@@ -18,16 +20,19 @@ class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
                 alignment: Alignment.centerLeft,
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(
+                  icon: Icon(
                     LucideIcons.alignLeft,
                     size: 25,
+                    color: context.foregroundColor(false),
                   ),
                 ),
               ),
               Center(
                 child: Text(
                   "Shopping List",
-                  style: context.pruductText(ShoppingSizeText.title),
+                  style: context
+                      .pruductText(ShoppingSizeText.title)
+                      .copyWith(color: context.foregroundColor(false)),
                 ),
               ),
             ],

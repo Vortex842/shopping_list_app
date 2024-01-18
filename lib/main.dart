@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_list_app/presentation/palette/color_theme.dart';
 
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
@@ -16,9 +17,10 @@ class MainApp extends StatelessWidget {
         fontFamily: 'Foslin',
       ),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        appBar: ShoppingAppBar(),
-        body: Column(
+      home: Scaffold(
+        backgroundColor: context.pageColor(false),
+        appBar: const ShoppingAppBar(),
+        body: const Column(
           children: [
             Expanded(
               child: Padding(

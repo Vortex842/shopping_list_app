@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'button/shopping_button.dart';
+import '../../palette/color_theme.dart';
+import 'shopping_button.dart';
 
 class ShoppingBody extends StatelessWidget {
   const ShoppingBody({super.key});
@@ -8,7 +9,7 @@ class ShoppingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      color: context.bodyColor(false),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
