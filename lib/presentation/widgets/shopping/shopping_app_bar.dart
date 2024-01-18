@@ -23,7 +23,7 @@ class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
                   icon: Icon(
                     LucideIcons.alignLeft,
                     size: 25,
-                    color: context.foregroundColor(false),
+                    color: context.foregroundColor(true),
                   ),
                 ),
               ),
@@ -32,7 +32,7 @@ class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
                   "Shopping List",
                   style: context
                       .pruductText(ShoppingSizeText.title)
-                      .copyWith(color: context.foregroundColor(false)),
+                      .copyWith(color: context.foregroundColor(true)),
                 ),
               ),
             ],

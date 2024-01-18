@@ -9,7 +9,7 @@ class ShoppingBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.bodyColor(false),
+      color: context.bodyColor(true),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
