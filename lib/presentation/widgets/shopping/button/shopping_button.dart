@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../palette/extensions.dart';
+import '../../../palette/text_theme.dart';
 
 class ShoppingButton extends StatelessWidget {
   final String name;

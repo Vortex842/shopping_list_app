@@ -11,7 +11,7 @@ enum ShoppingSizeText {
   const ShoppingSizeText(this.size);
 }
 
-extension ShoppingContext on BuildContext {
+extension ShoppingText on BuildContext {
   TextStyle pruductText(ShoppingSizeText text) => TextStyle(
         fontSize: text.size,
         fontWeight: FontWeight.w700,
