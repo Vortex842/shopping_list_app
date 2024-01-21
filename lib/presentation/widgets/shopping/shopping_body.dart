@@ -14,7 +14,7 @@ class ShoppingBody extends ConsumerWidget {
 
     return Container(
       decoration: BoxDecoration(
-        color: context.bodyColor(isDark),
+        color: ref.bodyColor(isDark),
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 4),

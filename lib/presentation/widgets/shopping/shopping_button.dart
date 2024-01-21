@@ -23,7 +23,7 @@ class ShoppingButton extends ConsumerWidget {
 
     return Container(
       height: 50,
-      color: context.buttonColor(isDark),
+      color: ref.buttonColor(isDark),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
@@ -35,11 +35,11 @@ class ShoppingButton extends ConsumerWidget {
                 children: [
                   Text(
                     name,
-                    style: context.productText(isDark),
+                    style: ref.productText(isDark),
                   ),
                   Text(
                     "\$${price.toStringAsFixed(2)}",
-                    style: context.priceText(isDark),
+                    style: ref.priceText(isDark),
                   ),
                 ],
               ),
@@ -49,7 +49,7 @@ class ShoppingButton extends ConsumerWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "$amount",
-                  style: context.amountText(isDark),
+                  style: ref.amountText(isDark),
                 ),
               ),
             ),
