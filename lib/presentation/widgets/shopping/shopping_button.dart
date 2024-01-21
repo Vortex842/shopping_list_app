@@ -35,15 +35,11 @@ class ShoppingButton extends ConsumerWidget {
                 children: [
                   Text(
                     name,
-                    style: context
-                        .pruductText(ShoppingSizeText.product)
-                        .copyWith(color: context.foregroundColor(isDark)),
+                    style: context.productText(isDark),
                   ),
                   Text(
                     "\$${price.toStringAsFixed(2)}",
-                    style: context
-                        .pruductText(ShoppingSizeText.price)
-                        .copyWith(color: context.foregroundColor(isDark)),
+                    style: context.priceText(isDark),
                   ),
                 ],
               ),
@@ -53,9 +49,7 @@ class ShoppingButton extends ConsumerWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "$amount",
-                  style: context
-                      .pruductText(ShoppingSizeText.amount)
-                      .copyWith(color: context.foregroundColor(isDark)),
+                  style: context.amountText(isDark),
                 ),
               ),
             ),

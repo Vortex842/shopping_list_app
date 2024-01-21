@@ -35,7 +35,7 @@ class MainApp extends ConsumerWidget {
               ),
               Placeholder(
                 fallbackHeight: 60,
-                color: context.foregroundColor(true),
+                color: context.foregroundColor(isDark),
               ),
             ],
           ),

@@ -13,7 +13,23 @@ class ShoppingBody extends ConsumerWidget {
     final isDark = ref.watch(isDarkMode);
 
     return Container(
-      color: context.bodyColor(isDark),
+      decoration: BoxDecoration(
+        color: context.bodyColor(isDark),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(0, 4),
+            blurRadius: 8,
+            spreadRadius: 3,
+            color: Colors.black.withOpacity(0.15),
+          ),
+          BoxShadow(
+            offset: const Offset(0, 1),
+            blurRadius: 3,
+            spreadRadius: 0,
+            color: Colors.black.withOpacity(0.3),
+          ),
+        ],
+      ),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(
