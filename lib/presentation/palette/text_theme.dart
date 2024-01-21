@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../palette/color_theme.dart';
-
 enum ShoppingSizeText {
   title(25),
   product(20),
@@ -14,9 +12,10 @@ enum ShoppingSizeText {
 }
 
 extension ShoppingText on BuildContext {
-  TextStyle pruductText(ShoppingSizeText text) => TextStyle(
-        fontSize: text.size,
-        fontWeight: FontWeight.normal,
-        color: foregroundColor(true),
-      );
+  TextStyle pruductText(ShoppingSizeText text) {
+    return TextStyle(
+      fontSize: text.size,
+      fontWeight: FontWeight.normal,
+    );
+  }
 }

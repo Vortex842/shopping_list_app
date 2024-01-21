@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/dark_mode_provider.dart';
 
 import '../../palette/color_theme.dart';
 import 'shopping_button.dart';
 
-class ShoppingBody extends StatelessWidget {
+class ShoppingBody extends ConsumerWidget {
   const ShoppingBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(isDarkMode);
+
     return Container(
-      color: context.bodyColor(true),
+      color: context.bodyColor(isDark),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(

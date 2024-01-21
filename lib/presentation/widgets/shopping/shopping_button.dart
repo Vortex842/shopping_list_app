@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/dark_mode_provider.dart';
 
 import '../../palette/color_theme.dart';
 import '../../palette/text_theme.dart';
 
-class ShoppingButton extends StatelessWidget {
+class ShoppingButton extends ConsumerWidget {
   final String name;
   final double price;
   final int amount;
@@ -16,10 +18,12 @@ class ShoppingButton extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(isDarkMode);
+
     return Container(
       height: 50,
-      color: context.buttonColor(true),
+      color: context.buttonColor(isDark),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
@@ -31,11 +35,15 @@ class ShoppingButton extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: context.pruductText(ShoppingSizeText.product),
+                    style: context
+                        .pruductText(ShoppingSizeText.product)
+                        .copyWith(color: context.foregroundColor(isDark)),
                   ),
                   Text(
                     "\$${price.toStringAsFixed(2)}",
-                    style: context.pruductText(ShoppingSizeText.price),
+                    style: context
+                        .pruductText(ShoppingSizeText.price)
+                        .copyWith(color: context.foregroundColor(isDark)),
                   ),
                 ],
               ),
@@ -45,7 +53,9 @@ class ShoppingButton extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "$amount",
-                  style: context.pruductText(ShoppingSizeText.amount),
+                  style: context
+                      .pruductText(ShoppingSizeText.amount)
+                      .copyWith(color: context.foregroundColor(isDark)),
                 ),
               ),
             ),
