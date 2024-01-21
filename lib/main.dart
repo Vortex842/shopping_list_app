@@ -18,7 +18,7 @@ class MainApp extends ConsumerWidget {
 
     return MaterialApp(
       theme: ThemeData(
-        fontFamily: 'Foslin',
+        fontFamily: 'ShoppingFont',
       ),
       debugShowCheckedModeBanner: false,
       home: SafeArea(
