@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/providers/dark_mode_provider.dart';
 
-import 'presentation/palette/color_theme.dart';
+import 'presentation/providers/dark_mode_provider.dart';
+import 'presentation/themes/color_theme.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() {

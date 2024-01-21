@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../palette/color_theme.dart';
-import '../../palette/text_theme.dart';
 import '../../providers/dark_mode_provider.dart';
+import '../../themes/themes.barrel.dart';
 
 class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const ShoppingAppBar({super.key});

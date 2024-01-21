@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/providers/dark_mode_provider.dart';
 
-import '../../palette/color_theme.dart';
-import '../../palette/text_theme.dart';
+import '../../providers/dark_mode_provider.dart';
+import '../../themes/themes.barrel.dart';
 
 class ShoppingButton extends ConsumerWidget {
   final String name;
@@ -23,7 +22,11 @@ class ShoppingButton extends ConsumerWidget {
 
     return Container(
       height: 50,
-      color: ref.buttonColor(isDark),
+      decoration: BoxDecoration(
+        color: ref.buttonColor(isDark),
+        boxShadow: ref.shadows,
+        borderRadius: ref.buttonRadius,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(
