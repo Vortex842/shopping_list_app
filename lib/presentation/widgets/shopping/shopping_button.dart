@@ -21,7 +21,7 @@ class ShoppingButton extends ConsumerWidget {
     final isDark = ref.watch(isDarkMode);
 
     return Container(
-      height: 50,
+      height: 55,
       decoration: BoxDecoration(
         color: ref.buttonColor(isDark),
         boxShadow: ref.shadows,
@@ -35,6 +35,7 @@ class ShoppingButton extends ConsumerWidget {
               flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     name,

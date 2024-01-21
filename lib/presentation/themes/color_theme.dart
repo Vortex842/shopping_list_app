@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 enum _ShoppingColors {
   lightPage(0xFFFFFFFF),
   lightForeground(0xFF1D1B20),
-  lightBody(0xFFF3EDF7),
-  lightButton(0xFFECE6F0),
+  lightBody(0xFFF7F7F7),
+  lightButton(0xFFE2E0E0),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
   darkBody(0xFF211F26),

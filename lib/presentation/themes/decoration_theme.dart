@@ -5,8 +5,8 @@ extension ShoppingDecoration on WidgetRef {
   List<BoxShadow> get shadows => [
         BoxShadow(
           offset: const Offset(0, 4),
-          blurRadius: 8,
-          spreadRadius: 3,
+          blurRadius: 5,
+          spreadRadius: 1,
           color: Colors.black.withOpacity(0.15),
         ),
         BoxShadow(
@@ -18,5 +18,5 @@ extension ShoppingDecoration on WidgetRef {
       ];
 
   BorderRadius get bodyRadius => BorderRadius.circular(30);
-  BorderRadius get buttonRadius => BorderRadius.circular(15);
+  BorderRadius get buttonRadius => BorderRadius.circular(16);
 }
