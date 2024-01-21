@@ -1,7 +1,7 @@
 name: shopping_list_app
-description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+description: "A Shopping List aplication"
+publish_to: 'Vortex'
+version: 1.12.0
 
 environment:
   sdk: '>=3.3.0-272.0.dev <4.0.0'
@@ -20,7 +20,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
-    - family: 'Foslin'
+    - family: 'ShoppingFont'
       fonts:
         - asset: 'fonts/Foslin-Regular.ttf'
         - asset: 'fonts/Foslin-Italic.ttf'
