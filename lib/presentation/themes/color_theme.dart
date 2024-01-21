@@ -5,7 +5,7 @@ enum _ShoppingColors {
   lightPage(0xFFFFFFFF),
   lightForeground(0xFF1D1B20),
   lightBody(0xFFF7F7F7),
-  lightButton(0xFFE2E0E0),
+  lightButton(0xFFEEEEEE),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
   darkBody(0xFF211F26),
