@@ -12,13 +12,14 @@ class ShoppingBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
 
-    return ClipRRect(
-      borderRadius: ref.bodyRadius,
-      child: Container(
-        decoration: BoxDecoration(
-          color: ref.bodyColor(isDark),
-          boxShadow: ref.shadows,
-        ),
+    return Container(
+      decoration: BoxDecoration(
+        color: ref.bodyColor(isDark),
+        boxShadow: ref.shadows,
+        borderRadius: ref.bodyRadius,
+      ),
+      child: ClipRRect(
+        borderRadius: ref.bodyRadius,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
