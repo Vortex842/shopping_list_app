@@ -23,7 +23,7 @@ class MainApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: context.pageColor(isDark),
+          backgroundColor: ref.pageColor(isDark),
           appBar: const ShoppingAppBar(),
           body: Column(
             children: [
@@ -35,7 +35,7 @@ class MainApp extends ConsumerWidget {
               ),
               Placeholder(
                 fallbackHeight: 60,
-                color: context.foregroundColor(isDark),
+                color: ref.foregroundColor(isDark),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum _ShoppingColors {
   lightPage(0xFFFFFFFF),
@@ -21,7 +22,7 @@ enum _ShoppingColors {
   const _ShoppingColors(this._hexColor);
 }
 
-extension ShoppingColors on BuildContext {
+extension ShoppingColors on WidgetRef {
   Color pageColor(bool isDark) =>
       (isDark ? _ShoppingColors.darkPage : _ShoppingColors.lightPage).color;
   Color bodyColor(bool isDark) =>

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'color_theme.dart';
 
@@ -13,7 +14,7 @@ enum _ShoppingSizeText {
   const _ShoppingSizeText(this.size);
 }
 
-extension ShoppingText on BuildContext {
+extension ShoppingText on WidgetRef {
   TextStyle _textStyle(_ShoppingSizeText text, bool isDark) {
     return TextStyle(
       fontSize: text.size,

@@ -31,14 +31,14 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   icon: Icon(
                     LucideIcons.alignLeft,
                     size: 25,
-                    color: context.foregroundColor(isDark),
+                    color: ref.foregroundColor(isDark),
                   ),
                 ),
               ),
               Center(
                 child: Text(
                   "Shopping List",
-                  style: context.titleText(isDark),
+                  style: ref.titleText(isDark),
                 ),
               ),
             ],
