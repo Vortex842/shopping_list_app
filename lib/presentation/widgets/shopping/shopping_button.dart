@@ -32,7 +32,7 @@ class ShoppingButton extends ConsumerWidget {
         borderRadius: ref.buttonRadius,
         child: Stack(
           children: [
-            const ButtonEditDelete(),
+            ButtonEditDelete(key: UniqueKey(), indexOf),
             Dismissible(
               key: Key(product.hashCode.toString()),
               confirmDismiss: (direction) async {
@@ -42,21 +42,23 @@ class ShoppingButton extends ConsumerWidget {
                           ...products..removeAt(indexOf),
                         ],
                       );
+                  ref.read(dismissDirectionProvider.notifier).update(
+                    (state) {
+                      return DismissDirection.none;
+                    },
+                  );
+                  print("Delete: ${product.toString()}");
+                  return true;
                 } else {
-                  print("edit");
+                  print("Edit: ${product.toString()}");
+                  return false;
                 }
-
-                return isDismiss;
               },
               onUpdate: (details) =>
                   ref.read(dismissDirectionProvider.notifier).update(
-                (state) {
-                  if (details.progress == 0) return DismissDirection.none;
-
-                  return details.direction;
-                },
-              ),
-              child: ButtonSection(product),
+                        (directions) => details.direction,
+                      ),
+              child: ButtonSection(key: UniqueKey(), product),
             ),
           ],
         ),
@@ -66,7 +68,10 @@ class ShoppingButton extends ConsumerWidget {
 }
 
 class ButtonEditDelete extends ConsumerWidget {
-  const ButtonEditDelete({
+  final int indexOf;
+
+  const ButtonEditDelete(
+    this.indexOf, {
     super.key,
   });
 
