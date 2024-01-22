@@ -6,7 +6,7 @@ import 'color_theme.dart';
 enum _ShoppingSizeText {
   title(25),
   product(20),
-  price(14),
+  price(12),
   amount(18),
   normal(12);
 

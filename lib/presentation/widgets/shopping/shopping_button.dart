@@ -21,21 +21,23 @@ class ShoppingButton extends ConsumerWidget {
     final isDark = ref.watch(isDarkMode);
 
     return Container(
-      height: 55,
+      height: 60,
       decoration: BoxDecoration(
         color: ref.buttonColor(isDark),
         boxShadow: ref.shadows,
         borderRadius: ref.buttonRadius,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 5,
+        ),
         child: Row(
           children: [
             Expanded(
               flex: 4,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
                     name,
