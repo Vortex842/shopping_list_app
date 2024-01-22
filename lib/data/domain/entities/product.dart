@@ -11,4 +11,22 @@ class Product {
     required this.amount,
     this.isChecked = false,
   });
+
+  Product copyWith({
+    required String? name,
+    required double? price,
+    required int? amount,
+    bool? isChecked,
+  }) {
+    return Product(
+      name: name ?? this.name,
+      price: price ?? this.price,
+      amount: amount ?? this.amount,
+    );
+  }
+
+  @override
+  String toString() {
+    return "$amount of $name with a value of \$$price";
+  }
 }
