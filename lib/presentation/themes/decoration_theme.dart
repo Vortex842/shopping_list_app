@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../themes/themes.barrel.dart';
+
 extension ShoppingDecoration on WidgetRef {
   List<BoxShadow> get shadows => [
         BoxShadow(
@@ -17,6 +19,21 @@ extension ShoppingDecoration on WidgetRef {
         ),
       ];
 
-  BorderRadius get bodyRadius => BorderRadius.circular(30);
+  BorderRadius get cardRadius => BorderRadius.circular(30);
   BorderRadius get buttonRadius => BorderRadius.circular(16);
+  Radius get nothingRadius => const Radius.circular(0);
+
+  BoxDecoration bodyDecoration(bool isDark) => BoxDecoration(
+        color: cardColor(isDark),
+        boxShadow: shadows,
+        borderRadius: cardRadius,
+      );
+  BoxDecoration bottomDecoration(bool isDark) => BoxDecoration(
+        boxShadow: shadows,
+        borderRadius: cardRadius.copyWith(
+          bottomLeft: nothingRadius,
+          bottomRight: nothingRadius,
+        ),
+        color: cardColor(isDark),
+      );
 }
