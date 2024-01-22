@@ -22,9 +22,7 @@ flutter:
   fonts:
     - family: 'ShoppingFont'
       fonts:
-        - asset: 'fonts/Foslin-Regular.ttf'
-        - asset: 'fonts/Foslin-Italic.ttf'
-          style: italic
-        - asset: 'fonts/Foslin-Bold.ttf'
+        - asset: 'fonts/Montserrat-Regular.ttf'
+        - asset: 'fonts/Montserrat-Medium.ttf'
           weight: 700
           

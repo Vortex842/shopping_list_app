@@ -5,9 +5,9 @@ import 'color_theme.dart';
 
 enum _ShoppingSizeText {
   title(25),
-  product(20),
-  price(14),
-  amount(18),
+  product(18),
+  price(12),
+  amount(16),
   normal(12);
 
   final double size;
@@ -19,7 +19,9 @@ extension ShoppingText on WidgetRef {
   TextStyle _textStyle(_ShoppingSizeText text, bool isDark) {
     return TextStyle(
       fontSize: text.size,
-      fontWeight: FontWeight.bold,
+      fontWeight: text == _ShoppingSizeText.product
+          ? FontWeight.bold
+          : FontWeight.normal,
       color: foregroundColor(isDark),
     );
   }
