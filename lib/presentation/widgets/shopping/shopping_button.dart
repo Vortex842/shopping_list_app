@@ -22,44 +22,46 @@ class ShoppingButton extends ConsumerWidget {
 
     return Container(
       height: 60,
-      decoration: BoxDecoration(
-        color: ref.buttonColor(isDark),
-        boxShadow: ref.shadows,
+      decoration: ref.buttonDecoration(isDark),
+      child: ClipRRect(
         borderRadius: ref.buttonRadius,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 5,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 4,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    style: ref.productText(isDark),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 5,
+          ),
+          child: Dismissible(
+            key: Key(hashCode.toString()),
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: ref.productText(isDark),
+                      ),
+                      Text(
+                        "\$${price.toStringAsFixed(2)}",
+                        style: ref.priceText(isDark),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "\$${price.toStringAsFixed(2)}",
-                    style: ref.priceText(isDark),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "$amount",
-                  style: ref.amountText(isDark),
                 ),
-              ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "$amount",
+                      style: ref.amountText(isDark),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

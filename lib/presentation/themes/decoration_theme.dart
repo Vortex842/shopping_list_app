@@ -28,6 +28,11 @@ extension ShoppingDecoration on WidgetRef {
         boxShadow: shadows,
         borderRadius: cardRadius,
       );
+  BoxDecoration buttonDecoration(bool isDark) => BoxDecoration(
+        color: buttonColor(isDark),
+        boxShadow: shadows,
+        borderRadius: buttonRadius,
+      );
   BoxDecoration bottomDecoration(bool isDark) => BoxDecoration(
         boxShadow: shadows,
         borderRadius: cardRadius.copyWith(
