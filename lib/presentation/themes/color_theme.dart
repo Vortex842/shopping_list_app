@@ -4,11 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 enum _ShoppingColors {
   lightPage(0xFFFFFFFF),
   lightForeground(0xFF1D1B20),
-  lightBody(0xFFF7F7F7),
+  lightCard(0xFFF7F7F7),
   lightButton(0xFFEEEEEE),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
-  darkBody(0xFF211F26),
+  darkCard(0xFF211F26),
   darkButton(0xFF2B2930),
   editForeground(0xFF0B4B01),
   editBackground(0xFF59FF56),
@@ -25,8 +25,8 @@ enum _ShoppingColors {
 extension ShoppingColors on WidgetRef {
   Color pageColor(bool isDark) =>
       (isDark ? _ShoppingColors.darkPage : _ShoppingColors.lightPage).color;
-  Color bodyColor(bool isDark) =>
-      (isDark ? _ShoppingColors.darkBody : _ShoppingColors.lightBody).color;
+  Color cardColor(bool isDark) =>
+      (isDark ? _ShoppingColors.darkCard : _ShoppingColors.lightCard).color;
   Color buttonColor(bool isDark) =>
       (isDark ? _ShoppingColors.darkButton : _ShoppingColors.lightButton).color;
   Color editColor(bool isDark) =>

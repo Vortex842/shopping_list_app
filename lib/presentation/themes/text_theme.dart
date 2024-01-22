@@ -7,7 +7,8 @@ enum _ShoppingSizeText {
   title(25),
   product(20),
   price(14),
-  amount(18);
+  amount(18),
+  normal(12);
 
   final double size;
 
@@ -31,4 +32,6 @@ extension ShoppingText on WidgetRef {
       _textStyle(_ShoppingSizeText.price, isDark);
   TextStyle amountText(bool isDark) =>
       _textStyle(_ShoppingSizeText.amount, isDark);
+  TextStyle normalText(bool isDark) =>
+      _textStyle(_ShoppingSizeText.normal, isDark);
 }
