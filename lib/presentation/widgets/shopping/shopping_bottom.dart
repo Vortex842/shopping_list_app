@@ -14,7 +14,7 @@ class ShoppingBottom extends ConsumerWidget {
     final isDark = ref.watch(isDarkMode);
 
     return Container(
-      height: 60,
+      height: maxHeight,
       decoration: ref.bottomDecoration(isDark),
     );
   }
