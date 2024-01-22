@@ -5,7 +5,9 @@ import '../../providers/dark_mode_provider.dart';
 import '../../themes/themes.barrel.dart';
 
 class ShoppingBottom extends ConsumerWidget {
-  const ShoppingBottom({super.key});
+  final double maxHeight;
+
+  const ShoppingBottom({required this.maxHeight, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
