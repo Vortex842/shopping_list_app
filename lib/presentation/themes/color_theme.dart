@@ -29,10 +29,11 @@ extension ShoppingColors on WidgetRef {
       (isDark ? _ShoppingColors.darkCard : _ShoppingColors.lightCard).color;
   Color buttonColor(bool isDark) =>
       (isDark ? _ShoppingColors.darkButton : _ShoppingColors.lightButton).color;
-  Color editColor(bool isDark) =>
-      (isDark ? _ShoppingColors.editForeground : _ShoppingColors.editBackground)
-          .color;
-  Color deleteColor(bool isDark) => (isDark
+  Color editColor(bool isIcon) => (!isIcon
+          ? _ShoppingColors.editForeground
+          : _ShoppingColors.editBackground)
+      .color;
+  Color deleteColor(bool isIcon) => (!isIcon
           ? _ShoppingColors.deleteForeground
           : _ShoppingColors.deleteBackground)
       .color;

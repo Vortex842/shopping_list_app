@@ -28,7 +28,22 @@ extension ShoppingDecoration on WidgetRef {
         boxShadow: shadows,
         borderRadius: cardRadius,
       );
-  BoxDecoration buttonDecoration(bool isDark) => BoxDecoration(
+  BoxDecoration buttonDecoration(
+    bool isDark, {
+    DismissDirection dismissDirection = DismissDirection.none,
+  }) {
+    return BoxDecoration(
+      color: dismissDirection == DismissDirection.none
+          ? buttonColor(isDark)
+          : dismissDirection == DismissDirection.startToEnd
+              ? editColor(true)
+              : deleteColor(true),
+      boxShadow: shadows,
+      borderRadius: buttonRadius,
+    );
+  }
+
+  BoxDecoration buttonSectionDecoration(bool isDark) => BoxDecoration(
         color: buttonColor(isDark),
         boxShadow: shadows,
         borderRadius: buttonRadius,
