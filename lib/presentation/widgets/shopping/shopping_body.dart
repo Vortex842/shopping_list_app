@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../providers/dark_mode_provider.dart';
+import '../../providers/providers.barrel.dart';
 import '../../themes/themes.barrel.dart';
 import 'shopping_button.dart';
 
@@ -11,6 +11,7 @@ class ShoppingBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
+    final products = ref.watch(productsProvider);
 
     return Container(
       decoration: ref.bodyDecoration(isDark),
@@ -26,11 +27,9 @@ class ShoppingBody extends ConsumerWidget {
               direction: Axis.horizontal,
               runSpacing: 10,
               children: List.generate(
-                20,
+                products.length,
                 (index) => ShoppingButton(
-                  name: "Product ${index + 1}",
-                  price: index * 3.333999,
-                  amount: index,
+                  product: products[index],
                 ),
               ),
             ),

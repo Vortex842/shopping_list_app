@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/data/domain/entities/product.dart';
 
 import '../../providers/providers.barrel.dart';
 import '../../themes/themes.barrel.dart';
 
 class ShoppingButton extends ConsumerWidget {
-  final String name;
-  final double price;
-  final int amount;
+  final Product product;
 
   const ShoppingButton({
     super.key,
-    required this.name,
-    required this.price,
-    required this.amount,
+    required this.product,
   });
 
   @override
@@ -35,21 +32,16 @@ class ShoppingButton extends ConsumerWidget {
           //   print("Dismiss");
           // },
 
-          // onUpdate: (details) => details.reached
-          //     ? null
-          //     : {
-          //         if (details.direction != dismissDirection)
-          //           ref.read(dismissDirectionProvider.notifier).update(
-          //             (state) {
-          //               return details.direction;
-          //             },
-          //           ),
-          //       },
-          child: ButtonSection(
-            name: name,
-            price: price,
-            amount: amount,
+          onUpdate: (details) =>
+              ref.read(dismissDirectionProvider.notifier).update(
+            (state) {
+              if (details.progress == 0) return DismissDirection.none;
+
+              return details.direction;
+            },
           ),
+
+          child: ButtonSection(product),
         ),
       ),
     );
@@ -57,16 +49,12 @@ class ShoppingButton extends ConsumerWidget {
 }
 
 class ButtonSection extends ConsumerWidget {
-  const ButtonSection({
-    super.key,
-    required this.name,
-    required this.price,
-    required this.amount,
-  });
+  final Product product;
 
-  final String name;
-  final double price;
-  final int amount;
+  const ButtonSection(
+    this.product, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -74,42 +62,39 @@ class ButtonSection extends ConsumerWidget {
 
     return DecoratedBox(
       decoration: ref.buttonSectionDecoration(isDark),
-      child: ClipRRect(
-        borderRadius: ref.buttonRadius,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 5,
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 4,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: ref.productText(isDark),
-                    ),
-                    Text(
-                      "\$${price.toStringAsFixed(2)}",
-                      style: ref.priceText(isDark),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    "$amount",
-                    style: ref.amountText(isDark),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 5,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: ref.productText(isDark),
                   ),
+                  Text(
+                    "\$${product.price.toStringAsFixed(2)}",
+                    style: ref.priceText(isDark),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "${product.amount}",
+                  style: ref.amountText(isDark),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
