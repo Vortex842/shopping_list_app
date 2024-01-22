@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'presentation/providers/dark_mode_provider.dart';
-import 'presentation/themes/color_theme.dart';
+import 'presentation/themes/themes.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() {
@@ -25,18 +25,15 @@ class MainApp extends ConsumerWidget {
         child: Scaffold(
           backgroundColor: ref.pageColor(isDark),
           appBar: const ShoppingAppBar(),
-          body: Column(
+          body: const Column(
             children: [
-              const Expanded(
+              Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(bottom: 10),
                   child: ShoppingBody(),
                 ),
               ),
-              Placeholder(
-                fallbackHeight: 60,
-                color: ref.foregroundColor(isDark),
-              ),
+              ShoppingBottom(),
             ],
           ),
         ),

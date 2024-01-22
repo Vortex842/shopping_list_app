@@ -13,13 +13,9 @@ class ShoppingBody extends ConsumerWidget {
     final isDark = ref.watch(isDarkMode);
 
     return Container(
-      decoration: BoxDecoration(
-        color: ref.bodyColor(isDark),
-        boxShadow: ref.shadows,
-        borderRadius: ref.bodyRadius,
-      ),
+      decoration: ref.bodyDecoration(isDark),
       child: ClipRRect(
-        borderRadius: ref.bodyRadius,
+        borderRadius: ref.cardRadius,
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(
