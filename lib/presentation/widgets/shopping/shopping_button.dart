@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/data/domain/entities/product.dart';
 
 import '../../providers/providers.barrel.dart';
@@ -7,16 +8,19 @@ import '../../themes/themes.barrel.dart';
 
 class ShoppingButton extends ConsumerWidget {
   final Product product;
+  final int indexOf;
 
   const ShoppingButton({
     super.key,
     required this.product,
+    required this.indexOf,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
     final dismissDirection = ref.watch(dismissDirectionProvider);
+    final isDismiss = ref.watch(isDismissProvider);
 
     return Container(
       height: 60,
@@ -26,22 +30,57 @@ class ShoppingButton extends ConsumerWidget {
       ),
       child: ClipRRect(
         borderRadius: ref.buttonRadius,
-        child: Dismissible(
-          key: Key(hashCode.toString()),
-          // onDismissed: (direction) {
-          //   print("Dismiss");
-          // },
+        child: Stack(
+          children: [
+            const ButtonEditDelete(),
+            Dismissible(
+              key: Key(product.hashCode.toString()),
+              confirmDismiss: (direction) async {
+                if (isDismiss) {
+                  ref.read(productsProvider.notifier).update(
+                        (products) => [
+                          ...products..removeAt(indexOf),
+                        ],
+                      );
+                } else {
+                  print("edit");
+                }
 
-          onUpdate: (details) =>
-              ref.read(dismissDirectionProvider.notifier).update(
-            (state) {
-              if (details.progress == 0) return DismissDirection.none;
+                return isDismiss;
+              },
+              onUpdate: (details) =>
+                  ref.read(dismissDirectionProvider.notifier).update(
+                (state) {
+                  if (details.progress == 0) return DismissDirection.none;
 
-              return details.direction;
-            },
-          ),
+                  return details.direction;
+                },
+              ),
+              child: ButtonSection(product),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
-          child: ButtonSection(product),
+class ButtonEditDelete extends ConsumerWidget {
+  const ButtonEditDelete({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDismiss = ref.watch(isDismissProvider);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Align(
+        alignment: isDismiss ? Alignment.centerRight : Alignment.centerLeft,
+        child: Icon(
+          isDismiss ? LucideIcons.delete : LucideIcons.edit,
+          color: isDismiss ? ref.deleteColor(false) : ref.editColor(false),
         ),
       ),
     );

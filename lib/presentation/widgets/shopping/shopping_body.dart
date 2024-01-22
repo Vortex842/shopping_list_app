@@ -30,6 +30,7 @@ class ShoppingBody extends ConsumerWidget {
                 products.length,
                 (index) => ShoppingButton(
                   product: products[index],
+                  indexOf: index,
                 ),
               ),
             ),
