@@ -13,7 +13,9 @@ enum _ShoppingColors {
   editForeground(0xFF0B4B01),
   editBackground(0xFF59FF56),
   deleteForeground(0xFF780000),
-  deleteBackground(0xFFFF5656);
+  deleteBackground(0xFFFF5656),
+  selectForeground(0xFF430078),
+  selectBackground(0xFFAB56FF);
 
   final int _hexColor;
 
@@ -36,6 +38,10 @@ extension ShoppingColors on WidgetRef {
   Color deleteColor(bool isIcon) => (!isIcon
           ? _ShoppingColors.deleteForeground
           : _ShoppingColors.deleteBackground)
+      .color;
+  Color selectColor(bool isIcon) => (!isIcon
+          ? _ShoppingColors.selectForeground
+          : _ShoppingColors.selectBackground)
       .color;
   Color foregroundColor(bool isDark) => (isDark
           ? _ShoppingColors.darkForeground

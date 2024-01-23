@@ -29,7 +29,6 @@ class ShoppingBody extends ConsumerWidget {
               children: List.generate(
                 products.length,
                 (index) => ShoppingButton(
-                  key: UniqueKey(),
                   product: products[index],
                   indexOf: index,
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 
 import '../themes/themes.barrel.dart';
 
@@ -28,16 +29,29 @@ extension ShoppingDecoration on WidgetRef {
         boxShadow: shadows,
         borderRadius: cardRadius,
       );
-  BoxDecoration buttonDecoration(
+  BoxDecoration buttonBackgroundDecoration(
     bool isDark, {
-    DismissDirection dismissDirection = DismissDirection.none,
+    ButtonActionType actionType = ButtonActionType.none,
   }) {
+    Color color;
+
+    switch (actionType) {
+      case ButtonActionType.none:
+        color = buttonColor(isDark);
+        break;
+      case ButtonActionType.edit:
+        color = editColor(false);
+        break;
+      case ButtonActionType.delete:
+        color = deleteColor(false);
+        break;
+      case ButtonActionType.select:
+        color = selectColor(false);
+        break;
+    }
+
     return BoxDecoration(
-      color: dismissDirection == DismissDirection.none
-          ? buttonColor(isDark)
-          : dismissDirection == DismissDirection.startToEnd
-              ? editColor(true)
-              : deleteColor(true),
+      color: color,
       boxShadow: shadows,
       borderRadius: buttonRadius,
     );

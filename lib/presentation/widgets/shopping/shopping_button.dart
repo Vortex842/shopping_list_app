@@ -24,41 +24,19 @@ class ShoppingButton extends ConsumerWidget {
 
     return Container(
       height: 60,
-      decoration: ref.buttonDecoration(
+      decoration: ref.buttonBackgroundDecoration(
         isDark,
-        dismissDirection: dismissDirection,
       ),
       child: ClipRRect(
         borderRadius: ref.buttonRadius,
         child: Stack(
           children: [
-            ButtonEditDelete(key: UniqueKey(), indexOf),
+            ButtonEditDelete(indexOf),
             Dismissible(
               key: Key(product.hashCode.toString()),
-              confirmDismiss: (direction) async {
-                if (isDismiss) {
-                  ref.read(productsProvider.notifier).update(
-                        (products) => [
-                          ...products..removeAt(indexOf),
-                        ],
-                      );
-                  ref.read(dismissDirectionProvider.notifier).update(
-                    (state) {
-                      return DismissDirection.none;
-                    },
-                  );
-                  print("Delete: ${product.toString()}");
-                  return true;
-                } else {
-                  print("Edit: ${product.toString()}");
-                  return false;
-                }
-              },
-              onUpdate: (details) =>
-                  ref.read(dismissDirectionProvider.notifier).update(
-                        (directions) => details.direction,
-                      ),
-              child: ButtonSection(key: UniqueKey(), product),
+              confirmDismiss: (direction) async => false,
+              onUpdate: (details) {},
+              child: ButtonSection(product),
             ),
           ],
         ),
