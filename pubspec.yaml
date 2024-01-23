@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   lucide_icons: ^0.257.0
   flutter_riverpod: ^2.4.9
+  equatable: ^2.0.5
+  uuid: ^4.3.3
 
 dev_dependencies:
   flutter_test:

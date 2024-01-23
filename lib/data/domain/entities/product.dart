@@ -1,4 +1,8 @@
-class Product {
+import 'package:equatable/equatable.dart';
+import 'package:uuid/uuid.dart';
+
+class Product implements Equatable {
+  final String id;
   final String name;
   final double price;
   final int amount;
@@ -6,6 +10,7 @@ class Product {
   final bool isChecked;
 
   Product({
+    required this.id,
     required this.name,
     required this.price,
     required this.amount,
@@ -13,12 +18,13 @@ class Product {
   });
 
   Product copyWith({
-    required String? name,
-    required double? price,
-    required int? amount,
+    String? name,
+    double? price,
+    int? amount,
     bool? isChecked,
   }) {
     return Product(
+      id: const Uuid().v4(),
       name: name ?? this.name,
       price: price ?? this.price,
       amount: amount ?? this.amount,
@@ -29,4 +35,10 @@ class Product {
   String toString() {
     return "$amount of $name with a value of \$$price";
   }
+
+  @override
+  List<Object?> get props => [name, price, amount, isChecked];
+
+  @override
+  bool? get stringify => false;
 }
