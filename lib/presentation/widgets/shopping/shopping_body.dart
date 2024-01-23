@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/providers.barrel.dart';
 import '../../themes/themes.barrel.dart';
-import 'shopping_button.dart';
+import 'button/shopping_button.dart';
 
 class ShoppingBody extends ConsumerWidget {
   const ShoppingBody({super.key});
