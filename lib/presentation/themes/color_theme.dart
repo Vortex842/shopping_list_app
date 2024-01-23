@@ -39,7 +39,7 @@ extension ShoppingColors on WidgetRef {
           ? _ShoppingColors.deleteForeground
           : _ShoppingColors.deleteBackground)
       .color;
-  Color selectColor(bool isIcon) => (!isIcon
+  Color selectColor(bool isIcon) => (isIcon
           ? _ShoppingColors.selectForeground
           : _ShoppingColors.selectBackground)
       .color;

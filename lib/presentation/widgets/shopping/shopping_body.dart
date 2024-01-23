@@ -14,6 +14,7 @@ class ShoppingBody extends ConsumerWidget {
     final products = ref.watch(productsProvider);
 
     return Container(
+      width: double.infinity,
       decoration: ref.bodyDecoration(isDark),
       child: ClipRRect(
         borderRadius: ref.cardRadius,
