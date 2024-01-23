@@ -24,6 +24,7 @@ class ShoppingButton extends ConsumerWidget {
     return GestureDetector(
       onLongPress: () {
         print("Presionado largo");
+        ref.read(productsProvider.notifier).toggleCheck(product.id);
       },
       child: Container(
         height: 60,

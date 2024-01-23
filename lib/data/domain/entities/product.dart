@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:uuid/uuid.dart';
 
 class Product implements Equatable {
   final String id;
@@ -24,10 +23,11 @@ class Product implements Equatable {
     bool? isChecked,
   }) {
     return Product(
-      id: const Uuid().v4(),
+      id: id,
       name: name ?? this.name,
       price: price ?? this.price,
       amount: amount ?? this.amount,
+      isChecked: isChecked ?? this.isChecked,
     );
   }
 

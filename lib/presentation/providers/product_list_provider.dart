@@ -8,6 +8,12 @@ final productsProvider =
   return ProductNotifier(); // Se devuelde la creacion de la instancia de "TodosNotifier"
 });
 
+// final filteredProducts = StateProvider<List<Product>>((ref) {
+//   final products = ref.watch(productsProvider);
+
+//   return products;
+// });
+
 class ProductNotifier extends StateNotifier<List<Product>> {
   ProductNotifier()
       : super(
