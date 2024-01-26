@@ -1,66 +1,76 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-import 'package:shopping_list_app/data/domain/entities/product.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 
 import '../../../providers/providers.barrel.dart';
-import '../../../themes/themes.barrel.dart';
+import '../../../references/references.barrel.dart';
+import '/data/domain/entities/product.dart';
 import 'button_section.dart';
 
-class ShoppingButton extends ConsumerWidget {
+class ShoppingButton extends HookConsumerWidget {
   final Product product;
-  final int indexOf;
 
   const ShoppingButton({
     super.key,
     required this.product,
-    required this.indexOf,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final buttonAction = useState(ButtonActionType.none);
+    final buttonSection = useMemoized(
+      () => ButtonSection(product),
+    );
+
+    useEffect(() {
+      buttonAction.value =
+          product.isChecked ? ButtonActionType.select : ButtonActionType.none;
+      return null;
+    }, [product.isChecked]);
+
     final isDark = ref.watch(isDarkMode);
 
     return GestureDetector(
       onLongPress: () {
-        ref.read(productsProvider.notifier).toggleCheck(
-              product.id,
-            );
+        // ACTION ON LONG PRESS
+        ref.read(productsProvider.notifier).toggleCheck(product.id);
       },
       child: Container(
         height: 60,
         decoration: ref.buttonBackgroundDecoration(
           isDark,
-          actionType: !product.isChecked
-              ? ButtonActionType.none
-              : ButtonActionType.select,
+          actionType: buttonAction.value,
         ),
         child: ClipRRect(
           borderRadius: ref.buttonRadius,
-          child: Row(
+          child: Stack(
             children: [
-              Expanded(
-                flex: 4,
-                child: SizedBox(
-                  // color: Colors.red,
-                  child: Transform.scale(
-                    scaleY: product.isChecked ? 0.8 : 1,
-                    scaleX: product.isChecked ? 0.95 : 1,
-                    child: ButtonSection(product),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
                   ),
-                ),
-              ),
-              Expanded(
-                flex: product.isChecked ? 1 : 0,
-                child: SizedBox(
-                  // color: Colors.blue,
                   child: Icon(
-                    LucideIcons.check,
-                    size: product.isChecked ? 25 : 0,
+                    ref.iconType(actionType: buttonAction.value),
                   ),
                 ),
               ),
+              product.isChecked
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        right: 50,
+                      ),
+                      child: Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()..scale(0.95, 0.8),
+                        child: buttonSection,
+                      ),
+                    )
+                  : buttonSection,
             ],
           ),
         ),
