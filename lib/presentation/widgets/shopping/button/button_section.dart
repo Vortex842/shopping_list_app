@@ -33,11 +33,11 @@ class ButtonSection extends ConsumerWidget {
                 children: [
                   Text(
                     product.name,
-                    style: ref.productText(isDark),
+                    style: ref.productText(),
                   ),
                   Text(
                     "\$${product.price.toStringAsFixed(2)}",
-                    style: ref.priceText(isDark),
+                    style: ref.priceText(),
                   ),
                 ],
               ),
@@ -47,7 +47,7 @@ class ButtonSection extends ConsumerWidget {
                 alignment: Alignment.centerRight,
                 child: Text(
                   "${product.amount}",
-                  style: ref.amountText(isDark),
+                  style: ref.amountText(),
                 ),
               ),
             ),

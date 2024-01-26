@@ -37,7 +37,7 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
               Center(
                 child: Text(
                   "Shopping List",
-                  style: ref.titleText(isDark),
+                  style: ref.titleText(),
                 ),
               ),
             ],

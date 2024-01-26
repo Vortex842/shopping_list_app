@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../providers/dark_mode_provider.dart';
 import 'color_reference.dart';
 
 enum _ShoppingSizeText {
@@ -16,7 +17,9 @@ enum _ShoppingSizeText {
 }
 
 extension ShoppingText on WidgetRef {
-  TextStyle _textStyle(_ShoppingSizeText text, bool isDark) {
+  TextStyle _textStyle(_ShoppingSizeText text) {
+    final isDark = read(isDarkMode);
+
     return TextStyle(
       fontSize: text.size,
       fontWeight: text == _ShoppingSizeText.product
@@ -26,14 +29,9 @@ extension ShoppingText on WidgetRef {
     );
   }
 
-  TextStyle titleText(bool isDark) =>
-      _textStyle(_ShoppingSizeText.title, isDark);
-  TextStyle productText(bool isDark) =>
-      _textStyle(_ShoppingSizeText.product, isDark);
-  TextStyle priceText(bool isDark) =>
-      _textStyle(_ShoppingSizeText.price, isDark);
-  TextStyle amountText(bool isDark) =>
-      _textStyle(_ShoppingSizeText.amount, isDark);
-  TextStyle normalText(bool isDark) =>
-      _textStyle(_ShoppingSizeText.normal, isDark);
+  TextStyle titleText() => _textStyle(_ShoppingSizeText.title);
+  TextStyle productText() => _textStyle(_ShoppingSizeText.product);
+  TextStyle priceText() => _textStyle(_ShoppingSizeText.price);
+  TextStyle amountText() => _textStyle(_ShoppingSizeText.amount);
+  TextStyle normalText() => _textStyle(_ShoppingSizeText.normal);
 }
