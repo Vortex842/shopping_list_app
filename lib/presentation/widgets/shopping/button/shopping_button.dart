@@ -20,18 +20,25 @@ class ShoppingButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isDark = ref.watch(isDarkMode);
+    final isAnyChecked = ref.watch(isAnyCheckedProvider);
+
     final buttonAction = useState(ButtonActionType.none);
+    final dismissDirection = useState(DismissDirection.none);
     final buttonSection = useMemoized(
       () => ButtonSection(product),
     );
 
     useEffect(() {
-      buttonAction.value =
-          product.isChecked ? ButtonActionType.select : ButtonActionType.none;
+      buttonAction.value = product.isChecked
+          ? ButtonActionType.select
+          : dismissDirection.value == DismissDirection.startToEnd
+              ? ButtonActionType.edit
+              : dismissDirection.value == DismissDirection.endToStart
+                  ? ButtonActionType.delete
+                  : ButtonActionType.none;
       return null;
-    }, [product.isChecked]);
-
-    final isDark = ref.watch(isDarkMode);
+    }, [product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
       onLongPress: () {
@@ -49,7 +56,9 @@ class ShoppingButton extends HookConsumerWidget {
           child: Stack(
             children: [
               Align(
-                alignment: Alignment.centerRight,
+                alignment: buttonAction.value == ButtonActionType.edit
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 15,
@@ -70,7 +79,19 @@ class ShoppingButton extends HookConsumerWidget {
                         child: buttonSection,
                       ),
                     )
-                  : buttonSection,
+                  : Dismissible(
+                      key: Key(product.hashCode.toString()),
+                      direction: isAnyChecked
+                          ? DismissDirection.none
+                          : DismissDirection.horizontal,
+                      confirmDismiss: (direction) async => false,
+                      onUpdate: (details) {
+                        if (details.direction != dismissDirection.value) {
+                          dismissDirection.value = details.direction;
+                        }
+                      },
+                      child: buttonSection,
+                    ),
             ],
           ),
         ),
