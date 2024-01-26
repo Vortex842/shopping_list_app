@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
-import '../../../themes/themes.barrel.dart';
+import '../../../references/references.barrel.dart';
 
 class ButtonSection extends ConsumerWidget {
   final Product product;

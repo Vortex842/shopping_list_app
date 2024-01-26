@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/providers.barrel.dart';
-import '../../themes/themes.barrel.dart';
+import '../../references/references.barrel.dart';
 import 'button/shopping_button.dart';
 
 class ShoppingBody extends ConsumerWidget {
@@ -31,7 +31,6 @@ class ShoppingBody extends ConsumerWidget {
                 products.length,
                 (index) => ShoppingButton(
                   product: products[index],
-                  indexOf: index,
                 ),
               ),
             ),

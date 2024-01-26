@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 import '../../providers/dark_mode_provider.dart';
-import '../../themes/themes.barrel.dart';
+import '../../references/references.barrel.dart';
 
 class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const ShoppingAppBar({super.key});

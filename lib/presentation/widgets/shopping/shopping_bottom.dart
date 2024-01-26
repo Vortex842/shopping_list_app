@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/dark_mode_provider.dart';
-import '../../themes/themes.barrel.dart';
+import '../../references/references.barrel.dart';
 
 class ShoppingBottom extends ConsumerWidget {
   final double maxHeight;
