@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 
 import 'references.barrel.dart';
@@ -71,22 +70,4 @@ extension ShoppingDecoration on WidgetRef {
         ),
         color: cardColor(isDark),
       );
-
-  IconData? iconType({
-    ButtonActionType actionType = ButtonActionType.none,
-  }) {
-    switch (actionType) {
-      case ButtonActionType.none:
-        return null;
-
-      case ButtonActionType.edit:
-        return LucideIcons.edit;
-
-      case ButtonActionType.delete:
-        return LucideIcons.delete;
-
-      case ButtonActionType.select:
-        return LucideIcons.check;
-    }
-  }
 }
