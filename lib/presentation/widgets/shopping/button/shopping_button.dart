@@ -89,6 +89,9 @@ class ShoppingButton extends HookConsumerWidget {
                         if (details.direction != dismissDirection.value) {
                           dismissDirection.value = details.direction;
                         }
+                        if (details.progress == 0) {
+                          dismissDirection.value = DismissDirection.none;
+                        }
                       },
                       child: buttonSection,
                     ),
