@@ -71,11 +71,8 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     state = [...state, product];
   }
 
-  void deleteProduct(Product product) {
-    List<Product> products = state;
-
-    products.remove(product);
-    state = [...products];
+  void deleteProduct(String id) {
+    state = [...state..removeWhere((p) => p.id == id)];
   }
 
   void toggleCheck(String id) {
