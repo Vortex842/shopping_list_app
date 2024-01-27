@@ -30,6 +30,7 @@ class ShoppingBody extends ConsumerWidget {
               children: List.generate(
                 products.length,
                 (index) => ShoppingButton(
+                  key: Key(products[index].hashCode.toString()),
                   product: products[index],
                 ),
               ),
