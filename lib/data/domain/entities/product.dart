@@ -33,7 +33,7 @@ class Product implements Equatable {
 
   @override
   String toString() {
-    return "$amount units of $name at a price of \$$price";
+    return "$amount of $name at a price of \$$price";
   }
 
   @override
