@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
+import 'package:shopping_list_app/presentation/providers/product_inherited.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
@@ -21,7 +22,6 @@ class ShoppingButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
-    final isAnyChecked = ref.watch(isAnyCheckedProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -68,33 +68,15 @@ class ShoppingButton extends HookConsumerWidget {
                   ),
                 ),
               ),
-              product.isChecked
-                  ? Padding(
-                      padding: const EdgeInsets.only(
-                        right: 50,
-                      ),
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()..scale(0.95, 0.8),
+              ProductInherited(
+                product: product,
+                child: product.isChecked
+                    ? TransformButton(child: buttonSection)
+                    : DismissibleButton(
+                        dismissDirection: dismissDirection,
                         child: buttonSection,
                       ),
-                    )
-                  : Dismissible(
-                      key: Key(product.hashCode.toString()),
-                      direction: isAnyChecked
-                          ? DismissDirection.none
-                          : DismissDirection.horizontal,
-                      confirmDismiss: (direction) async => false,
-                      onUpdate: (details) {
-                        if (details.direction != dismissDirection.value) {
-                          dismissDirection.value = details.direction;
-                        }
-                        if (details.progress == 0) {
-                          dismissDirection.value = DismissDirection.none;
-                        }
-                      },
-                      child: buttonSection,
-                    ),
+              ),
             ],
           ),
         ),
@@ -131,9 +113,6 @@ class IconActionButton extends ConsumerWidget {
         color = ref.selectColor(true);
     }
 
-    return Icon(
-      icon,
-      color: color,
-    );
+    return Icon(icon, color: color);
   }
 }
