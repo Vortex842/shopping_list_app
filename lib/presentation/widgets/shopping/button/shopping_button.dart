@@ -73,6 +73,7 @@ class ShoppingButton extends HookConsumerWidget {
                 child: product.isChecked
                     ? TransformButton(child: buttonSection)
                     : DismissibleButton(
+                        // key: Key(product.hashCode.toString()),
                         dismissDirection: dismissDirection,
                         child: buttonSection,
                       ),
