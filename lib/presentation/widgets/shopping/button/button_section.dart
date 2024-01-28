@@ -15,7 +15,7 @@ class ButtonSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print("build - button section - ${product.toString()}");
+    // print("build - button section - ${product.toString()}");
     final isDark = ref.watch(isDarkMode);
 
     return DecoratedBox(
