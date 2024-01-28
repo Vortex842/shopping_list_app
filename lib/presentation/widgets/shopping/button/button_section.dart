@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/providers/product_inherited.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 
-class ButtonSection extends ConsumerWidget {
+class ButtonSection extends StatefulHookConsumerWidget {
   final Product product;
 
-  const ButtonSection(
-    this.product, {
-    super.key,
-  });
+  const ButtonSection(this.product, {super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ButtonSectionState();
+}
+
+class _ButtonSectionState extends ConsumerState<ButtonSection> {
+  @override
+  Widget build(BuildContext context) {
+    print("build - button section - ${widget.product.toString()}");
     final isDark = ref.watch(isDarkMode);
 
     return DecoratedBox(
@@ -33,11 +35,11 @@ class ButtonSection extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.name,
+                    widget.product.name,
                     style: ref.productText(),
                   ),
                   Text(
-                    "\$${product.price.toStringAsFixed(2)}",
+                    "\$${widget.product.price.toStringAsFixed(2)}",
                     style: ref.priceText(),
                   ),
                 ],
@@ -47,7 +49,7 @@ class ButtonSection extends ConsumerWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "${product.amount}",
+                  "${widget.product.amount}",
                   style: ref.amountText(),
                 ),
               ),
@@ -83,11 +85,13 @@ class TransformButton extends StatelessWidget {
 }
 
 class DismissibleButton extends ConsumerWidget {
+  final Product product;
   final ValueNotifier<DismissDirection> dismissDirection;
   final ButtonSection child;
 
   const DismissibleButton({
     super.key,
+    required this.product,
     required this.dismissDirection,
     required this.child,
   });
@@ -95,7 +99,6 @@ class DismissibleButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isAnyChecked = ref.watch(isAnyCheckedProvider);
-    final product = ProductInherited.of(context)!.product;
 
     return Dismissible(
       key: Key(product.hashCode.toString()),

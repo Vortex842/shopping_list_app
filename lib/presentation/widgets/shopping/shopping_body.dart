@@ -5,11 +5,18 @@ import '../../providers/providers.barrel.dart';
 import '../../references/references.barrel.dart';
 import 'button/shopping_button.dart';
 
-class ShoppingBody extends ConsumerWidget {
+class ShoppingBody extends ConsumerStatefulWidget {
   const ShoppingBody({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ShoppingBodyState();
+}
+
+class _ShoppingBodyState extends ConsumerState<ShoppingBody>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
     final isDark = ref.watch(isDarkMode);
     final products = ref.watch(productsProvider);
 
@@ -30,7 +37,7 @@ class ShoppingBody extends ConsumerWidget {
               children: List.generate(
                 products.length,
                 (index) => ShoppingButton(
-                  key: Key(products[index].hashCode.toString()),
+                  key: UniqueKey(),
                   product: products[index],
                 ),
               ),
@@ -40,4 +47,7 @@ class ShoppingBody extends ConsumerWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

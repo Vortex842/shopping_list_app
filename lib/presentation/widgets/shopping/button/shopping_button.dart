@@ -4,33 +4,35 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
-import 'package:shopping_list_app/presentation/providers/product_inherited.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import 'button_section.dart';
 
-class ShoppingButton extends HookConsumerWidget {
+class ShoppingButton extends StatefulHookConsumerWidget {
   final Product product;
 
-  const ShoppingButton({
-    super.key,
-    required this.product,
-  });
+  const ShoppingButton({required this.product, super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _ShoppingButtonState();
+}
+
+class _ShoppingButtonState extends ConsumerState<ShoppingButton> {
+  @override
+  Widget build(BuildContext context) {
+    print("build - shopping button - ${widget.product.toString()}");
     final isDark = ref.watch(isDarkMode);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
     final buttonSection = useMemoized(
-      () => ButtonSection(product),
+      () => ButtonSection(widget.product),
     );
 
     useEffect(() {
-      buttonAction.value = product.isChecked
+      buttonAction.value = widget.product.isChecked
           ? ButtonActionType.select
           : dismissDirection.value == DismissDirection.startToEnd
               ? ButtonActionType.edit
@@ -38,12 +40,12 @@ class ShoppingButton extends HookConsumerWidget {
                   ? ButtonActionType.delete
                   : ButtonActionType.none;
       return null;
-    }, [product.isChecked, dismissDirection.value]);
+    }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
       onLongPress: () {
         // ACTION ON LONG PRESS
-        ref.read(productsProvider.notifier).toggleCheck(product.id);
+        ref.read(productsProvider.notifier).toggleCheck(widget.product.id);
       },
       child: Container(
         height: 60,
@@ -68,16 +70,13 @@ class ShoppingButton extends HookConsumerWidget {
                   ),
                 ),
               ),
-              ProductInherited(
-                product: product,
-                child: product.isChecked
-                    ? TransformButton(child: buttonSection)
-                    : DismissibleButton(
-                        // key: Key(product.hashCode.toString()),
-                        dismissDirection: dismissDirection,
-                        child: buttonSection,
-                      ),
-              ),
+              widget.product.isChecked
+                  ? TransformButton(child: buttonSection)
+                  : DismissibleButton(
+                      product: widget.product,
+                      dismissDirection: dismissDirection,
+                      child: buttonSection,
+                    ),
             ],
           ),
         ),
