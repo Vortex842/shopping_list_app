@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 
-class ButtonSection extends StatefulHookConsumerWidget {
+class ButtonSection extends ConsumerWidget {
   final Product product;
 
-  const ButtonSection(this.product, {super.key});
+  const ButtonSection(
+    this.product, {
+    super.key,
+  });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ButtonSectionState();
-}
-
-class _ButtonSectionState extends ConsumerState<ButtonSection> {
-  @override
-  Widget build(BuildContext context) {
-    print("build - button section - ${widget.product.toString()}");
+  Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
 
     return DecoratedBox(
@@ -35,11 +32,11 @@ class _ButtonSectionState extends ConsumerState<ButtonSection> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.product.name,
+                    product.name,
                     style: ref.productText(),
                   ),
                   Text(
-                    "\$${widget.product.price.toStringAsFixed(2)}",
+                    "\$${product.price.toStringAsFixed(2)}",
                     style: ref.priceText(),
                   ),
                 ],
@@ -49,7 +46,7 @@ class _ButtonSectionState extends ConsumerState<ButtonSection> {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "${widget.product.amount}",
+                  "${product.amount}",
                   style: ref.amountText(),
                 ),
               ),

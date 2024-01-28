@@ -37,7 +37,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
               children: List.generate(
                 products.length,
                 (index) => ShoppingButton(
-                  key: UniqueKey(),
+                  key: Key(products[index].hashCode.toString()),
                   product: products[index],
                 ),
               ),

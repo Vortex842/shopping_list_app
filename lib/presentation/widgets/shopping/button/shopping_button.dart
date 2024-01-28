@@ -10,29 +10,26 @@ import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import 'button_section.dart';
 
-class ShoppingButton extends StatefulHookConsumerWidget {
+class ShoppingButton extends HookConsumerWidget {
   final Product product;
 
-  const ShoppingButton({required this.product, super.key});
+  const ShoppingButton({
+    super.key,
+    required this.product,
+  });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ShoppingButtonState();
-}
-
-class _ShoppingButtonState extends ConsumerState<ShoppingButton> {
-  @override
-  Widget build(BuildContext context) {
-    print("build - shopping button - ${widget.product.toString()}");
+  Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkMode);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
     final buttonSection = useMemoized(
-      () => ButtonSection(widget.product),
+      () => ButtonSection(product),
     );
 
     useEffect(() {
-      buttonAction.value = widget.product.isChecked
+      buttonAction.value = product.isChecked
           ? ButtonActionType.select
           : dismissDirection.value == DismissDirection.startToEnd
               ? ButtonActionType.edit
@@ -40,12 +37,12 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton> {
                   ? ButtonActionType.delete
                   : ButtonActionType.none;
       return null;
-    }, [widget.product.isChecked, dismissDirection.value]);
+    }, [product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
       onLongPress: () {
         // ACTION ON LONG PRESS
-        ref.read(productsProvider.notifier).toggleCheck(widget.product.id);
+        ref.read(productsProvider.notifier).toggleCheck(product.id);
       },
       child: Container(
         height: 60,
@@ -70,10 +67,10 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton> {
                   ),
                 ),
               ),
-              widget.product.isChecked
+              product.isChecked
                   ? TransformButton(child: buttonSection)
                   : DismissibleButton(
-                      product: widget.product,
+                      product: product,
                       dismissDirection: dismissDirection,
                       child: buttonSection,
                     ),

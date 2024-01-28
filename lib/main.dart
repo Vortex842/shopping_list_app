@@ -33,7 +33,7 @@ class MainApp extends ConsumerWidget {
                   child: ShoppingBody(),
                 ),
               ),
-              ShoppingBottom(maxHeight: 80),
+              ShoppingBottom(maxHeight: 75),
             ],
           ),
         ),
