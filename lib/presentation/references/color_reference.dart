@@ -46,4 +46,7 @@ extension ShoppingColors on WidgetRef {
           ? _ShoppingColors.darkForeground
           : _ShoppingColors.lightForeground)
       .color;
+  Color buttonColorBottomBar(bool isDark) =>
+      isDark ? const Color(0xFFD2C2EB) : const Color(0xFFEADDFF);
+  Color get iconColorBottombar => const Color(0xFF21005D);
 }
