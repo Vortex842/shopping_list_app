@@ -16,6 +16,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    // print("build - shopping body");
     super.build(context);
     final isDark = ref.watch(isDarkMode);
     final products = ref.watch(productsProvider);
