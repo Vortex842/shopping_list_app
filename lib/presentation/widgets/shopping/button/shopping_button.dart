@@ -23,6 +23,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     // print("build - shopping button - ${widget.product.toString()}");
     final isDark = ref.watch(isDarkMode);
 
@@ -46,7 +47,9 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     return GestureDetector(
       onLongPress: () {
         // ACTION ON LONG PRESS
-        ref.read(productsProvider.notifier).toggleCheck(widget.product.id);
+        ref.read(productsProvider.notifier).toggleCheck(
+              widget.product.id,
+            );
       },
       child: Container(
         height: 60,
@@ -107,15 +110,19 @@ class IconActionButton extends ConsumerWidget {
       case ButtonActionType.none:
         icon = null;
         color = Colors.black;
+        break;
       case ButtonActionType.edit:
         icon = LucideIcons.edit;
         color = ref.editColor(true);
+        break;
       case ButtonActionType.delete:
         icon = LucideIcons.delete;
         color = ref.deleteColor(true);
+        break;
       case ButtonActionType.select:
         icon = LucideIcons.check;
         color = ref.selectColor(true);
+        break;
     }
 
     return Icon(icon, color: color);
