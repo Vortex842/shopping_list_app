@@ -21,18 +21,23 @@ class ShoppingBottom extends ConsumerWidget {
       child: ClipRRect(
         borderRadius: ref.cardRadius,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 15,
-          ),
+          padding: const EdgeInsets.all(15),
           child: Align(
             // TODO: Create Actions: 'selected' and 'Accept or Cancel'
-            alignment: !isAnyChecked ? Alignment.center : Alignment.centerLeft,
-            child: !isAnyChecked
-                ? const BottomBarButtons()
-                : Container(
-                    width: 100,
+            alignment: !isAnyChecked || onAddEdit
+                ? Alignment.center
+                : Alignment.centerLeft,
+            child: isAnyChecked
+                ? Container(
+                    // width: 100,
                     color: Colors.red,
-                  ),
+                  )
+                : onAddEdit
+                    ? Container(
+                        // width: 100,
+                        color: Colors.green,
+                      )
+                    : const BottomBarButtons(),
           ),
         ),
       ),
