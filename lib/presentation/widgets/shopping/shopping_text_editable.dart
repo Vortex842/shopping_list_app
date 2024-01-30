@@ -1,35 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/editable_text_provider.dart';
 import 'package:shopping_list_app/presentation/providers/focus_nodes_providers.dart';
 
 import '/presentation/providers/dark_mode_provider.dart';
 import '/presentation/references/references.barrel.dart';
 
-class _ShoppingEditableText extends HookConsumerWidget {
+class ShoppingEditableText extends HookConsumerWidget {
   final TextInputType textType;
   final FocusNode focusNode;
+  final double maxWidth;
+  final TextEditingController controller;
 
-  const _ShoppingEditableText({
+  const ShoppingEditableText({
+    super.key,
     required this.textType,
     required this.focusNode,
-    super.key,
+    required this.maxWidth,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(isDarkProvider);
 
-    final controller = useTextEditingController();
-
     return SizedBox(
-      width: ref.editableTextWidth(textType),
+      width: maxWidth,
       child: InputDecorator(
         decoration: InputDecoration(
           isCollapsed: true,
           fillColor: ref.editableTextColor(isDark),
           filled: true,
           border: const OutlineInputBorder(),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 4),
           // border: InputBorder.none,
         ),
         child: EditableText(
@@ -55,10 +58,13 @@ class ProductEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final focusNodeProduct = ref.watch(focusNodeProductProvider);
+    final productController = ref.watch(productControllerProvider);
 
-    return _ShoppingEditableText(
+    return ShoppingEditableText(
       textType: TextInputType.text,
       focusNode: focusNodeProduct,
+      maxWidth: ref.editableProductWidth,
+      controller: productController,
     );
   }
 }
@@ -71,10 +77,13 @@ class AmountEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final focusNodeAmount = ref.watch(focusNodeAmountProvider);
+    final amountController = ref.watch(amountControllerProvider);
 
-    return _ShoppingEditableText(
+    return ShoppingEditableText(
       textType: TextInputType.phone,
       focusNode: focusNodeAmount,
+      maxWidth: ref.editableAmountWidth,
+      controller: amountController,
     );
   }
 }
@@ -87,10 +96,13 @@ class PriceEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final focusNodePrice = ref.watch(focusNodePriceProvider);
+    final priceController = ref.watch(priceControllerProvider);
 
-    return _ShoppingEditableText(
+    return ShoppingEditableText(
       textType: TextInputType.number,
       focusNode: focusNodePrice,
+      maxWidth: ref.editablePriceWidth,
+      controller: priceController,
     );
   }
 }
