@@ -97,11 +97,13 @@ class DismissibleButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isAnyChecked = ref.watch(isAnyCheckedProvider);
+    final onAddEdit = ref.watch(onAddEditProvider);
 
     return Dismissible(
       key: Key(product.hashCode.toString()),
-      direction:
-          isAnyChecked ? DismissDirection.none : DismissDirection.horizontal,
+      direction: isAnyChecked || onAddEdit
+          ? DismissDirection.none
+          : DismissDirection.horizontal,
       confirmDismiss: (direction) async {
         if (direction == DismissDirection.endToStart) {
           print("Delete - ${product.toString()}");

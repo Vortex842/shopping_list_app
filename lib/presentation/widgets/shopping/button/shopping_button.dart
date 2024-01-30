@@ -26,6 +26,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     super.build(context);
     // print("build - shopping button - ${widget.product.toString()}");
     final isDark = ref.watch(isDarkMode);
+    final onAddEdit = ref.watch(onAddEditProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -45,12 +46,14 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
-      onLongPress: () {
-        // ACTION ON LONG PRESS
-        ref.read(productsProvider.notifier).toggleCheck(
-              widget.product.id,
-            );
-      },
+      onLongPress: !onAddEdit
+          ? () {
+              // ACTION ON LONG PRESS
+              ref.read(productsProvider.notifier).toggleCheck(
+                    widget.product.id,
+                  );
+            }
+          : null,
       child: Container(
         height: ref.buttonProductHeight,
         decoration: ref.buttonBackgroundDecoration(
