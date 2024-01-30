@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
-import 'bottombar_buttons/bottom_bar_buttons.dart';
+import 'buttons/add_search_buttons.dart';
 
 class ShoppingBottom extends ConsumerWidget {
   const ShoppingBottom({super.key});
@@ -28,19 +28,41 @@ class ShoppingBottom extends ConsumerWidget {
                 ? Alignment.center
                 : Alignment.centerLeft,
             child: isAnyChecked
-                ? Container(
-                    // width: 100,
-                    color: Colors.red,
-                  )
+                ? const MultiSelectSection()
                 : onAddEdit
-                    ? Container(
-                        // width: 100,
-                        color: Colors.green,
-                      )
-                    : const BottomBarButtons(),
+                    ? const AddEditSection()
+                    : const AddSearchButtons(),
           ),
         ),
       ),
+    );
+  }
+}
+
+class MultiSelectSection extends StatelessWidget {
+  const MultiSelectSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // width: 100,
+      color: Colors.red,
+    );
+  }
+}
+
+class AddEditSection extends StatelessWidget {
+  const AddEditSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // width: 100,
+      color: Colors.green,
     );
   }
 }
