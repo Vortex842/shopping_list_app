@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
-import 'add_edit_section.dart';
+import 'add_eddit/add_edit_section.dart';
 import 'buttons/add_search_buttons.dart';
 import 'multi_select_section.dart';
 
@@ -25,7 +25,7 @@ class ShoppingBottom extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Align(
-            // TODO: Create Actions: 'selected' and 'Accept or Cancel'
+            // TODO: Create Actions:  'Accept or Cancel'
             alignment: !isAnyChecked || onAddEdit
                 ? Alignment.center
                 : Alignment.centerLeft,

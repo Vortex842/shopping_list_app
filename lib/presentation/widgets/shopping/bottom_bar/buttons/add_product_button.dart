@@ -18,7 +18,7 @@ class AddProductButton extends ConsumerWidget {
       backgroundColor: ref.buttonColorBottomBar(isDark),
       onPressed: () {
         // ADD PRODUCT BUTTON
-        ref.read(onAddEditProvider.notifier).update((state) => !state);
+        ref.read(onAddEditProvider.notifier).update((state) => true);
       },
       child: const Icon(
         LucideIcons.shoppingCart,
