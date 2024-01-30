@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../providers/focus_nodes_providers.dart';
 import '../shopping_text_editable.dart';
 
 class AddEditSection extends ConsumerWidget {
@@ -10,11 +13,21 @@ class AddEditSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container(
-      // width: 100,
-      // color: Colors.green,
-      child: const Center(
-        child: ShoppingEditableText(),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: GestureDetector(
+        onTap: () {
+          ref.read(focusProviders).forEach((focus) => focus.dispose());
+        },
+        child: const Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ProductEditableText(),
+            AmountEditableText(),
+            PriceEditableText(),
+          ],
+        ),
       ),
     );
   }
