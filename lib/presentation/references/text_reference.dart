@@ -18,7 +18,7 @@ enum _ShoppingSizeText {
 
 extension ShoppingText on WidgetRef {
   TextStyle _textStyle(_ShoppingSizeText text) {
-    final isDark = read(isDarkMode);
+    final isDark = read(isDarkProvider);
 
     return TextStyle(
       fontSize: text.size,

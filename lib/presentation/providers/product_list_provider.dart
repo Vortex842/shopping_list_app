@@ -8,7 +8,7 @@ final productsProvider =
   return ProductNotifier(); // Se devuelde la creacion de la instancia de "TodosNotifier"
 });
 
-final isAnyCheckedProvider = StateProvider<bool>((ref) {
+final onMultiSelectProvider = StateProvider<bool>((ref) {
   final products = ref.watch(productsProvider);
 
   return products.any((p) => p.isChecked);

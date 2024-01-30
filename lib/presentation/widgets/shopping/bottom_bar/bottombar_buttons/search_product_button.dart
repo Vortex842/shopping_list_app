@@ -11,7 +11,7 @@ class SearchProductButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
 
     return FloatingActionButton(
       mini: true,

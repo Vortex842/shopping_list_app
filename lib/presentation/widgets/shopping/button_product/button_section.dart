@@ -16,7 +16,7 @@ class ButtonSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // print("build - button section - ${product.toString()}");
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
 
     return DecoratedBox(
       decoration: ref.buttonSectionDecoration(isDark),
@@ -96,7 +96,7 @@ class DismissibleButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isAnyChecked = ref.watch(isAnyCheckedProvider);
+    final isAnyChecked = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     return Dismissible(

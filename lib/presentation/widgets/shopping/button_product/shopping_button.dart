@@ -25,7 +25,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   Widget build(BuildContext context) {
     super.build(context);
     // print("build - shopping button - ${widget.product.toString()}");
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     final buttonAction = useState(ButtonActionType.none);

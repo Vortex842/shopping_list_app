@@ -14,7 +14,7 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
 
     return MaterialApp(
       theme: ThemeData(

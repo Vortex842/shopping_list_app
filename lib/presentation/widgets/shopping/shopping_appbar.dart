@@ -10,7 +10,7 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
 
     return LayoutBuilder(
       builder: (_, bordes) => SizedBox.fromSize(
@@ -23,7 +23,7 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 alignment: Alignment.centerLeft,
                 child: IconButton(
                   onPressed: () {
-                    ref.read(isDarkMode.notifier).update(
+                    ref.read(isDarkProvider.notifier).update(
                           (state) => !state,
                         );
                   },

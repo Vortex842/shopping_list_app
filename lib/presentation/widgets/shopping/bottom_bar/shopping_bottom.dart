@@ -10,8 +10,8 @@ class ShoppingBottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkMode);
-    final isAnyChecked = ref.watch(isAnyCheckedProvider);
+    final isDark = ref.watch(isDarkProvider);
+    final isAnyChecked = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     return Container(

@@ -18,7 +18,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
   Widget build(BuildContext context) {
     // print("build - shopping body");
     super.build(context);
-    final isDark = ref.watch(isDarkMode);
+    final isDark = ref.watch(isDarkProvider);
     final products = ref.watch(productsProvider);
 
     return Container(
