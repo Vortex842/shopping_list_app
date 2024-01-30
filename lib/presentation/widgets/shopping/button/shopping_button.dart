@@ -52,7 +52,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
             );
       },
       child: Container(
-        height: 60,
+        height: ref.buttonProductHeight,
         decoration: ref.buttonBackgroundDecoration(
           isDark,
           actionType: buttonAction.value,
@@ -89,7 +89,6 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   }
 
   @override
-  // TODO: implement wantKeepAlive
   bool get wantKeepAlive => true;
 }
 
