@@ -6,10 +6,12 @@ enum _ShoppingColors {
   lightForeground(0xFF1D1B20),
   lightCard(0xFFF7F7F7),
   lightButton(0xFFEEEEEE),
+  lightEditableText(0xFFE6E5E5),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
   darkCard(0xFF211F26),
   darkButton(0xFF2B2930),
+  darkEditableText(0xFF2B2930),
   editForeground(0xFF0B4B01),
   editBackground(0xFF59FF56),
   deleteForeground(0xFF780000),
@@ -48,5 +50,8 @@ extension ShoppingColors on WidgetRef {
       .color;
   Color buttonColorBottomBar(bool isDark) =>
       isDark ? const Color(0xFFD2C2EB) : const Color(0xFFEADDFF);
-  Color get iconColorBottombar => const Color(0xFF21005D);
+  Color editableTextColor(bool isDark) => (isDark
+          ? _ShoppingColors.darkEditableText
+          : _ShoppingColors.lightEditableText)
+      .color;
 }
