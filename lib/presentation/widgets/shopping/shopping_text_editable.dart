@@ -3,13 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list_app/presentation/providers/dark_mode_provider.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 
-class ShoppingTextEditable extends ConsumerWidget {
-  const ShoppingTextEditable({
-    super.key,
-  });
+class ShoppingEditableText extends ConsumerStatefulWidget {
+  const ShoppingEditableText({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ShoppingEditableTextState();
+}
+
+class _ShoppingEditableTextState extends ConsumerState<ShoppingEditableText> {
+  @override
+  Widget build(BuildContext context) {
     final isDark = ref.watch(isDarkProvider);
 
     return SizedBox(

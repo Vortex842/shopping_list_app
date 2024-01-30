@@ -14,7 +14,7 @@ class AddEditSection extends ConsumerWidget {
       // width: 100,
       // color: Colors.green,
       child: const Center(
-        child: ShoppingTextEditable(),
+        child: ShoppingEditableText(),
       ),
     );
   }
