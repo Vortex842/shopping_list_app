@@ -35,8 +35,10 @@ class ShoppingEditableText extends HookConsumerWidget {
           border: const OutlineInputBorder(),
           contentPadding: const EdgeInsets.symmetric(horizontal: 4),
           // border: InputBorder.none,
-
           labelText: textType.name,
+          labelStyle: ref.normalText().copyWith(
+                fontWeight: FontWeight.normal,
+              ),
         ),
         child: EditableText(
           controller: controller,
@@ -44,7 +46,7 @@ class ShoppingEditableText extends HookConsumerWidget {
           style: ref.normalText().copyWith(height: 2),
           cursorHeight: 16,
           cursorOffset: const Offset(0, 10),
-          cursorColor: Colors.black87,
+          cursorColor: ref.foregroundColor(isDark),
           backgroundCursorColor: Colors.transparent,
           keyboardType: textType == EditableTextType.product
               ? TextInputType.text
@@ -66,7 +68,7 @@ class ProductEditableText extends ConsumerWidget {
     final productController = ref.watch(productControllerProvider);
 
     return ShoppingEditableText(
-      textType: EditableTextType.price,
+      textType: EditableTextType.product,
       focusNode: focusNodeProduct,
       maxWidth: ref.editableProductWidth,
       controller: productController,
