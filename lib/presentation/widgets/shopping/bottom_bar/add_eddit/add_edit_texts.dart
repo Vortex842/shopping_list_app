@@ -6,9 +6,13 @@ import '../../../../providers/dark_mode_provider.dart';
 import '../../shopping_text_editable.dart';
 import '/presentation/references/color_reference.dart';
 
-class ProductTextSection extends ConsumerWidget {
-  const ProductTextSection({
-    super.key,
+class _TextSection extends ConsumerWidget {
+  final IconData icon;
+  final Widget editableText;
+
+  const _TextSection({
+    required this.icon,
+    required this.editableText,
   });
 
   @override
@@ -17,13 +21,28 @@ class ProductTextSection extends ConsumerWidget {
 
     return Wrap(
       spacing: 10,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Icon(
-          LucideIcons.tag,
+          icon,
           color: ref.foregroundColor(isDark),
         ),
-        const ProductEditableText(),
+        editableText,
       ],
+    );
+  }
+}
+
+class ProductTextSection extends ConsumerWidget {
+  const ProductTextSection({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return const _TextSection(
+      icon: LucideIcons.tag,
+      editableText: ProductEditableText(),
     );
   }
 }
@@ -35,17 +54,9 @@ class AmountTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
-    return Wrap(
-      spacing: 10,
-      children: [
-        Icon(
-          LucideIcons.hash,
-          color: ref.foregroundColor(isDark),
-        ),
-        const AmountEditableText(),
-      ],
+    return const _TextSection(
+      icon: LucideIcons.hash,
+      editableText: AmountEditableText(),
     );
   }
 }
@@ -57,17 +68,9 @@ class PriceTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
-    return Wrap(
-      spacing: 10,
-      children: [
-        Icon(
-          LucideIcons.dollarSign,
-          color: ref.foregroundColor(isDark),
-        ),
-        const PriceEditableText(),
-      ],
+    return const _TextSection(
+      icon: LucideIcons.dollarSign,
+      editableText: PriceEditableText(),
     );
   }
 }
