@@ -19,7 +19,8 @@ class AddEditSection extends ConsumerWidget {
         onTap: () {
           ref.read(focusProviders).forEach((focus) => focus.dispose());
         },
-        child: const Stack(
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -30,13 +31,12 @@ class AddEditSection extends ConsumerWidget {
                 PriceTextSection(),
               ],
             ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: DoneProductButton(),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: CloseProductButton(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CloseProductButton(),
+                DoneProductButton(),
+              ],
             ),
           ],
         ),

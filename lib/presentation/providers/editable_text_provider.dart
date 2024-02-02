@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'editable_product_provider.dart';
-
-final productControllerProvider = StateProvider<TextEditingController>((ref) {
-  final product = ref.watch(editableProductProvider);
-  return TextEditingController(text: product?.name ?? '');
+final nameControllerProvider = StateProvider<TextEditingController>((ref) {
+  return TextEditingController(text: '');
 });
 
 final amountControllerProvider = StateProvider<TextEditingController>((ref) {
-  final product = ref.watch(editableProductProvider);
-  return TextEditingController(text: product?.amount.toString() ?? '');
+  return TextEditingController(text: '');
 });
 
 final priceControllerProvider = StateProvider<TextEditingController>((ref) {
-  final product = ref.watch(editableProductProvider);
-  return TextEditingController(text: product?.price.toStringAsFixed(2) ?? '');
+  return TextEditingController(text: '');
 });
 
 final controllerProviders = StateProvider<List<TextEditingController>>((ref) {
-  final productController = ref.watch(productControllerProvider);
+  final nameController = ref.watch(nameControllerProvider);
   final amountController = ref.watch(amountControllerProvider);
   final priceController = ref.watch(priceControllerProvider);
 
-  return [productController, amountController, priceController];
+  return [nameController, amountController, priceController];
+});
+
+final isEmptyFieldsProvider = StateProvider<bool>((ref) {
+  final nameController = ref.watch(nameControllerProvider);
+  final amountController = ref.watch(amountControllerProvider);
+
+  return nameController.text.isNotEmpty && amountController.text.isNotEmpty;
 });

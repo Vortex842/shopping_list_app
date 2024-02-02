@@ -23,32 +23,29 @@ class DoneProductButton extends ConsumerWidget {
       onPressed: () {
         log("Done");
 
-        final productText = ref.read(productControllerProvider);
-        final amountText = ref.read(amountControllerProvider);
-        final priceText = ref.read(priceControllerProvider);
-        final productToEdit = ref.read(editableProductProvider);
+        final nameController = ref.read(nameControllerProvider);
+        final amountController = ref.read(amountControllerProvider);
+        final priceController = ref.read(priceControllerProvider);
+        final isEmptyFields = ref.read(isEmptyFieldsProvider);
+        final productToEdit = ref.read(newProductProvider);
 
-        if (productText.text.isNotEmpty && amountText.text.isNotEmpty) {
-          if (priceText.text.isEmpty) priceText.text = '0';
+        if (isEmptyFields) {
+          if (priceController.text.isEmpty) priceController.text = '0';
 
           if (productToEdit != null) {
-            log(productText.text);
-            log(amountText.text);
-            log(priceText.text);
-
             ref.read(productsProvider.notifier).editProductById(
                   id: productToEdit.id,
-                  name: productText.text,
-                  amount: int.parse(amountText.text),
-                  price: double.parse(priceText.text),
+                  name: nameController.text,
+                  amount: int.parse(amountController.text),
+                  price: double.parse(priceController.text),
                 );
           } else {
             ref.read(productsProvider.notifier).addProduct(
                   Product(
                     id: const Uuid().v4(),
-                    name: productText.text,
-                    amount: int.parse(amountText.text),
-                    price: double.parse(priceText.text),
+                    name: nameController.text,
+                    amount: int.parse(amountController.text),
+                    price: double.parse(priceController.text),
                   ),
                 );
           }

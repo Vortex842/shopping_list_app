@@ -62,7 +62,7 @@ class ProductEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final focusNodeProduct = ref.watch(focusNodeProductProvider);
-    final productController = ref.watch(productControllerProvider);
+    final productController = ref.watch(nameControllerProvider);
 
     return _ShoppingEditableText(
       textType: EditableTextType.product,
