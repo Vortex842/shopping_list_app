@@ -21,37 +21,43 @@ class DoneProductButton extends ConsumerWidget {
 
     return IconButton(
       onPressed: () {
-        log("Done");
-
         final nameController = ref.read(nameControllerProvider);
         final amountController = ref.read(amountControllerProvider);
         final priceController = ref.read(priceControllerProvider);
-        final isEmptyFields = ref.read(isEmptyFieldsProvider);
         final productToEdit = ref.read(newProductProvider);
 
-        if (isEmptyFields) {
-          if (priceController.text.isEmpty) priceController.text = '0';
+        if (nameController.text.isEmpty || amountController.text.isEmpty) {
+          if (nameController.text.isEmpty) {
+            log("Debe ingresar un nombre");
+          }
 
-          if (productToEdit != null) {
-            ref.read(productsProvider.notifier).editProductById(
-                  id: productToEdit.id,
+          if (amountController.text.isEmpty) {
+            log("Debe ingresar una cantidad");
+          }
+          return;
+        }
+
+        if (priceController.text.isEmpty) priceController.text = '0';
+
+        if (productToEdit != null) {
+          ref.read(productsProvider.notifier).editProductById(
+                id: productToEdit.id,
+                name: nameController.text,
+                amount: int.parse(amountController.text),
+                price: double.parse(priceController.text),
+              );
+        } else {
+          ref.read(productsProvider.notifier).addProduct(
+                Product(
+                  id: const Uuid().v4(),
                   name: nameController.text,
                   amount: int.parse(amountController.text),
                   price: double.parse(priceController.text),
-                );
-          } else {
-            ref.read(productsProvider.notifier).addProduct(
-                  Product(
-                    id: const Uuid().v4(),
-                    name: nameController.text,
-                    amount: int.parse(amountController.text),
-                    price: double.parse(priceController.text),
-                  ),
-                );
-          }
-
-          ref.closeAddEditSection(ref);
+                ),
+              );
         }
+        ref.closeAddEditSection(ref);
+        log("Done");
       },
       icon: Icon(
         LucideIcons.chevronRight,
