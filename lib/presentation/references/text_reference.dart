@@ -9,7 +9,8 @@ enum _ShoppingSizeText {
   product(18),
   price(12),
   amount(16),
-  normal(16);
+  editableText(16),
+  normal(14);
 
   final double size;
 
@@ -22,10 +23,10 @@ extension ShoppingText on WidgetRef {
 
     return TextStyle(
       fontSize: text.size,
-      fontWeight:
-          text == _ShoppingSizeText.product || text == _ShoppingSizeText.normal
-              ? FontWeight.bold
-              : FontWeight.normal,
+      fontWeight: text == _ShoppingSizeText.product ||
+              text == _ShoppingSizeText.editableText
+          ? FontWeight.bold
+          : FontWeight.normal,
       color: foregroundColor(isDark),
     );
   }
@@ -34,5 +35,6 @@ extension ShoppingText on WidgetRef {
   TextStyle productText() => _textStyle(_ShoppingSizeText.product);
   TextStyle priceText() => _textStyle(_ShoppingSizeText.price);
   TextStyle amountText() => _textStyle(_ShoppingSizeText.amount);
+  TextStyle editableText() => _textStyle(_ShoppingSizeText.editableText);
   TextStyle normalText() => _textStyle(_ShoppingSizeText.normal);
 }

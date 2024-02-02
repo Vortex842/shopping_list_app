@@ -36,14 +36,12 @@ class _ShoppingEditableText extends HookConsumerWidget {
           contentPadding: const EdgeInsets.symmetric(horizontal: 4),
           // border: InputBorder.none,
           labelText: textType.name,
-          labelStyle: ref.normalText().copyWith(
-                fontWeight: FontWeight.normal,
-              ),
+          labelStyle: ref.normalText(),
         ),
         child: EditableText(
           controller: controller,
           focusNode: focusNode,
-          style: ref.normalText().copyWith(height: 2.1),
+          style: ref.editableText().copyWith(height: 2.2),
           cursorHeight: 16,
           cursorOffset: const Offset(0, 12),
           cursorColor: ref.foregroundColor(isDark),

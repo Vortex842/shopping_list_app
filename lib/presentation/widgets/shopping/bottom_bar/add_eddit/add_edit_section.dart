@@ -22,7 +22,7 @@ class AddEditSection extends ConsumerWidget {
         child: const Stack(
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProductTextSection(),

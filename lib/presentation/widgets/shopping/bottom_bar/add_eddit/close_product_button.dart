@@ -19,7 +19,7 @@ class CloseProductButton extends ConsumerWidget {
 
     return IconButton(
       onPressed: () {
-        log("Done");
+        log("Close");
 
         ref.closeAddEditSection(ref);
       },
