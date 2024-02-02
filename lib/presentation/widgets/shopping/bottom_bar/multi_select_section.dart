@@ -10,6 +10,7 @@ class MultiSelectSection extends StatelessWidget {
     return Container(
       // width: 100,
       color: Colors.red,
+      child: const Center(child: Text("MultiSelectMode")),
     );
   }
 }

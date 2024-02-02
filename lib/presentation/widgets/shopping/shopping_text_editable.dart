@@ -7,13 +7,13 @@ import 'package:shopping_list_app/presentation/providers/focus_nodes_providers.d
 import '/presentation/providers/dark_mode_provider.dart';
 import '/presentation/references/references.barrel.dart';
 
-class ShoppingEditableText extends HookConsumerWidget {
+class _ShoppingEditableText extends HookConsumerWidget {
   final EditableTextType textType;
   final FocusNode focusNode;
   final double maxWidth;
   final TextEditingController controller;
 
-  const ShoppingEditableText({
+  const _ShoppingEditableText({
     super.key,
     required this.textType,
     required this.focusNode,
@@ -43,9 +43,9 @@ class ShoppingEditableText extends HookConsumerWidget {
         child: EditableText(
           controller: controller,
           focusNode: focusNode,
-          style: ref.normalText().copyWith(height: 2),
+          style: ref.normalText().copyWith(height: 2.1),
           cursorHeight: 16,
-          cursorOffset: const Offset(0, 10),
+          cursorOffset: const Offset(0, 12),
           cursorColor: ref.foregroundColor(isDark),
           backgroundCursorColor: Colors.transparent,
           keyboardType: textType == EditableTextType.product
@@ -67,7 +67,7 @@ class ProductEditableText extends ConsumerWidget {
     final focusNodeProduct = ref.watch(focusNodeProductProvider);
     final productController = ref.watch(productControllerProvider);
 
-    return ShoppingEditableText(
+    return _ShoppingEditableText(
       textType: EditableTextType.product,
       focusNode: focusNodeProduct,
       maxWidth: ref.editableProductWidth,
@@ -86,7 +86,7 @@ class AmountEditableText extends ConsumerWidget {
     final focusNodeAmount = ref.watch(focusNodeAmountProvider);
     final amountController = ref.watch(amountControllerProvider);
 
-    return ShoppingEditableText(
+    return _ShoppingEditableText(
       textType: EditableTextType.amount,
       focusNode: focusNodeAmount,
       maxWidth: ref.editableAmountWidth,
@@ -105,7 +105,7 @@ class PriceEditableText extends ConsumerWidget {
     final focusNodePrice = ref.watch(focusNodePriceProvider);
     final priceController = ref.watch(priceControllerProvider);
 
-    return ShoppingEditableText(
+    return _ShoppingEditableText(
       textType: EditableTextType.price,
       focusNode: focusNodePrice,
       maxWidth: ref.editablePriceWidth,
