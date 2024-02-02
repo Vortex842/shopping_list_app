@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import 'package:shopping_list_app/presentation/providers/editable_text_provider.dart';
 import 'package:shopping_list_app/presentation/providers/focus_nodes_providers.dart';
 
@@ -7,7 +8,7 @@ import '/presentation/providers/dark_mode_provider.dart';
 import '/presentation/references/references.barrel.dart';
 
 class ShoppingEditableText extends HookConsumerWidget {
-  final TextInputType textType;
+  final EditableTextType textType;
   final FocusNode focusNode;
   final double maxWidth;
   final TextEditingController controller;
@@ -34,16 +35,20 @@ class ShoppingEditableText extends HookConsumerWidget {
           border: const OutlineInputBorder(),
           contentPadding: const EdgeInsets.symmetric(horizontal: 4),
           // border: InputBorder.none,
+
+          labelText: textType.name,
         ),
         child: EditableText(
           controller: controller,
           focusNode: focusNode,
-          style: ref.normalText().copyWith(height: 1.8),
-          cursorHeight: 18,
-          cursorOffset: const Offset(0, 5),
+          style: ref.normalText().copyWith(height: 2),
+          cursorHeight: 16,
+          cursorOffset: const Offset(0, 10),
           cursorColor: Colors.black87,
           backgroundCursorColor: Colors.transparent,
-          keyboardType: textType,
+          keyboardType: textType == EditableTextType.product
+              ? TextInputType.text
+              : TextInputType.number,
         ),
       ),
     );
@@ -61,7 +66,7 @@ class ProductEditableText extends ConsumerWidget {
     final productController = ref.watch(productControllerProvider);
 
     return ShoppingEditableText(
-      textType: TextInputType.text,
+      textType: EditableTextType.price,
       focusNode: focusNodeProduct,
       maxWidth: ref.editableProductWidth,
       controller: productController,
@@ -80,7 +85,7 @@ class AmountEditableText extends ConsumerWidget {
     final amountController = ref.watch(amountControllerProvider);
 
     return ShoppingEditableText(
-      textType: TextInputType.phone,
+      textType: EditableTextType.amount,
       focusNode: focusNodeAmount,
       maxWidth: ref.editableAmountWidth,
       controller: amountController,
@@ -99,7 +104,7 @@ class PriceEditableText extends ConsumerWidget {
     final priceController = ref.watch(priceControllerProvider);
 
     return ShoppingEditableText(
-      textType: TextInputType.number,
+      textType: EditableTextType.price,
       focusNode: focusNodePrice,
       maxWidth: ref.editablePriceWidth,
       controller: priceController,
