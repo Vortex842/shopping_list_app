@@ -100,7 +100,7 @@ class DismissibleButton extends ConsumerWidget {
     final onAddEdit = ref.watch(onAddEditProvider);
 
     return Dismissible(
-      key: Key(product.hashCode.toString()),
+      key: Key(product.id),
       direction: isAnyChecked || onAddEdit
           ? DismissDirection.none
           : DismissDirection.horizontal,
@@ -113,6 +113,10 @@ class DismissibleButton extends ConsumerWidget {
           return true;
         }
         ref.read(onAddEditProvider.notifier).update((state) => true);
+        ref.read(productsProvider.notifier).toggleCheck(product.id);
+        ref.read(editableProductProvider.notifier).update((id) {
+          return product;
+        });
         print("Edit - ${product.toString()}");
 
         return false;

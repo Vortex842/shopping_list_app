@@ -29,7 +29,7 @@ class ShoppingBottom extends ConsumerWidget {
             alignment: !isAnyChecked || onAddEdit
                 ? Alignment.center
                 : Alignment.centerLeft,
-            child: isAnyChecked
+            child: isAnyChecked && !onAddEdit
                 ? const MultiSelectSection()
                 : onAddEdit
                     ? const AddEditSection()

@@ -33,9 +33,41 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     state = [...state..removeWhere((p) => p.id == id)];
   }
 
+  void editProductById(
+      {required String id,
+      required String name,
+      required int amount,
+      required double price}) {
+    state = [
+      ...state.map((p) => p.id == id
+          ? p.copyWith(
+              name: name,
+              amount: amount,
+              price: price,
+            )
+          : p),
+    ];
+  }
+
+  Product findById(String id) {
+    return state.where((p) => p.id == id).first;
+  }
+
   void toggleCheck(String id) {
     state = [
       ...state.map((p) => p.id == id ? p.copyWith(isChecked: !p.isChecked) : p),
+    ];
+  }
+
+  void checkAll() {
+    state = [
+      ...state.map((p) => p.copyWith(isChecked: true)),
+    ];
+  }
+
+  void unCheckAll() {
+    state = [
+      ...state.map((p) => p.isChecked ? p.copyWith(isChecked: false) : p),
     ];
   }
 }
