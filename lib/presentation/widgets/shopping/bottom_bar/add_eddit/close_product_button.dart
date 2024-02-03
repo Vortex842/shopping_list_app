@@ -18,7 +18,7 @@ class CloseProductButton extends ConsumerWidget {
       onPressed: () {
         log("Close");
 
-        ref.closeAddEditSection(ref);
+        ref.closeAddEditSection();
       },
       icon: Icon(
         LucideIcons.x,

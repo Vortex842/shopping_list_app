@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'presentation/providers/dark_mode_provider.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
@@ -14,8 +13,6 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'ShoppingFont',

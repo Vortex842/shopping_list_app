@@ -112,11 +112,7 @@ class DismissibleButton extends ConsumerWidget {
               );
           return true;
         }
-        ref.read(onAddEditProvider.notifier).update((state) => true);
-        ref.read(productsProvider.notifier).toggleCheck(product.id);
-        ref.read(newProductProvider.notifier).update((id) {
-          return product;
-        });
+        ref.activeEditableProduct(product);
         print("Edit - ${product.toString()}");
 
         return false;

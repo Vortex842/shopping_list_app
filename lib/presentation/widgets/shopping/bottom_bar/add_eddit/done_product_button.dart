@@ -22,7 +22,7 @@ class DoneProductButton extends ConsumerWidget {
         final nameController = ref.read(nameControllerProvider);
         final amountController = ref.read(amountControllerProvider);
         final priceController = ref.read(priceControllerProvider);
-        final productToEdit = ref.read(newProductProvider);
+        final productToEdit = ref.read(editableProductProvider);
 
         if (nameController.text.isEmpty || amountController.text.isEmpty) {
           if (nameController.text.isEmpty) {
@@ -54,7 +54,7 @@ class DoneProductButton extends ConsumerWidget {
                 ),
               );
         }
-        ref.closeAddEditSection(ref);
+        ref.closeAddEditSection();
         log("Done");
       },
       icon: Icon(
