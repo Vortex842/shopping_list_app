@@ -22,17 +22,14 @@ class AddEditSection extends ConsumerWidget {
         child: const Row(
           children: [
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.only(right: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    NameTextSection(),
-                    AmountTextSection(),
-                    PriceTextSection(),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  NameTextSection(),
+                  AmountTextSection(),
+                  PriceTextSection(),
+                ],
               ),
             ),
             Column(

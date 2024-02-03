@@ -14,10 +14,14 @@ class ShoppingBottom extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isAnyChecked = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
+    final sizeScreen = SizeScreenInherited.of(context)!.sizeScreen;
+
+    print(sizeScreen);
 
     return Container(
       width: double.infinity,
-      height: ref.bottomHeight(onAddEdit),
+      height: sizeScreen!.height * ref.bottomHeightPercent(onAddEdit),
+      // height: ref.bottomHeight(onAddEdit),
       decoration: ref.bottomDecoration(),
       child: ClipRRect(
         borderRadius: ref.cardRadius,
