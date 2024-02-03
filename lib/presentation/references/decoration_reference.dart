@@ -25,19 +25,18 @@ extension ShoppingDecoration on WidgetRef {
   Radius get nothingRadius => const Radius.circular(0);
 
   BoxDecoration bodyDecoration(bool isDark) => BoxDecoration(
-        color: cardColor(isDark),
+        color: cardColor(),
         boxShadow: shadows,
         borderRadius: cardRadius,
       );
-  BoxDecoration buttonBackgroundDecoration(
-    bool isDark, {
+  BoxDecoration buttonBackgroundDecoration({
     ButtonActionType actionType = ButtonActionType.none,
   }) {
     Color color;
 
     switch (actionType) {
       case ButtonActionType.none:
-        color = buttonColor(isDark);
+        color = buttonColor();
         break;
       case ButtonActionType.edit:
         color = editColor(false);
@@ -58,16 +57,16 @@ extension ShoppingDecoration on WidgetRef {
   }
 
   BoxDecoration buttonSectionDecoration(bool isDark) => BoxDecoration(
-        color: buttonColor(isDark),
+        color: buttonColor(),
         boxShadow: shadows,
         borderRadius: buttonRadius,
       );
-  BoxDecoration bottomDecoration(bool isDark) => BoxDecoration(
+  BoxDecoration bottomDecoration() => BoxDecoration(
         boxShadow: shadows,
         borderRadius: cardRadius.copyWith(
           bottomLeft: nothingRadius,
           bottomRight: nothingRadius,
         ),
-        color: cardColor(isDark),
+        color: cardColor(),
       );
 }

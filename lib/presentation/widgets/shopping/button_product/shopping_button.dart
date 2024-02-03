@@ -5,7 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 
-import '../../../providers/providers.barrel.dart';
+import '../../../providers/on_add_edit_provider.dart';
+import '../../../providers/product_list_provider.dart';
 import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import 'button_section.dart';
@@ -24,8 +25,6 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    // print("build - shopping button - ${widget.product.toString()}");
-    final isDark = ref.watch(isDarkProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     final buttonAction = useState(ButtonActionType.none);
@@ -57,7 +56,6 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
       child: Container(
         height: ref.buttonProductHeight,
         decoration: ref.buttonBackgroundDecoration(
-          isDark,
           actionType: buttonAction.value,
         ),
         child: ClipRRect(

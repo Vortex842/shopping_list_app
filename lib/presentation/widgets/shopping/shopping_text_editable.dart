@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
-import 'package:shopping_list_app/presentation/providers/editable_text_provider.dart';
-import 'package:shopping_list_app/presentation/providers/focus_nodes_providers.dart';
 
-import '/presentation/providers/dark_mode_provider.dart';
+import '../../providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 
 class _ShoppingEditableText extends HookConsumerWidget {
@@ -14,7 +12,6 @@ class _ShoppingEditableText extends HookConsumerWidget {
   final TextEditingController controller;
 
   const _ShoppingEditableText({
-    super.key,
     required this.textType,
     required this.focusNode,
     required this.maxWidth,
@@ -23,8 +20,6 @@ class _ShoppingEditableText extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return SizedBox(
       width: maxWidth,
       child: TextField(
@@ -34,14 +29,14 @@ class _ShoppingEditableText extends HookConsumerWidget {
               height: 1.2,
             ),
         cursorHeight: 18,
-        cursorColor: ref.foregroundColor(isDark),
+        cursorColor: ref.foregroundColor(),
         keyboardType: textType == EditableTextType.name
             ? TextInputType.text
             : TextInputType.number,
         decoration: InputDecoration(
           isDense: true,
 
-          fillColor: ref.editableTextColor(isDark),
+          fillColor: ref.editableTextColor(),
           filled: true,
           // border: const OutlineInputBorder(),
           contentPadding:

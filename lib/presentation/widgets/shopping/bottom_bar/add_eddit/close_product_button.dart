@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/color_reference.dart';
 import '/presentation/references/utils_reference.dart';
 
@@ -15,8 +14,6 @@ class CloseProductButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return IconButton(
       onPressed: () {
         log("Close");
@@ -26,7 +23,7 @@ class CloseProductButton extends ConsumerWidget {
       icon: Icon(
         LucideIcons.x,
         size: 30,
-        color: ref.foregroundColor(isDark),
+        color: ref.foregroundColor(),
       ),
     );
   }

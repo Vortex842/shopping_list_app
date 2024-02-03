@@ -10,8 +10,6 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return LayoutBuilder(
       builder: (_, bordes) => SizedBox.fromSize(
         size: Size.fromHeight(bordes.maxHeight),
@@ -30,7 +28,7 @@ class ShoppingAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   icon: Icon(
                     LucideIcons.alignLeft,
                     size: 25,
-                    color: ref.foregroundColor(isDark),
+                    color: ref.foregroundColor(),
                   ),
                 ),
               ),

@@ -23,7 +23,7 @@ class MainApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
-          backgroundColor: ref.pageColor(isDark),
+          backgroundColor: ref.pageColor(),
           appBar: const ShoppingAppBar(),
           body: const Column(
             children: [

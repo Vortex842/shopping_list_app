@@ -12,14 +12,13 @@ class ShoppingBottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
     final isAnyChecked = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     return Container(
       width: double.infinity,
       height: ref.bottomHeight(onAddEdit),
-      decoration: ref.bottomDecoration(isDark),
+      decoration: ref.bottomDecoration(),
       child: ClipRRect(
         borderRadius: ref.cardRadius,
         child: Padding(

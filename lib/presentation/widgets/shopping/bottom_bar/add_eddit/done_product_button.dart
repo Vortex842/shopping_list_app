@@ -17,8 +17,6 @@ class DoneProductButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return IconButton(
       onPressed: () {
         final nameController = ref.read(nameControllerProvider);
@@ -62,7 +60,7 @@ class DoneProductButton extends ConsumerWidget {
       icon: Icon(
         LucideIcons.chevronRight,
         size: 35,
-        color: ref.foregroundColor(isDark),
+        color: ref.foregroundColor(),
       ),
     );
   }

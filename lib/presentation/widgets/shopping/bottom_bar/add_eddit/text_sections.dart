@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../../../providers/dark_mode_provider.dart';
 import '../../shopping_text_editable.dart';
 import '/presentation/references/color_reference.dart';
 
@@ -17,15 +16,13 @@ class _TextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return Wrap(
       spacing: 10,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Icon(
           icon,
-          color: ref.foregroundColor(isDark),
+          color: ref.foregroundColor(),
         ),
         editableText,
       ],
@@ -40,13 +37,11 @@ class NameTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return Row(
       children: [
         Icon(
           LucideIcons.tag,
-          color: ref.foregroundColor(isDark),
+          color: ref.foregroundColor(),
         ),
         const Expanded(
           child: Padding(
@@ -66,13 +61,11 @@ class AmountTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return Row(
       children: [
         Icon(
           LucideIcons.hash,
-          color: ref.foregroundColor(isDark),
+          color: ref.foregroundColor(),
         ),
         const Padding(
           padding: EdgeInsets.only(left: 10),
@@ -90,13 +83,11 @@ class PriceTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return Row(
       children: [
         Icon(
           LucideIcons.dollarSign,
-          color: ref.foregroundColor(isDark),
+          color: ref.foregroundColor(),
         ),
         const Padding(
           padding: EdgeInsets.only(left: 10),

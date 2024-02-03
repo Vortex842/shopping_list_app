@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/dark_mode_provider.dart';
 import 'color_reference.dart';
 
 enum _ShoppingSizeText {
@@ -19,15 +18,13 @@ enum _ShoppingSizeText {
 
 extension ShoppingText on WidgetRef {
   TextStyle _textStyle(_ShoppingSizeText text) {
-    final isDark = read(isDarkProvider);
-
     return TextStyle(
       fontSize: text.size,
       fontWeight: text == _ShoppingSizeText.name ||
               text == _ShoppingSizeText.editableText
           ? FontWeight.bold
           : FontWeight.normal,
-      color: foregroundColor(isDark),
+      color: foregroundColor(),
     );
   }
 
