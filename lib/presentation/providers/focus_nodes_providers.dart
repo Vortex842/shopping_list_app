@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final focusNodeProductProvider = StateProvider<FocusNode>((ref) {
+final focusNodeNameProvider = StateProvider<FocusNode>((ref) {
   return FocusNode();
 });
 
@@ -14,9 +14,9 @@ final focusNodePriceProvider = StateProvider<FocusNode>((ref) {
 });
 
 final focusProviders = StateProvider<List<FocusNode>>((ref) {
-  final focusNodeProduct = ref.watch(focusNodeProductProvider);
+  final focusNodeName = ref.watch(focusNodeNameProvider);
   final focusNodeAmount = ref.watch(focusNodeAmountProvider);
   final focusNodePrice = ref.watch(focusNodePriceProvider);
 
-  return [focusNodeProduct, focusNodeAmount, focusNodePrice];
+  return [focusNodeName, focusNodeAmount, focusNodePrice];
 });

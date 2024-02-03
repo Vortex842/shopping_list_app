@@ -35,7 +35,7 @@ class _ShoppingEditableText extends HookConsumerWidget {
             ),
         cursorHeight: 18,
         cursorColor: ref.foregroundColor(isDark),
-        keyboardType: textType == EditableTextType.product
+        keyboardType: textType == EditableTextType.name
             ? TextInputType.text
             : TextInputType.number,
         decoration: InputDecoration(
@@ -54,21 +54,21 @@ class _ShoppingEditableText extends HookConsumerWidget {
   }
 }
 
-class ProductEditableText extends ConsumerWidget {
-  const ProductEditableText({
+class NameEditableText extends ConsumerWidget {
+  const NameEditableText({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final focusNodeProduct = ref.watch(focusNodeProductProvider);
-    final productController = ref.watch(nameControllerProvider);
+    final focusNodeName = ref.watch(focusNodeNameProvider);
+    final nameController = ref.watch(nameControllerProvider);
 
     return _ShoppingEditableText(
-      textType: EditableTextType.product,
-      focusNode: focusNodeProduct,
-      maxWidth: ref.editableProductWidth,
-      controller: productController,
+      textType: EditableTextType.name,
+      focusNode: focusNodeName,
+      maxWidth: double.infinity,
+      controller: nameController,
     );
   }
 }

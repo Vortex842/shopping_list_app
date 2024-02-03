@@ -34,7 +34,7 @@ class ButtonSection extends ConsumerWidget {
                 children: [
                   Text(
                     product.name,
-                    style: ref.productText(),
+                    style: ref.nameText(),
                   ),
                   Text(
                     "\$${product.price.toStringAsFixed(2)}",

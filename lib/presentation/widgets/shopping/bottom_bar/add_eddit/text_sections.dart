@@ -33,16 +33,28 @@ class _TextSection extends ConsumerWidget {
   }
 }
 
-class ProductTextSection extends ConsumerWidget {
-  const ProductTextSection({
+class NameTextSection extends ConsumerWidget {
+  const NameTextSection({
     super.key,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const _TextSection(
-      icon: LucideIcons.tag,
-      editableText: ProductEditableText(),
+    final isDark = ref.watch(isDarkProvider);
+
+    return Row(
+      children: [
+        Icon(
+          LucideIcons.tag,
+          color: ref.foregroundColor(isDark),
+        ),
+        const Expanded(
+          child: Padding(
+            padding: EdgeInsets.only(left: 10),
+            child: NameEditableText(),
+          ),
+        ),
+      ],
     );
   }
 }

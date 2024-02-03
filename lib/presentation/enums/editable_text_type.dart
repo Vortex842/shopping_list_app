@@ -1,9 +1,9 @@
 enum EditableTextType {
-  product("Producto"),
+  name("Nombre"),
   amount("Cantidad"),
   price("Precio");
 
-  final String name;
+  final String txt;
 
-  const EditableTextType(this.name);
+  const EditableTextType(this.txt);
 }

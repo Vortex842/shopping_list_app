@@ -6,7 +6,7 @@ extension ShoppingSize on WidgetRef {
   double get _bottomActiveHeight => 160;
   double bottomHeight(bool isActive) =>
       isActive ? _bottomActiveHeight : _bottomNormalHeight;
-  double get editableProductWidth => 220;
+  double get editableNameWidth => 220;
   double get editableAmountWidth => 90;
   double get editablePriceWidth => 90;
 }
