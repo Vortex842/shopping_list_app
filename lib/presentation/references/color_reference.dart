@@ -29,37 +29,37 @@ enum _ShoppingColors {
 }
 
 extension ShoppingColors on WidgetRef {
-  Color pageColor() => (read(isDarkProvider)
+  Color pageColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkPage
           : _ShoppingColors.lightPage)
       .color;
-  Color cardColor() => (read(isDarkProvider)
+  Color cardColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkCard
           : _ShoppingColors.lightCard)
       .color;
-  Color buttonColor() => (read(isDarkProvider)
+  Color buttonColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkButton
           : _ShoppingColors.lightButton)
       .color;
-  Color editColor(bool isIcon) => (read(isDarkProvider)
+  Color editIconColor(bool isIcon) => (watch(isDarkProvider)
           ? _ShoppingColors.editForeground
           : _ShoppingColors.editBackground)
       .color;
-  Color deleteColor(bool isIcon) => (isIcon
+  Color deleteIconColor(bool isIcon) => (isIcon
           ? _ShoppingColors.deleteForeground
           : _ShoppingColors.deleteBackground)
       .color;
-  Color selectColor(bool isIcon) => (isIcon
+  Color selectIconColor(bool isIcon) => (isIcon
           ? _ShoppingColors.selectForeground
           : _ShoppingColors.selectBackground)
       .color;
-  Color foregroundColor() => (read(isDarkProvider)
+  Color foregroundColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkForeground
           : _ShoppingColors.lightForeground)
       .color;
-  Color buttonColorBottomBar(bool isDark) =>
+  Color buttonColorBottomBar() =>
       read(isDarkProvider) ? const Color(0xFFD2C2EB) : const Color(0xFFEADDFF);
-  Color editableTextColor() => (read(isDarkProvider)
+  Color editableTextColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkEditableText
           : _ShoppingColors.lightEditableText)
       .color;

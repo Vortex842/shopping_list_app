@@ -12,10 +12,8 @@ class AddProductButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
-
     return FloatingActionButton(
-      backgroundColor: ref.buttonColorBottomBar(isDark),
+      backgroundColor: ref.buttonColorBottomBar(),
       onPressed: () {
         // ADD PRODUCT BUTTON
         ref.read(onAddEditProvider.notifier).update((state) => true);

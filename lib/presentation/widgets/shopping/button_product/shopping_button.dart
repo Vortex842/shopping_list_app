@@ -113,15 +113,15 @@ class IconActionButton extends ConsumerWidget {
         break;
       case ButtonActionType.edit:
         icon = LucideIcons.edit;
-        color = ref.editColor(true);
+        color = ref.editIconColor(true);
         break;
       case ButtonActionType.delete:
         icon = LucideIcons.delete;
-        color = ref.deleteColor(true);
+        color = ref.deleteIconColor(true);
         break;
       case ButtonActionType.select:
         icon = LucideIcons.check;
-        color = ref.selectColor(true);
+        color = ref.selectIconColor(true);
         break;
     }
 

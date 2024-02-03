@@ -39,13 +39,13 @@ extension ShoppingDecoration on WidgetRef {
         color = buttonColor();
         break;
       case ButtonActionType.edit:
-        color = editColor(false);
+        color = editIconColor(false);
         break;
       case ButtonActionType.delete:
-        color = deleteColor(false);
+        color = deleteIconColor(false);
         break;
       case ButtonActionType.select:
-        color = selectColor(false);
+        color = selectIconColor(false);
         break;
     }
 
