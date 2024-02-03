@@ -46,7 +46,7 @@ class _ShoppingEditableText extends HookConsumerWidget {
           // border: const OutlineInputBorder(),
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
-          hintText: textType.name,
+          hintText: textType.txt,
           hintStyle: ref.normalText(),
         ),
       ),

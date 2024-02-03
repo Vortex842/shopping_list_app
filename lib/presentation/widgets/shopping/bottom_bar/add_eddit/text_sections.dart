@@ -66,9 +66,19 @@ class AmountTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const _TextSection(
-      icon: LucideIcons.hash,
-      editableText: AmountEditableText(),
+    final isDark = ref.watch(isDarkProvider);
+
+    return Row(
+      children: [
+        Icon(
+          LucideIcons.hash,
+          color: ref.foregroundColor(isDark),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: AmountEditableText(),
+        )
+      ],
     );
   }
 }
@@ -80,9 +90,19 @@ class PriceTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const _TextSection(
-      icon: LucideIcons.dollarSign,
-      editableText: PriceEditableText(),
+    final isDark = ref.watch(isDarkProvider);
+
+    return Row(
+      children: [
+        Icon(
+          LucideIcons.dollarSign,
+          color: ref.foregroundColor(isDark),
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 10),
+          child: PriceEditableText(),
+        ),
+      ],
     );
   }
 }
