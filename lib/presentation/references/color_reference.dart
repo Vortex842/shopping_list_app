@@ -41,10 +41,9 @@ extension ShoppingColors on WidgetRef {
           ? _ShoppingColors.darkButton
           : _ShoppingColors.lightButton)
       .color;
-  Color editIconColor(bool isIcon) => (watch(isDarkProvider)
-          ? _ShoppingColors.editForeground
-          : _ShoppingColors.editBackground)
-      .color;
+  Color editIconColor(bool isIcon) =>
+      (isIcon ? _ShoppingColors.editForeground : _ShoppingColors.editBackground)
+          .color;
   Color deleteIconColor(bool isIcon) => (isIcon
           ? _ShoppingColors.deleteForeground
           : _ShoppingColors.deleteBackground)
