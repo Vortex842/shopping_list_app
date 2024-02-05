@@ -6,17 +6,19 @@ import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 
-class ButtonSection extends ConsumerWidget {
+class ButtonSection extends ConsumerStatefulWidget {
   final Product product;
 
-  const ButtonSection(
-    this.product, {
-    super.key,
-  });
+  const ButtonSection(this.product, {super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // print("build - button section - ${product.toString()}");
+  ConsumerState<ConsumerStatefulWidget> createState() => _ButtonSectionState();
+}
+
+class _ButtonSectionState extends ConsumerState<ButtonSection>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
     final isDark = ref.watch(isDarkProvider);
 
     return DecoratedBox(
@@ -33,15 +35,11 @@ class ButtonSection extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextScroll(
-                    "${product.name}               ",
-                    fadeBorderSide: FadeBorderSide.both,
-                    fadedBorder: true,
-                    fadedBorderWidth: 0.05,
-                    style: ref.nameText(),
+                  TextScrollName(
+                    nameProduct: widget.product.name,
                   ),
                   Text(
-                    "\$${product.price.toStringAsFixed(2)}",
+                    "\$${widget.product.price.toStringAsFixed(2)}",
                     style: ref.priceText(),
                   ),
                 ],
@@ -51,7 +49,7 @@ class ButtonSection extends ConsumerWidget {
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "${product.amount}",
+                  "${widget.product.amount}",
                   style: ref.amountText(),
                 ),
               ),
@@ -59,6 +57,35 @@ class ButtonSection extends ConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
+class TextScrollName extends ConsumerWidget {
+  final String nameProduct;
+
+  const TextScrollName({
+    super.key,
+    required this.nameProduct,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return TextScroll(
+      nameProduct,
+      // "Texto super ultramega hyper largo",
+      pauseBetween: const Duration(milliseconds: 1000),
+      pauseOnBounce: const Duration(milliseconds: 500),
+      velocity: const Velocity(pixelsPerSecond: Offset(25, 0)),
+      // pauseOnBounce: const Duration(milliseconds: 1000),
+      mode: TextScrollMode.bouncing,
+      fadeBorderSide: FadeBorderSide.both,
+      fadedBorder: true,
+      fadedBorderWidth: 0.02,
+      style: ref.nameText(),
     );
   }
 }

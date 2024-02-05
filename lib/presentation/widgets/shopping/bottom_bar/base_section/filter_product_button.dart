@@ -15,6 +15,7 @@ class FilterProductButton extends ConsumerWidget {
       backgroundColor: ref.buttonColorBottomBar(),
       onPressed: () {
         // ADD PRODUCT BUTTON
+
         print("Filter button");
       },
       child: const Icon(

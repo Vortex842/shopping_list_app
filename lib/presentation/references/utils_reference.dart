@@ -18,4 +18,11 @@ extension ShoppingUtils on WidgetRef {
       return product;
     });
   }
+
+  void whenConfirmCancel() {
+    read(onProductDeleteProvider.notifier).update(
+      (state) => false,
+    );
+    read(productsProvider.notifier).uncheckAll();
+  }
 }

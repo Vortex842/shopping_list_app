@@ -69,7 +69,10 @@ class IconDeleteSelected extends StatelessWidget {
     return _IconsMultiSelect(
       icon: LucideIcons.trash2,
       callback: (ref) {
-        ref.read(productsProvider.notifier).deleteProductsSelected();
+        ref.read(onProductDeleteProvider.notifier).update(
+              (state) => true,
+            );
+        // ref.read(productsProvider.notifier).deleteProductsSelected();
       },
     );
   }
