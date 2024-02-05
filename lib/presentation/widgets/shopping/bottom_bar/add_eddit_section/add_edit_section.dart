@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/add_eddit/text_sections.dart';
+import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/add_eddit_section/text_sections.dart';
 
 import '../../../../providers/providers.barrel.dart';
 import 'close_product_button.dart';

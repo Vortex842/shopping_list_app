@@ -21,7 +21,7 @@ class _IconsMultiSelect extends ConsumerWidget {
       icon: Icon(
         icon,
         color: ref.foregroundColor(),
-        size: 25,
+        size: 22,
       ),
     );
   }

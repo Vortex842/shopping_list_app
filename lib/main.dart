@@ -6,6 +6,8 @@ import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() {
+  // debugRepaintTextRainbowEnabled = true;
+
   runApp(const ProviderScope(child: MainApp()));
 }
 

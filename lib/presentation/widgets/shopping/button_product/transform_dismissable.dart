@@ -43,12 +43,12 @@ class DismissibleButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isAnyChecked = ref.watch(onMultiSelectProvider);
+    final onMultiSelect = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
 
     return Dismissible(
       key: Key(product.id),
-      direction: isAnyChecked || onAddEdit
+      direction: onMultiSelect || onAddEdit
           ? DismissDirection.none
           : DismissDirection.horizontal,
       confirmDismiss: (direction) async {
