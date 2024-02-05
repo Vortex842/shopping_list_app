@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../data/domain/entities/product.dart';
 
@@ -21,18 +20,18 @@ final onMultiSelectProvider = StateProvider<bool>((ref) {
 // });
 
 class ProductNotifier extends StateNotifier<List<Product>> {
-  ProductNotifier()
-      : super(
-          List.generate(
-            15,
-            (index) => Product(
-              id: const Uuid().v4(),
-              name: "Producto ${index + 1}",
-              price: index * 10.33,
-              amount: index,
-            ),
-          ),
-        );
+  ProductNotifier() : super(List.empty());
+  // : super(
+  //     List.generate(
+  //       15,
+  //       (index) => Product(
+  //         id: const Uuid().v4(),
+  //         name: "Producto ${index + 1}",
+  //         price: index * 10.33,
+  //         amount: index,
+  //       ),
+  //     ),
+  //   );
 
   void addProduct(Product product) {
     state = [...state, product];
