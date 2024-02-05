@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/buttons/buttons_bottombar.barrel.dart';
+import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/base_section/buttons_bottombar.barrel.dart';
 
 class AddSearchButtons extends StatelessWidget {
   const AddSearchButtons({
@@ -13,7 +13,7 @@ class AddSearchButtons extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         AddProductButton(),
-        SearchProductButton(),
+        FilterProductButton(),
       ],
     );
   }

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 import 'add_eddit/add_edit_section.dart';
-import 'buttons/add_search_buttons.dart';
+import 'base_section/base_buttons.dart';
 import 'multi_select_section.dart';
 
 class ShoppingBottom extends ConsumerWidget {
@@ -15,8 +15,6 @@ class ShoppingBottom extends ConsumerWidget {
     final isAnyChecked = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
     final sizeScreen = SizeScreenInherited.of(context)!.sizeScreen;
-
-    print(sizeScreen);
 
     return Container(
       width: double.infinity,

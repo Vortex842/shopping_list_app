@@ -6,7 +6,7 @@ import '../providers/providers.barrel.dart';
 extension ShoppingUtils on WidgetRef {
   void closeAddEditSection() {
     read(controllerProviders).forEach((controller) => controller.clear());
-    read(productsProvider.notifier).unCheckAll();
+    read(productsProvider.notifier).uncheckAll();
     read(editableProductProvider.notifier).update((state) => null);
     read(onAddEditProvider.notifier).update((state) => false);
   }

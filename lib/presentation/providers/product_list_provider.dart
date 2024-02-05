@@ -20,10 +20,7 @@ final onMultiSelectProvider = StateProvider<bool>((ref) {
 // });
 
 class ProductNotifier extends StateNotifier<List<Product>> {
-  ProductNotifier()
-      : super(
-          [],
-        );
+  ProductNotifier() : super(List.empty());
 
   void addProduct(Product product) {
     state = [...state, product];
@@ -31,6 +28,10 @@ class ProductNotifier extends StateNotifier<List<Product>> {
 
   void deleteProduct(String id) {
     state = [...state..removeWhere((p) => p.id == id)];
+  }
+
+  void deleteProductsSelected() {
+    state = [...state..removeWhere((p) => p.isChecked)];
   }
 
   void editProductById(
@@ -65,7 +66,7 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     ];
   }
 
-  void unCheckAll() {
+  void uncheckAll() {
     state = [
       ...state.map((p) => p.isChecked ? p.copyWith(isChecked: false) : p),
     ];

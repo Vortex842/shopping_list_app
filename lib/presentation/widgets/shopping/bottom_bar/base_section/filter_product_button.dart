@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 
-class SearchProductButton extends ConsumerWidget {
-  const SearchProductButton({
+class FilterProductButton extends ConsumerWidget {
+  const FilterProductButton({
     super.key,
   });
 
@@ -15,9 +15,10 @@ class SearchProductButton extends ConsumerWidget {
       backgroundColor: ref.buttonColorBottomBar(),
       onPressed: () {
         // ADD PRODUCT BUTTON
+        print("Filter button");
       },
       child: const Icon(
-        LucideIcons.search,
+        LucideIcons.arrowDownAZ,
         size: 20,
       ),
     );

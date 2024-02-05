@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MultiSelectSection extends StatelessWidget {
+import '../../../providers/size_screen_inherited.dart';
+import 'multi_select/icons_multi_select.dart';
+
+class MultiSelectSection extends ConsumerWidget {
   const MultiSelectSection({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      // width: 100,
-      color: Colors.red,
-      child: const Center(child: Text("MultiSelectMode")),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final sizeScreen = SizeScreenInherited.of(context)!.sizeScreen;
+
+    return SizedBox(
+      width: sizeScreen!.width * 0.45,
+      // color: Colors.green,
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconSelectAll(),
+          IconUnselectAll(),
+          IconDeleteSelected(),
+        ],
+      ),
     );
   }
 }
