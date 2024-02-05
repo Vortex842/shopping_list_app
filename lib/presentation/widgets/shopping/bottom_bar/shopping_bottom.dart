@@ -34,7 +34,7 @@ class ShoppingBottom extends ConsumerWidget {
                 ? const MultiSelectSection()
                 : onAddEdit
                     ? const AddEditSection()
-                    : const AddSearchButtons(),
+                    : const BaseButtons(),
           ),
         ),
       ),

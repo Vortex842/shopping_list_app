@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/base_section/buttons_bottombar.barrel.dart';
 
-class AddSearchButtons extends StatelessWidget {
-  const AddSearchButtons({
+class BaseButtons extends StatelessWidget {
+  const BaseButtons({
     super.key,
   });
 

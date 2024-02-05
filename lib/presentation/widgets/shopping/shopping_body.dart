@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../providers/providers.barrel.dart';
 import '../../references/references.barrel.dart';
 import 'button_product/shopping_button.dart';
 
-class ShoppingBody extends ConsumerStatefulWidget {
+class ShoppingBody extends StatefulHookConsumerWidget {
   const ShoppingBody({super.key});
 
   @override
@@ -20,6 +20,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
     super.build(context);
     final isDark = ref.watch(isDarkProvider);
     final products = ref.watch(productsProvider);
+    final scrollController = ref.watch(scrollControllerProvider);
 
     return Container(
       width: double.infinity,
@@ -27,6 +28,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
       child: ClipRRect(
         borderRadius: ref.cardRadius,
         child: SingleChildScrollView(
+          controller: scrollController,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 15,
