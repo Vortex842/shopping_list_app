@@ -4,8 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../../providers/on_add_edit_provider.dart';
-import '../../../providers/product_list_provider.dart';
+import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import '/presentation/enums/button_action_type.dart';
@@ -27,6 +26,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   Widget build(BuildContext context) {
     super.build(context);
     final onAddEdit = ref.watch(onAddEditProvider);
+    final onProductDelete = ref.watch(onProductDeleteProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -46,7 +46,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
-      onLongPress: !onAddEdit
+      onLongPress: !onAddEdit && !onProductDelete
           ? () {
               // ACTION ON LONG PRESS
               ref.read(productsProvider.notifier).toggleCheck(
