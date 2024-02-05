@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
@@ -32,10 +33,12 @@ class ButtonSection extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product.name,
+                  TextScroll(
+                    "${product.name}               ",
+                    fadeBorderSide: FadeBorderSide.both,
+                    fadedBorder: true,
+                    fadedBorderWidth: 0.05,
                     style: ref.nameText(),
-                    overflow: TextOverflow.ellipsis,
                   ),
                   Text(
                     "\$${product.price.toStringAsFixed(2)}",
