@@ -19,6 +19,7 @@ class _ButtonSectionState extends ConsumerState<ButtonSection>
     with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final isDark = ref.watch(isDarkProvider);
 
     return DecoratedBox(
