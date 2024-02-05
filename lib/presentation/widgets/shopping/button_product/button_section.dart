@@ -78,14 +78,14 @@ class TextScrollName extends ConsumerWidget {
     return TextScroll(
       nameProduct,
       // "Texto super ultramega hyper largo",
-      pauseBetween: const Duration(milliseconds: 1000),
-      pauseOnBounce: const Duration(milliseconds: 500),
-      velocity: const Velocity(pixelsPerSecond: Offset(25, 0)),
+      pauseBetween: const Duration(milliseconds: 2000),
+      pauseOnBounce: const Duration(milliseconds: 1000),
+      velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
       // pauseOnBounce: const Duration(milliseconds: 1000),
       mode: TextScrollMode.bouncing,
       fadeBorderSide: FadeBorderSide.both,
       fadedBorder: true,
-      fadedBorderWidth: 0.02,
+      fadedBorderWidth: 0.01,
       style: ref.nameText(),
     );
   }
