@@ -46,7 +46,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
-      onLongPress: !onAddEdit && !onProductDelete
+      onTap: !onAddEdit && !onProductDelete
           ? () {
               // ACTION ON LONG PRESS
               ref.read(productsProvider.notifier).toggleCheck(
