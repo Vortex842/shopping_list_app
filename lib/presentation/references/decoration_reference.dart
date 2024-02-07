@@ -21,7 +21,7 @@ extension ShoppingDecoration on WidgetRef {
       ];
 
   BorderRadius get cardRadius => BorderRadius.circular(30);
-  BorderRadius get buttonRadius => BorderRadius.circular(16);
+  BorderRadius get buttonRadius => BorderRadius.circular(18);
   Radius get nothingRadius => const Radius.circular(0);
 
   BoxDecoration bodyDecoration(bool isDark) => BoxDecoration(
@@ -33,26 +33,31 @@ extension ShoppingDecoration on WidgetRef {
     ButtonActionType actionType = ButtonActionType.none,
   }) {
     Color color;
+    BorderRadius borderRadius;
 
     switch (actionType) {
       case ButtonActionType.none:
         color = buttonColor();
+        borderRadius = buttonRadius;
         break;
       case ButtonActionType.edit:
         color = editIconColor(false);
+        borderRadius = BorderRadius.circular(22);
         break;
       case ButtonActionType.delete:
         color = deleteIconColor(false);
+        borderRadius = BorderRadius.circular(22);
         break;
       case ButtonActionType.select:
         color = selectIconColor(false);
+        borderRadius = buttonRadius;
         break;
     }
 
     return BoxDecoration(
       color: color,
       boxShadow: shadows,
-      borderRadius: buttonRadius,
+      borderRadius: borderRadius,
     );
   }
 
