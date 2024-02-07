@@ -19,7 +19,9 @@ enum _ShoppingColors {
   deleteForeground(0xFF780000),
   deleteBackground(0xFFFF5656),
   selectForeground(0xFF430078),
-  selectBackground(0xFFAB56FF);
+  selectBackground(0xFFAB56FF),
+  buttonBottomBarForeground(0xFF430078),
+  buttonBottomBarForeground2(0xFFAB56FF);
 
   final int _hexColor;
 
@@ -56,8 +58,11 @@ extension ShoppingColors on WidgetRef {
           ? _ShoppingColors.darkForeground
           : _ShoppingColors.lightForeground)
       .color;
-  Color buttonColorBottomBar() =>
-      read(isDarkProvider) ? const Color(0xFFD2C2EB) : const Color(0xFFEADDFF);
+  Color buttonConfirmCancelBackground() =>
+      read(isDarkProvider) ? const Color(0xFFE6DAFA) : const Color(0xFFF0E8FF);
+  Color buttonConfirmCancelForeground(bool isConfirm) => isConfirm
+      ? _ShoppingColors.buttonBottomBarForeground.color
+      : _ShoppingColors.buttonBottomBarForeground2.color;
   Color editableTextColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkEditableText
           : _ShoppingColors.lightEditableText)

@@ -5,38 +5,17 @@ import 'package:lucide_icons/lucide_icons.dart';
 import '../../shopping_text_editable.dart';
 import '/presentation/references/color_reference.dart';
 
-class _TextSection extends ConsumerWidget {
-  final IconData icon;
-  final Widget editableText;
-
-  const _TextSection({
-    required this.icon,
-    required this.editableText,
-  });
+class NameTextSection extends ConsumerStatefulWidget {
+  const NameTextSection({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Wrap(
-      spacing: 10,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: ref.foregroundColor(),
-        ),
-        editableText,
-      ],
-    );
-  }
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _NameTextSectionState();
 }
 
-class NameTextSection extends ConsumerWidget {
-  const NameTextSection({
-    super.key,
-  });
-
+class _NameTextSectionState extends ConsumerState<NameTextSection> {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Row(
       children: [
         Icon(

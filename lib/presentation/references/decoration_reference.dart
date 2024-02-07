@@ -69,4 +69,15 @@ extension ShoppingDecoration on WidgetRef {
         ),
         color: cardColor(),
       );
+
+  ButtonStyle buttonConfirmCancelStyle(bool isConfirm) => ButtonStyle(
+        padding: const MaterialStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: 12),
+        ),
+        foregroundColor:
+            MaterialStatePropertyAll(buttonConfirmCancelForeground(isConfirm)),
+        backgroundColor: isConfirm
+            ? MaterialStatePropertyAll(buttonConfirmCancelBackground())
+            : null,
+      );
 }

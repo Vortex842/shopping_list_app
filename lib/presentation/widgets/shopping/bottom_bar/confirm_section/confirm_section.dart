@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/presentation/providers/product_list_provider.dart';
-import '/presentation/references/utils_reference.dart';
+import '/presentation/references/references.barrel.dart';
 
 class ConfirmSection extends ConsumerWidget {
   const ConfirmSection({super.key});
@@ -17,11 +17,7 @@ class ConfirmSection extends ConsumerWidget {
           spacing: 10,
           children: [
             ElevatedButton(
-              style: const ButtonStyle(
-                padding: MaterialStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 10),
-                ),
-              ),
+              style: ref.buttonConfirmCancelStyle(true),
               onPressed: () {
                 ref.read(productsProvider.notifier).deleteProductsSelected();
                 ref.whenConfirmCancel();
@@ -29,11 +25,7 @@ class ConfirmSection extends ConsumerWidget {
               child: const Text("Aceptar"),
             ),
             TextButton(
-              style: const ButtonStyle(
-                padding: MaterialStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 10),
-                ),
-              ),
+              style: ref.buttonConfirmCancelStyle(false),
               onPressed: () {
                 ref.whenConfirmCancel();
               },
