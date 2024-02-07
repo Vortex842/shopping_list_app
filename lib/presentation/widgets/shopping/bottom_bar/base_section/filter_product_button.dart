@@ -11,7 +11,6 @@ class FilterProductButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       mini: true,
-      // backgroundColor: ref.buttonColorBottomBar(),
       onPressed: () {
         // ADD PRODUCT BUTTON
 

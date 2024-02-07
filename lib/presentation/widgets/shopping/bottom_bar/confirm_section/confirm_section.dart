@@ -10,7 +10,6 @@ class ConfirmSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      // color: Colors.green,
       child: Align(
         alignment: Alignment.centerLeft,
         child: Wrap(
