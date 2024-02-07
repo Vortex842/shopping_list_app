@@ -22,27 +22,30 @@ class _ShoppingEditableText extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       width: maxWidth,
-      child: TextField(
-        controller: controller,
-        focusNode: focusNode,
-        style: ref.editableText().copyWith(
-              height: 1.2,
-            ),
-        cursorHeight: 18,
-        cursorColor: ref.foregroundColor(),
-        keyboardType: textType == EditableTextType.name
-            ? TextInputType.text
-            : TextInputType.number,
-        decoration: InputDecoration(
-          isDense: true,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: TextField(
+          controller: controller,
+          focusNode: focusNode,
+          style: ref.editableText().copyWith(
+                height: 1.2,
+              ),
+          cursorHeight: 18,
+          cursorColor: ref.foregroundColor(),
+          keyboardType: textType == EditableTextType.name
+              ? TextInputType.text
+              : TextInputType.number,
+          decoration: InputDecoration(
+            isDense: true,
 
-          fillColor: ref.editableTextColor(),
-          filled: true,
-          // border: const OutlineInputBorder(),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
-          hintText: textType.txt,
-          hintStyle: ref.normalText(),
+            fillColor: ref.editableTextColor(),
+            filled: true,
+            // border: const OutlineInputBorder(),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+            hintText: textType.txt,
+            hintStyle: ref.normalText(),
+          ),
         ),
       ),
     );

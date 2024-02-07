@@ -13,6 +13,7 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [ ] Focus on Text Field 'nameController'
   * [ ] Functionality of press enter on Text Field
   * [ ] Checking button with onTap
+  * [ ] ClipRRect for TextFields
 * [✅] Fix:
   * [✅] Colors of confirm/cancel buttons in dark mode
   * [✅] Corners of button section for color bg 
