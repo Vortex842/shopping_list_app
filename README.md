@@ -16,7 +16,8 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [✅] ClipRRect for TextFields
 * [✅] Fix:
   * [✅] Colors of confirm/cancel buttons in dark mode
-  * [✅] Corners of button section for color bg 
+  * [✅] Corners of button section for color bg
+  * [ ] Dont put negative values in Amount and Price
 
 ## Funcionalidades Principales
 * **Implementación**
