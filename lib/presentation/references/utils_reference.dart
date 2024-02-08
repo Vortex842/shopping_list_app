@@ -13,7 +13,6 @@ extension ShoppingUtils on WidgetRef {
 
   void activeEditableProduct(Product product) {
     read(onAddEditProvider.notifier).update((state) => true);
-    read(productsProvider.notifier).toggleCheck(product.id);
     read(editableProductProvider.notifier).update((editProduct) {
       return product;
     });
