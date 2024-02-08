@@ -61,7 +61,7 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     ];
   }
 
-  Product findById(String id) {
+  Product? findById(String id) {
     return state.where((p) => p.id == id).first;
   }
 

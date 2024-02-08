@@ -10,14 +10,15 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [ ] History shops
 * [ ] Major:
   * [ ] Error messages for Text Fields
-  * [ ] Focus on Text Field 'nameController'
+  * [✅] Focus on Text Field 'nameController'
   * [ ] Functionality of press enter on Text Field
-  * [ ] Checking button with onTap
+  * [✅] Checking button with onTap
   * [✅] ClipRRect for TextFields
 * [✅] Fix:
   * [✅] Colors of confirm/cancel buttons in dark mode
   * [✅] Corners of button section for color bg
-  * [ ] Dont put negative values in Amount and Price
+  * [ ] Don´t put negative values in Amount and Price
+  * [ ] Delay for Scrollable Text
 
 ## Funcionalidades Principales
 * **Implementación**
