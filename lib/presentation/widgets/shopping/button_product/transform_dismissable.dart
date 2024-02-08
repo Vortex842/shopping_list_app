@@ -52,16 +52,15 @@ class DismissibleButton extends ConsumerWidget {
           ? DismissDirection.none
           : DismissDirection.horizontal,
       confirmDismiss: (direction) async {
+        ref.read(productsProvider.notifier).toggleCheck(
+              product.id,
+            );
+
         if (direction == DismissDirection.endToStart) {
-          ref.read(productsProvider.notifier).toggleCheck(
-                product.id,
-              );
           ref.read(onProductDeleteProvider.notifier).update(
                 (state) => true,
               );
-          // ref.read(productsProvider.notifier).deleteProduct(
-          //       product.id,
-          //     );
+
           print("Delete - ${product.toString()}");
         } else {
           ref.activeEditableProduct(product);
