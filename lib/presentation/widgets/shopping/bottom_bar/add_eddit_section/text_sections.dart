@@ -5,30 +5,46 @@ import 'package:lucide_icons/lucide_icons.dart';
 import '../../shopping_text_editable.dart';
 import '/presentation/references/color_reference.dart';
 
-class NameTextSection extends ConsumerStatefulWidget {
-  const NameTextSection({super.key});
+class _TextSection extends ConsumerWidget {
+  final bool isExpanded;
+  final IconData icon;
+  final Widget editableText;
+
+  const _TextSection({
+    required this.isExpanded,
+    required this.icon,
+    required this.editableText,
+  });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _NameTextSectionState();
-}
-
-class _NameTextSectionState extends ConsumerState<NameTextSection> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       children: [
         Icon(
-          LucideIcons.tag,
+          icon,
           color: ref.foregroundColor(),
         ),
-        const Expanded(
+        Expanded(
+          flex: isExpanded ? 1 : 0,
           child: Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: NameEditableText(),
+            padding: const EdgeInsets.only(left: 10),
+            child: editableText,
           ),
         ),
       ],
+    );
+  }
+}
+
+class NameTextSection extends ConsumerWidget {
+  const NameTextSection({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return const _TextSection(
+      isExpanded: true,
+      icon: LucideIcons.tag,
+      editableText: NameEditableText(),
     );
   }
 }
@@ -40,17 +56,10 @@ class AmountTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      children: [
-        Icon(
-          LucideIcons.hash,
-          color: ref.foregroundColor(),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: AmountEditableText(),
-        )
-      ],
+    return const _TextSection(
+      isExpanded: false,
+      icon: LucideIcons.hash,
+      editableText: AmountEditableText(),
     );
   }
 }
@@ -62,17 +71,10 @@ class PriceTextSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Row(
-      children: [
-        Icon(
-          LucideIcons.dollarSign,
-          color: ref.foregroundColor(),
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: PriceEditableText(),
-        ),
-      ],
+    return const _TextSection(
+      isExpanded: false,
+      icon: LucideIcons.dollarSign,
+      editableText: PriceEditableText(),
     );
   }
 }
