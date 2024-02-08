@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '/presentation/providers/new_product_provider.dart';
+import 'editable_product_provider.dart';
 
 final nameControllerProvider = StateProvider<TextEditingController>((ref) {
   final name = ref.watch(editableProductProvider)?.name;
