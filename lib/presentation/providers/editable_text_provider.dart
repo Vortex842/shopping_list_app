@@ -4,18 +4,28 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/presentation/providers/new_product_provider.dart';
 
 final nameControllerProvider = StateProvider<TextEditingController>((ref) {
-  final editableProduct = ref.watch(editableProductProvider);
-  return TextEditingController(text: editableProduct?.name ?? '');
+  final name = ref.watch(newProductProvider)?.name;
+  return TextEditingController(text: name ?? '');
 });
 
 final amountControllerProvider = StateProvider<TextEditingController>((ref) {
-  final editableProduct = ref.watch(editableProductProvider);
-  return TextEditingController(text: editableProduct?.amount.toString() ?? '');
+  final amount = ref.watch(newProductProvider)?.amount;
+  return TextEditingController(
+      text: amount != null
+          ? amount > 0
+              ? amount.toString()
+              : ''
+          : '');
 });
 
 final priceControllerProvider = StateProvider<TextEditingController>((ref) {
-  final editableProduct = ref.watch(editableProductProvider);
-  return TextEditingController(text: editableProduct?.price.toString() ?? '');
+  final price = ref.watch(newProductProvider)?.price;
+  return TextEditingController(
+      text: price != null
+          ? price > 0
+              ? price.toString()
+              : ''
+          : '');
 });
 
 final controllerProviders = StateProvider<List<TextEditingController>>((ref) {
