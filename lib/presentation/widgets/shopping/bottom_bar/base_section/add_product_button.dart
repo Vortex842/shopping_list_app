@@ -15,6 +15,7 @@ class AddProductButton extends ConsumerWidget {
       onPressed: () {
         // ADD PRODUCT BUTTON
         ref.read(onAddEditProvider.notifier).update((state) => true);
+        ref.read(focusNodeNameProvider).requestFocus();
       },
       child: const Icon(
         LucideIcons.shoppingCart,
