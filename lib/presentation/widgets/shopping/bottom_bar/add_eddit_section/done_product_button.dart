@@ -24,8 +24,9 @@ class DoneProductButton extends ConsumerWidget {
         final priceController = ref.read(priceControllerProvider);
         final productToEdit = ref.read(editableProductProvider);
         final scrollController = ref.read(scrollControllerProvider);
+        final canDone = ref.read(canDoneProvider);
 
-        if (nameController.text.isEmpty || amountController.text.isEmpty) {
+        if (!canDone) {
           if (nameController.text.isEmpty) {
             log("Debe ingresar un nombre");
           }
@@ -33,10 +34,12 @@ class DoneProductButton extends ConsumerWidget {
           if (amountController.text.isEmpty) {
             log("Debe ingresar una cantidad");
           }
+
+          if (priceController.text.isEmpty) {
+            log("Debe ingresar un precio");
+          }
           return;
         }
-
-        if (priceController.text.isEmpty) priceController.text = '0';
 
         if (productToEdit != null) {
           ref.read(productsProvider.notifier).editProductById(
