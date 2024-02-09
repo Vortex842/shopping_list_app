@@ -11,7 +11,6 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
 * [ ] Major:
   * [ ] Error messages for Text Fields
   * [✅] Focus on Text Field 'nameController'
-  * [ ] Functionality of press enter on Text Field
   * [✅] Checking button with onTap
   * [✅] ClipRRect for TextFields
 * [✅] Fix:

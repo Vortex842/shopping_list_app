@@ -25,16 +25,13 @@ class ShoppingBottom extends ConsumerWidget {
       decoration: ref.bottomDecoration(),
       child: ClipRRect(
         borderRadius: ref.cardRadius,
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: onMultiSelect && !onAddEdit && !onProductDelete
-              ? const MultiSelectSection()
-              : onAddEdit
-                  ? const AddEditSection()
-                  : onProductDelete
-                      ? const ConfirmSection()
-                      : const BaseSection(),
-        ),
+        child: onMultiSelect && !onAddEdit && !onProductDelete
+            ? const MultiSelectSection()
+            : onAddEdit
+                ? const AddEditSection()
+                : onProductDelete
+                    ? const ConfirmSection()
+                    : const BaseSection(),
       ),
     );
   }
