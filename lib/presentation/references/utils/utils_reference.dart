@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/domain/entities/product.dart';
-import '../providers/providers.barrel.dart';
+import '../../../data/domain/entities/product.dart';
+import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtils on WidgetRef {
-  void closeAddEditSection() {
-    read(productsProvider.notifier).uncheckAll();
-    read(editableProductProviderID.notifier).update((state) => null);
-    read(onAddEditProvider.notifier).update((state) => false);
-  }
-
   void activeEditableProduct(Product product) {
     read(onAddEditProvider.notifier).update((state) => true);
 
@@ -40,5 +34,13 @@ extension ShoppingUtils on WidgetRef {
       (state) => false,
     );
     read(productsProvider.notifier).uncheckAll();
+  }
+
+  void scrollToFinal() {
+    final scrollController = read(scrollControllerProvider);
+
+    scrollController.jumpTo(
+      scrollController.position.maxScrollExtent,
+    );
   }
 }

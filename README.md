@@ -17,7 +17,7 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [✅] Colors of confirm/cancel buttons in dark mode
   * [✅] Corners of button section for color bg
   * [ ] Don´t put negative values in Amount and Price
-  * [ ] Delay for Scrollable Text
+  * [✅] Delay for Scrollable Text
 
 ## Funcionalidades Principales
 * **Implementación**
