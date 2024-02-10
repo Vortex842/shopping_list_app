@@ -11,6 +11,7 @@ class BaseSection extends StatelessWidget {
     return const Center(
       child: Wrap(
         spacing: 10,
+        alignment: WrapAlignment.center,
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           AddProductButton(),

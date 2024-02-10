@@ -21,17 +21,22 @@ class ShoppingBottom extends ConsumerWidget {
     return Container(
       width: double.infinity,
       height: sizeScreen!.height * ref.bottomHeightPercent(onAddEdit),
-      // height: ref.bottomHeight(onAddEdit),
       decoration: ref.bottomDecoration(),
       child: ClipRRect(
         borderRadius: ref.cardRadius,
-        child: onMultiSelect && !onAddEdit && !onProductDelete
-            ? const MultiSelectSection()
-            : onAddEdit
-                ? const AddEditSection()
-                : onProductDelete
-                    ? const ConfirmSection()
-                    : const BaseSection(),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 10,
+          ),
+          child: onMultiSelect && !onAddEdit && !onProductDelete
+              ? const MultiSelectSection()
+              : onAddEdit
+                  ? const AddEditSection()
+                  : onProductDelete
+                      ? const ConfirmSection()
+                      : const BaseSection(),
+        ),
       ),
     );
   }
