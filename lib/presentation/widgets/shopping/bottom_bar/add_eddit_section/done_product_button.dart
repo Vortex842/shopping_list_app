@@ -22,7 +22,7 @@ class DoneProductButton extends ConsumerWidget {
         final nameController = ref.read(nameControllerProvider);
         final amountController = ref.read(amountControllerProvider);
         final priceController = ref.read(priceControllerProvider);
-        final productToEdit = ref.read(editableProductProvider);
+        final editableID = ref.read(editableProductProviderID);
         final scrollController = ref.read(scrollControllerProvider);
         final canDone = ref.read(canDoneProvider);
 
@@ -41,9 +41,9 @@ class DoneProductButton extends ConsumerWidget {
           return;
         }
 
-        if (productToEdit != null) {
+        if (editableID != null) {
           ref.read(productsProvider.notifier).editProductById(
-                id: productToEdit,
+                id: editableID,
                 name: nameController.text,
                 amount: int.parse(amountController.text),
                 price: double.parse(priceController.text),

@@ -7,7 +7,7 @@ import '../providers/providers.barrel.dart';
 extension ShoppingUtils on WidgetRef {
   void closeAddEditSection() {
     read(productsProvider.notifier).uncheckAll();
-    read(editableProductProvider.notifier).update((state) => null);
+    read(editableProductProviderID.notifier).update((state) => null);
     read(onAddEditProvider.notifier).update((state) => false);
   }
 
@@ -30,7 +30,7 @@ extension ShoppingUtils on WidgetRef {
       },
     );
 
-    read(editableProductProvider.notifier).update((id) {
+    read(editableProductProviderID.notifier).update((id) {
       return product.id;
     });
   }

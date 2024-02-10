@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final editableProductProvider = StateProvider<String?>((ref) {
+final editableProductProviderID = StateProvider<String?>((ref) {
   return null;
 });
