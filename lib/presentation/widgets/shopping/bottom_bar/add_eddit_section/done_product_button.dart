@@ -40,23 +40,17 @@ class DoneProductButton extends ConsumerWidget {
           }
           return;
         }
+        final product = Product(
+          id: editableID ?? const Uuid().v4(),
+          name: nameController.text,
+          amount: int.parse(amountController.text),
+          price: double.parse(priceController.text),
+        );
 
         if (editableID != null) {
-          ref.read(productsProvider.notifier).editProductById(
-                id: editableID,
-                name: nameController.text,
-                amount: int.parse(amountController.text),
-                price: double.parse(priceController.text),
-              );
+          ref.read(productsProvider.notifier).editProductById(product);
         } else {
-          ref.read(productsProvider.notifier).addProduct(
-                Product(
-                  id: const Uuid().v4(),
-                  name: nameController.text,
-                  amount: int.parse(amountController.text),
-                  price: double.parse(priceController.text),
-                ),
-              );
+          ref.read(productsProvider.notifier).addProduct(product);
         }
 
         scrollController.jumpTo(
