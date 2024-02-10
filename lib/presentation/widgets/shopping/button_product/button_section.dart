@@ -77,11 +77,9 @@ class TextScrollName extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return TextScroll(
       nameProduct,
-      // "Texto super ultramega hyper largo",
-      pauseBetween: const Duration(milliseconds: 2000),
-      pauseOnBounce: const Duration(milliseconds: 1000),
+      pauseBetween: const Duration(milliseconds: 5000),
+      pauseOnBounce: const Duration(milliseconds: 500),
       velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
-      // pauseOnBounce: const Duration(milliseconds: 1000),
       mode: TextScrollMode.bouncing,
       fadeBorderSide: FadeBorderSide.both,
       fadedBorder: true,
