@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,19 +9,22 @@ import '../../providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 
 class _ShoppingEditableText extends HookConsumerWidget {
+  final String initialText;
   final EditableTextType textType;
   final double maxWidth;
-  final TextEditingController controller;
+  final void Function(WidgetRef ref, String value) callback;
 
   const _ShoppingEditableText({
+    required this.initialText,
     required this.textType,
     required this.maxWidth,
-    required this.controller,
+    required this.callback,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final focusNode = useFocusNode();
+    final timer = useState<Timer?>(null);
+    final controller = useTextEditingController(text: initialText);
 
     return SizedBox(
       width: maxWidth,
@@ -27,7 +32,17 @@ class _ShoppingEditableText extends HookConsumerWidget {
         borderRadius: BorderRadius.circular(12),
         child: TextField(
           controller: controller,
-          focusNode: focusNode,
+          onChanged: (value) {
+            timer.value?.cancel();
+            timer.value = Timer(
+              const Duration(milliseconds: 500),
+              () {
+                callback(ref, value);
+              },
+            );
+            // controller.value = TextEditingValue(text: value);
+            // print("${textType.name}: ${debounceText.value}");
+          },
           style: ref.editableText().copyWith(
                 height: 1.2,
               ),
@@ -38,10 +53,8 @@ class _ShoppingEditableText extends HookConsumerWidget {
               : TextInputType.number,
           decoration: InputDecoration(
             isDense: true,
-
             fillColor: ref.editableTextColor(),
             filled: true,
-            // border: const OutlineInputBorder(),
             contentPadding: const EdgeInsets.all(10),
             hintText: textType.txt,
             hintStyle: ref.normalText(),
@@ -59,12 +72,15 @@ class NameEditableText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nameController = ref.watch(nameControllerProvider);
-
     return _ShoppingEditableText(
+      initialText: ref.watch(nameControllerProvider).text,
       textType: EditableTextType.name,
       maxWidth: double.infinity,
-      controller: nameController,
+      callback: (ref, value) {
+        ref.read(nameControllerProvider.notifier).update((controller) {
+          return TextEditingController(text: value);
+        });
+      },
     );
   }
 }
@@ -76,12 +92,15 @@ class AmountEditableText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final amountController = ref.watch(amountControllerProvider);
-
     return _ShoppingEditableText(
+      initialText: ref.watch(amountControllerProvider).text,
       textType: EditableTextType.amount,
       maxWidth: ref.editableAmountWidth,
-      controller: amountController,
+      callback: (ref, value) {
+        ref.read(amountControllerProvider.notifier).update((controller) {
+          return TextEditingController(text: value);
+        });
+      },
     );
   }
 }
@@ -93,12 +112,15 @@ class PriceEditableText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final priceController = ref.watch(priceControllerProvider);
-
     return _ShoppingEditableText(
+      initialText: ref.watch(priceControllerProvider).text,
       textType: EditableTextType.price,
       maxWidth: ref.editablePriceWidth,
-      controller: priceController,
+      callback: (ref, value) {
+        ref.read(priceControllerProvider.notifier).update((controller) {
+          return TextEditingController(text: value);
+        });
+      },
     );
   }
 }

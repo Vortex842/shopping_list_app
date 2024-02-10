@@ -43,7 +43,7 @@ class DoneProductButton extends ConsumerWidget {
 
         if (productToEdit != null) {
           ref.read(productsProvider.notifier).editProductById(
-                id: productToEdit.id,
+                id: productToEdit,
                 name: nameController.text,
                 amount: int.parse(amountController.text),
                 price: double.parse(priceController.text),
