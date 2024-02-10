@@ -15,15 +15,15 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     final canDone = read(canDoneProvider);
 
     if (!canDone) {
-      if (nameController.text.isEmpty) {
+      if (nameController.isEmpty) {
         log("Debe ingresar un nombre");
       }
 
-      if (amountController.text.isEmpty) {
+      if (amountController.isEmpty) {
         log("Debe ingresar una cantidad");
       }
 
-      if (priceController.text.isEmpty) {
+      if (priceController.isEmpty) {
         log("Debe ingresar un precio");
       }
       return;
@@ -38,9 +38,9 @@ extension ShoppingUtilsAddEdit on WidgetRef {
 
     final product = Product(
       id: editableID ?? const Uuid().v4(),
-      name: nameController.text,
-      amount: int.parse(amountController.text),
-      price: double.parse(priceController.text),
+      name: nameController,
+      amount: int.parse(amountController),
+      price: double.parse(priceController),
     );
 
     if (editableID != null) {

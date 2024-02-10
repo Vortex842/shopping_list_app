@@ -1,25 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final nameControllerProvider = StateProvider<TextEditingController>((ref) {
-  // final name = ref.watch(editableProductProviderID)?.name;
-  return TextEditingController();
-});
+final nameControllerProvider = StateProvider<String>((ref) => '');
 
-final amountControllerProvider = StateProvider<TextEditingController>((ref) {
-  // final amount = ref.watch(editableProductProviderID)?.amount;
-  return TextEditingController();
-});
+final amountControllerProvider = StateProvider<String>((ref) => '');
 
-final priceControllerProvider = StateProvider<TextEditingController>((ref) {
-  // final price = ref.watch(editableProductProviderID)?.price;
-  return TextEditingController();
-});
+final priceControllerProvider = StateProvider<String>((ref) => '');
 
-final controllerProviders = StateProvider<List<TextEditingController>>((ref) {
-  final nameController = ref.watch(nameControllerProvider);
-  final amountController = ref.watch(amountControllerProvider);
-  final priceController = ref.watch(priceControllerProvider);
-
-  return [nameController, amountController, priceController];
+final controllerProviders = StateProvider<List<StateProvider<String>>>((ref) {
+  return [
+    nameControllerProvider,
+    amountControllerProvider,
+    priceControllerProvider
+  ];
 });

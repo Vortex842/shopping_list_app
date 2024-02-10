@@ -5,5 +5,5 @@ import 'editable_text_provider.dart';
 final canDoneProvider = StateProvider<bool>((ref) {
   final controllers = ref.watch(controllerProviders);
 
-  return !controllers.any((controller) => controller.text.isEmpty);
+  return !controllers.any((providerText) => ref.read(providerText).isEmpty);
 });

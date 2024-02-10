@@ -36,12 +36,8 @@ class _ShoppingEditableText extends HookConsumerWidget {
             timer.value?.cancel();
             timer.value = Timer(
               const Duration(milliseconds: 500),
-              () {
-                callback(ref, value);
-              },
+              () => callback(ref, value),
             );
-            // controller.value = TextEditingValue(text: value);
-            // print("${textType.name}: ${debounceText.value}");
           },
           style: ref.editableText().copyWith(
                 height: 1.2,
@@ -73,13 +69,15 @@ class NameEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return _ShoppingEditableText(
-      initialText: ref.watch(nameControllerProvider).text,
+      initialText: ref.watch(nameControllerProvider),
       textType: EditableTextType.name,
       maxWidth: double.infinity,
       callback: (ref, value) {
-        ref.read(nameControllerProvider.notifier).update((controller) {
-          return TextEditingController(text: value);
-        });
+        ref.read(nameControllerProvider.notifier).update(
+          (text) {
+            return value;
+          },
+        );
       },
     );
   }
@@ -93,13 +91,15 @@ class AmountEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return _ShoppingEditableText(
-      initialText: ref.watch(amountControllerProvider).text,
+      initialText: ref.watch(amountControllerProvider),
       textType: EditableTextType.amount,
       maxWidth: ref.editableAmountWidth,
       callback: (ref, value) {
-        ref.read(amountControllerProvider.notifier).update((controller) {
-          return TextEditingController(text: value);
-        });
+        ref.read(amountControllerProvider.notifier).update(
+          (text) {
+            return value;
+          },
+        );
       },
     );
   }
@@ -113,13 +113,15 @@ class PriceEditableText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return _ShoppingEditableText(
-      initialText: ref.watch(priceControllerProvider).text,
+      initialText: ref.watch(priceControllerProvider),
       textType: EditableTextType.price,
       maxWidth: ref.editablePriceWidth,
       callback: (ref, value) {
-        ref.read(priceControllerProvider.notifier).update((controller) {
-          return TextEditingController(text: value);
-        });
+        ref.read(priceControllerProvider.notifier).update(
+          (text) {
+            return value;
+          },
+        );
       },
     );
   }
