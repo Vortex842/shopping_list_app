@@ -62,7 +62,7 @@ class _ShoppingEditableText extends HookConsumerWidget {
             contentPadding: const EdgeInsets.all(10),
             hintText: textType.txt,
             hintStyle: ref.normalText(),
-            error: onDone && ref.isEmptyController(textType)
+            error: onDone && ref.isFailController(textType)
                 ? TextScrollName(
                     text: ref.errorText(textType),
                     style: ref.normalText().copyWith(
