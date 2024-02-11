@@ -5,8 +5,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 
+import '../../providers/is_empty_textfields_provider.dart';
 import '../../providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
+import 'button_product/button_section.dart';
 
 class _ShoppingEditableText extends HookConsumerWidget {
   final String initialText;
@@ -25,6 +27,7 @@ class _ShoppingEditableText extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final timer = useState<Timer?>(null);
     final controller = useTextEditingController(text: initialText);
+    final onDone = ref.watch(onDoneProvider);
 
     return SizedBox(
       width: maxWidth,
@@ -36,7 +39,12 @@ class _ShoppingEditableText extends HookConsumerWidget {
             timer.value?.cancel();
             timer.value = Timer(
               const Duration(milliseconds: 500),
-              () => callback(ref, value),
+              () {
+                ref.read(onDoneProvider.notifier).update(
+                      (onDone) => false,
+                    );
+                callback(ref, value);
+              },
             );
           },
           style: ref.editableText().copyWith(
@@ -54,6 +62,15 @@ class _ShoppingEditableText extends HookConsumerWidget {
             contentPadding: const EdgeInsets.all(10),
             hintText: textType.txt,
             hintStyle: ref.normalText(),
+            error: onDone && ref.isEmptyController(textType)
+                ? TextScrollName(
+                    text: ref.errorText(textType),
+                    style: ref.normalText().copyWith(
+                          color: Colors.red,
+                          fontSize: 12,
+                        ),
+                  )
+                : null,
           ),
         ),
       ),

@@ -37,7 +37,8 @@ class _ButtonSectionState extends ConsumerState<ButtonSection>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextScrollName(
-                    nameProduct: widget.product.name,
+                    text: widget.product.name,
+                    style: ref.nameText(),
                   ),
                   Text(
                     "\$${widget.product.price.toStringAsFixed(2)}",
@@ -66,25 +67,27 @@ class _ButtonSectionState extends ConsumerState<ButtonSection>
 }
 
 class TextScrollName extends ConsumerWidget {
-  final String nameProduct;
+  final String text;
+  final TextStyle style;
 
   const TextScrollName({
     super.key,
-    required this.nameProduct,
+    required this.text,
+    required this.style,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TextScroll(
-      nameProduct,
+      text,
       pauseBetween: const Duration(milliseconds: 5000),
-      pauseOnBounce: const Duration(milliseconds: 500),
-      velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+      pauseOnBounce: const Duration(milliseconds: 1000),
+      velocity: const Velocity(pixelsPerSecond: Offset(20, 0)),
       mode: TextScrollMode.bouncing,
       fadeBorderSide: FadeBorderSide.both,
       fadedBorder: true,
       fadedBorderWidth: 0.01,
-      style: ref.nameText(),
+      style: style,
     );
   }
 }

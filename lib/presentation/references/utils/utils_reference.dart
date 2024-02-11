@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/domain/entities/product.dart';
+import '../../enums/editable_text_type.dart';
 import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtils on WidgetRef {
@@ -31,5 +32,16 @@ extension ShoppingUtils on WidgetRef {
     scrollController.jumpTo(
       scrollController.position.maxScrollExtent,
     );
+  }
+
+  String errorText(EditableTextType textType) {
+    switch (textType) {
+      case EditableTextType.name:
+        return 'Ingresa el nombre del producto';
+      case EditableTextType.amount:
+        return 'Ingresa una cantidad valida';
+      case EditableTextType.price:
+        return 'Ingresa un precio valido';
+    }
   }
 }
