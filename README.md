@@ -3,22 +3,26 @@
 La **Shopping List App** te permite organizar tus compras de manera clara. Puedes visualizar y gestionar tus productos, ya sea marcándolos como comprados o manteniéndolos en tu lista pendiente. Además, tienes la opción de borrar la lista completa o solo los productos marcados.
 
 ### TODO
-* [ ] Additional:
+* [ ] ADDITIONAL:
   * [ ] Order of ascendant/descendant products for name
   * [ ] Filter for all/checked/unchecked
   * [ ] Pop sound on tap button for his checking
   * [ ] History shops
-* [✅] Major:
+* [✅] IMPLEMENTS:
   * [✅] Error messages for Text Fields
   * [✅] Focus on Text Field 'nameController'
   * [✅] Checking button with onTap
   * [✅] ClipRRect for TextFields
   * [✅] Strings and useTextEditingControllers for TextFields to performance
-* [✅] Fix:
+  * [ ] Filter Section
+  * [ ] Menu animation section
+* [✅] FIX:
   * [✅] Colors of confirm/cancel buttons in dark mode
   * [✅] Corners of button section for color bg
   * [✅] Don´t put negative values in Amount and Price
   * [✅] Delay for Scrollable Text
+  * [✅] Width of error messages for TextFields
+  * [✅] Disable error messages for TextFields
 
 ## Funcionalidades Principales
 * **Implementación**

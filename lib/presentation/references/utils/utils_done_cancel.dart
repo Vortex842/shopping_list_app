@@ -1,11 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 import 'utils_add_edit.dart';
 import 'utils_reference.dart';
 
 extension ShoppingUtilsDoneCancel on WidgetRef {
   void closeAddEditSection() {
+    read(onDoneProvider.notifier).update((onDone) => false);
     read(productsProvider.notifier).uncheckAll();
     read(editableProductProviderID.notifier).update((state) => null);
     read(onAddEditProvider.notifier).update((state) => false);

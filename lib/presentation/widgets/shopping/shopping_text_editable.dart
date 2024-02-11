@@ -8,7 +8,6 @@ import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
-import 'button_product/button_section.dart';
 
 class _ShoppingEditableText extends HookConsumerWidget {
   final String initialText;
@@ -29,51 +28,53 @@ class _ShoppingEditableText extends HookConsumerWidget {
     final controller = useTextEditingController(text: initialText);
     final onDone = ref.watch(onDoneProvider);
 
-    return SizedBox(
-      width: maxWidth,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: TextField(
-          controller: controller,
-          onChanged: (value) {
-            timer.value?.cancel();
-            timer.value = Timer(
-              const Duration(milliseconds: 500),
-              () {
-                ref.read(onDoneProvider.notifier).update(
-                      (onDone) => false,
-                    );
-                callback(ref, value);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: maxWidth,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: TextField(
+              controller: controller,
+              onChanged: (value) {
+                timer.value?.cancel();
+                timer.value = Timer(
+                  const Duration(milliseconds: 500),
+                  () {
+                    ref.read(onDoneProvider.notifier).update(
+                          (onDone) => false,
+                        );
+                    callback(ref, value);
+                  },
+                );
               },
-            );
-          },
-          style: ref.editableText().copyWith(
-                height: 1.2,
+              style: ref.editableText().copyWith(height: 1.2),
+              cursorHeight: 18,
+              cursorColor: ref.foregroundColor(),
+              keyboardType: textType == EditableTextType.name
+                  ? TextInputType.text
+                  : TextInputType.number,
+              decoration: InputDecoration(
+                isDense: true,
+                fillColor: ref.editableTextColor(),
+                filled: true,
+                contentPadding: const EdgeInsets.all(10),
+                hintText: textType.txt,
+                hintStyle: ref.normalText(),
               ),
-          cursorHeight: 18,
-          cursorColor: ref.foregroundColor(),
-          keyboardType: textType == EditableTextType.name
-              ? TextInputType.text
-              : TextInputType.number,
-          decoration: InputDecoration(
-            isDense: true,
-            fillColor: ref.editableTextColor(),
-            filled: true,
-            contentPadding: const EdgeInsets.all(10),
-            hintText: textType.txt,
-            hintStyle: ref.normalText(),
-            error: onDone && ref.isFailController(textType)
-                ? TextScrollName(
-                    text: ref.errorText(textType),
-                    style: ref.normalText().copyWith(
-                          color: Colors.red,
-                          fontSize: 12,
-                        ),
-                  )
-                : null,
+            ),
           ),
         ),
-      ),
+        if (onDone && ref.isFailController(textType))
+          Text(
+            ref.errorText(textType),
+            style: ref.normalText().copyWith(
+                  color: Colors.red,
+                  fontSize: 12,
+                ),
+          ),
+      ],
     );
   }
 }

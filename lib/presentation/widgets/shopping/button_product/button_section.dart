@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:text_scroll/text_scroll.dart';
 
 import '../../../../data/domain/entities/product.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
+import '../scrollable_text.dart';
 
 class ButtonSection extends ConsumerStatefulWidget {
   final Product product;
@@ -36,7 +36,7 @@ class _ButtonSectionState extends ConsumerState<ButtonSection>
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextScrollName(
+                  ScrollableText(
                     text: widget.product.name,
                     style: ref.nameText(),
                   ),
@@ -64,30 +64,4 @@ class _ButtonSectionState extends ConsumerState<ButtonSection>
 
   @override
   bool get wantKeepAlive => true;
-}
-
-class TextScrollName extends ConsumerWidget {
-  final String text;
-  final TextStyle style;
-
-  const TextScrollName({
-    super.key,
-    required this.text,
-    required this.style,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return TextScroll(
-      text,
-      pauseBetween: const Duration(milliseconds: 5000),
-      pauseOnBounce: const Duration(milliseconds: 1000),
-      velocity: const Velocity(pixelsPerSecond: Offset(20, 0)),
-      mode: TextScrollMode.bouncing,
-      fadeBorderSide: FadeBorderSide.both,
-      fadedBorder: true,
-      fadedBorderWidth: 0.01,
-      style: style,
-    );
-  }
 }
