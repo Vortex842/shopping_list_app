@@ -8,13 +8,17 @@ import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtilsAddEdit on WidgetRef {
   bool isEmptyController(EditableTextType textType) {
+    final name = read(nameControllerProvider);
+    final amount = read(amountControllerProvider);
+    final price = read(priceControllerProvider);
+
     switch (textType) {
       case EditableTextType.name:
-        return read(nameControllerProvider).isEmpty;
+        return name.isEmpty;
       case EditableTextType.amount:
-        return read(amountControllerProvider).isEmpty;
+        return amount.isEmpty && (int.parse(amount) > 0);
       case EditableTextType.price:
-        return read(priceControllerProvider).isEmpty;
+        return price.isEmpty && (double.parse(price) > 0);
     }
   }
 

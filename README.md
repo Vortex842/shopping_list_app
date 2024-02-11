@@ -8,16 +8,16 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [ ] Filter for all/checked/unchecked
   * [ ] Pop sound on tap button for his checking
   * [ ] History shops
-* [ ] Major:
-  * [ ] Error messages for Text Fields
+* [✅] Major:
+  * [✅] Error messages for Text Fields
   * [✅] Focus on Text Field 'nameController'
   * [✅] Checking button with onTap
   * [✅] ClipRRect for TextFields
   * [✅] Strings and useTextEditingControllers for TextFields to performance
-* [ ] Fix:
+* [✅] Fix:
   * [✅] Colors of confirm/cancel buttons in dark mode
   * [✅] Corners of button section for color bg
-  * [ ] Don´t put negative values in Amount and Price
+  * [✅] Don´t put negative values in Amount and Price
   * [✅] Delay for Scrollable Text
 
 ## Funcionalidades Principales
