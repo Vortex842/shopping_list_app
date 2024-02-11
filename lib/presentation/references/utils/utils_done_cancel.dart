@@ -12,7 +12,7 @@ extension ShoppingUtilsDoneCancel on WidgetRef {
   }
 
   void toDoneProduct() {
-    if (checkNonEmptyTextFields()) {
+    if (!checkEmptyTextFields()) {
       toAddEdit();
 
       scrollToFinal();

@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
-import 'package:shopping_list_app/presentation/providers/is_empty_textfields_provider.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../data/domain/entities/product.dart';
+import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtilsAddEdit on WidgetRef {
@@ -20,29 +18,14 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     }
   }
 
-  bool checkNonEmptyTextFields() {
-    final nameController = read(nameControllerProvider);
-    final amountController = read(amountControllerProvider);
-    final priceController = read(priceControllerProvider);
-
+  bool checkEmptyTextFields() {
     read(onDoneProvider.notifier).update((onDone) => true);
 
-    if (nameController.isEmpty) {
-      log("Debe ingresar un nombre");
-      return false;
-    }
-
-    if (amountController.isEmpty) {
-      log("Debe ingresar una cantidad");
-      return false;
-    }
-
-    if (priceController.isEmpty) {
-      log("Debe ingresar un precio");
-      return false;
-    }
-
-    return true;
+    return read(controllerProviders).any(
+      (providerText) {
+        return read(providerText).isEmpty;
+      },
+    );
   }
 
   void toAddEdit() {
