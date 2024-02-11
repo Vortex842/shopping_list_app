@@ -5,11 +5,7 @@ import 'presentation/providers/size_screen_inherited.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
-void main() {
-  // debugRepaintTextRainbowEnabled = true;
-
-  runApp(const ProviderScope(child: MainApp()));
-}
+void main() => runApp(const ProviderScope(child: MainApp()));
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});
