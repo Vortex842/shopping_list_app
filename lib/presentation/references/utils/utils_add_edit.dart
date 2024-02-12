@@ -12,14 +12,11 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     final amount = read(amountControllerProvider);
     final price = read(priceControllerProvider);
 
-    switch (textType) {
-      case EditableTextType.name:
-        return name.isEmpty;
-      case EditableTextType.amount:
-        return amount.isEmpty || (int.parse(amount) < 0);
-      case EditableTextType.price:
-        return price.isEmpty || (double.parse(price) < 0);
-    }
+    return textType.returnType(
+      name.isEmpty,
+      amount.isEmpty || (int.parse(amount) < 0),
+      price.isEmpty || (double.parse(price) < 0),
+    );
   }
 
   bool checkEmptyTextFields() {

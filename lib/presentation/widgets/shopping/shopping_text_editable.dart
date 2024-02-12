@@ -28,6 +28,8 @@ class _ShoppingEditableText extends HookConsumerWidget {
     final controller = useTextEditingController(text: initialText);
     final onDone = ref.watch(onDoneProvider);
 
+    bool anyErrorMessage = onDone && ref.isFailController(textType);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,15 +68,28 @@ class _ShoppingEditableText extends HookConsumerWidget {
             ),
           ),
         ),
-        if (onDone && ref.isFailController(textType))
-          Text(
-            ref.errorText(textType),
-            style: ref.normalText().copyWith(
-                  color: Colors.red,
-                  fontSize: 12,
-                ),
-          ),
+        if (anyErrorMessage) ErrorMessageText(textType: textType),
       ],
+    );
+  }
+}
+
+class ErrorMessageText extends ConsumerWidget {
+  const ErrorMessageText({
+    super.key,
+    required this.textType,
+  });
+
+  final EditableTextType textType;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Text(
+      ref.errorText(textType),
+      style: ref.normalText().copyWith(
+            color: Colors.red,
+            fontSize: 12,
+          ),
     );
   }
 }
@@ -92,10 +107,8 @@ class NameEditableText extends ConsumerWidget {
       maxWidth: double.infinity,
       callback: (ref, value) {
         ref.read(nameControllerProvider.notifier).update(
-          (text) {
-            return value;
-          },
-        );
+              (text) => value,
+            );
       },
     );
   }
@@ -114,10 +127,8 @@ class AmountEditableText extends ConsumerWidget {
       maxWidth: ref.editableAmountWidth,
       callback: (ref, value) {
         ref.read(amountControllerProvider.notifier).update(
-          (text) {
-            return value;
-          },
-        );
+              (text) => value,
+            );
       },
     );
   }
@@ -136,10 +147,8 @@ class PriceEditableText extends ConsumerWidget {
       maxWidth: ref.editablePriceWidth,
       callback: (ref, value) {
         ref.read(priceControllerProvider.notifier).update(
-          (text) {
-            return value;
-          },
-        );
+              (text) => value,
+            );
       },
     );
   }

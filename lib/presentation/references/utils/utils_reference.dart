@@ -35,13 +35,12 @@ extension ShoppingUtils on WidgetRef {
   }
 
   String errorText(EditableTextType textType) {
-    switch (textType) {
-      case EditableTextType.name:
-        return 'Ingresa el nombre del producto';
-      case EditableTextType.amount:
-        return 'Ingresa una cantidad valida';
-      case EditableTextType.price:
-        return 'Ingresa un precio valido';
-    }
+    return textType.returnType(
+      'Ingresa el nombre del producto',
+      'Ingresa una cantidad valida',
+      'Ingresa un precio valido',
+    );
   }
 }
+
+extension ShoppingFunctions on WidgetRef {}
