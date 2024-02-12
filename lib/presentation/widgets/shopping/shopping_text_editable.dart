@@ -38,24 +38,10 @@ class _ShoppingEditableText extends HookConsumerWidget {
             child: TextField(
               controller: controller,
               onChanged: (value) {
-                timer.value?.cancel();
-                timer.value = Timer(
-                  const Duration(milliseconds: 500),
-                  () {
-                    ref.read(onDoneProvider.notifier).update(
-                          (onDone) => false,
-                        );
-
-                    ref
-                        .read(textType
-                            .returnType(
-                              nameControllerProvider,
-                              amountControllerProvider,
-                              priceControllerProvider,
-                            )
-                            .notifier)
-                        .update((text) => value);
-                  },
+                ref.updateTextControllers(
+                  timer: timer.value,
+                  value: value,
+                  textType: textType,
                 );
               },
               style: ref.editableText().copyWith(height: 1.2),

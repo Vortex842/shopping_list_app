@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/domain/entities/product.dart';
 import '../../enums/editable_text_type.dart';
+import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtils on WidgetRef {
@@ -43,4 +46,29 @@ extension ShoppingUtils on WidgetRef {
   }
 }
 
-extension ShoppingFunctions on WidgetRef {}
+extension ShoppingFunctions on WidgetRef {
+  void updateTextControllers({
+    required Timer? timer,
+    required String value,
+    required EditableTextType textType,
+  }) {
+    timer?.cancel();
+    timer = Timer(
+      const Duration(milliseconds: 500),
+      () {
+        read(onDoneProvider.notifier).update(
+          (onDone) => false,
+        );
+
+        read(textType
+                .returnType(
+                  nameControllerProvider,
+                  amountControllerProvider,
+                  priceControllerProvider,
+                )
+                .notifier)
+            .update((text) => value);
+      },
+    );
+  }
+}
