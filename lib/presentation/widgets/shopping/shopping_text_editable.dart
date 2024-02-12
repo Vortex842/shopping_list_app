@@ -57,6 +57,7 @@ class _ShoppingEditableText extends HookConsumerWidget {
                 contentPadding: const EdgeInsets.all(10),
                 hintText: textType.txt,
                 hintStyle: ref.normalText(),
+                error: anyErrorMessage ? const SizedBox() : null,
               ),
             ),
           ),
