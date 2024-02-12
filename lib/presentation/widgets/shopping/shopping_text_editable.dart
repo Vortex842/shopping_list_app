@@ -13,13 +13,11 @@ class _ShoppingEditableText extends HookConsumerWidget {
   final String initialText;
   final EditableTextType textType;
   final double maxWidth;
-  final void Function(WidgetRef ref, String value) callback;
 
   const _ShoppingEditableText({
     required this.initialText,
     required this.textType,
     required this.maxWidth,
-    required this.callback,
   });
 
   @override
@@ -47,7 +45,16 @@ class _ShoppingEditableText extends HookConsumerWidget {
                     ref.read(onDoneProvider.notifier).update(
                           (onDone) => false,
                         );
-                    callback(ref, value);
+
+                    ref
+                        .read(textType
+                            .returnType(
+                              nameControllerProvider,
+                              amountControllerProvider,
+                              priceControllerProvider,
+                            )
+                            .notifier)
+                        .update((text) => value);
                   },
                 );
               },
@@ -105,11 +112,6 @@ class NameEditableText extends ConsumerWidget {
       initialText: ref.watch(nameControllerProvider),
       textType: EditableTextType.name,
       maxWidth: double.infinity,
-      callback: (ref, value) {
-        ref.read(nameControllerProvider.notifier).update(
-              (text) => value,
-            );
-      },
     );
   }
 }
@@ -125,11 +127,6 @@ class AmountEditableText extends ConsumerWidget {
       initialText: ref.watch(amountControllerProvider),
       textType: EditableTextType.amount,
       maxWidth: ref.editableAmountWidth,
-      callback: (ref, value) {
-        ref.read(amountControllerProvider.notifier).update(
-              (text) => value,
-            );
-      },
     );
   }
 }
@@ -145,11 +142,6 @@ class PriceEditableText extends ConsumerWidget {
       initialText: ref.watch(priceControllerProvider),
       textType: EditableTextType.price,
       maxWidth: ref.editablePriceWidth,
-      callback: (ref, value) {
-        ref.read(priceControllerProvider.notifier).update(
-              (text) => value,
-            );
-      },
     );
   }
 }
