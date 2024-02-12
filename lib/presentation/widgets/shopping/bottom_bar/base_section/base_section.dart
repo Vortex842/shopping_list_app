@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/base_section/buttons_bottombar.barrel.dart';
+
+import 'buttons_bottombar.barrel.dart';
 
 class BaseSection extends StatelessWidget {
   const BaseSection({

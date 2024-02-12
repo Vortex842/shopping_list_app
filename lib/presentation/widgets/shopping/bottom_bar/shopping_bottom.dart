@@ -18,6 +18,8 @@ class ShoppingBottom extends ConsumerWidget {
     final onProductDelete = ref.watch(onProductDeleteProvider);
     final sizeScreen = SizeScreenInherited.of(context)!.sizeScreen;
 
+    bool multiSelected = onMultiSelect && !onAddEdit && !onProductDelete;
+
     return Container(
       width: double.infinity,
       height: sizeScreen!.height * ref.bottomHeightPercent(onAddEdit),
@@ -29,7 +31,7 @@ class ShoppingBottom extends ConsumerWidget {
             horizontal: 10,
             vertical: 10,
           ),
-          child: onMultiSelect && !onAddEdit && !onProductDelete
+          child: multiSelected
               ? const MultiSelectSection()
               : onAddEdit
                   ? const AddEditSection()

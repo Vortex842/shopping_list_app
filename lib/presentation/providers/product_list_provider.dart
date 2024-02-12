@@ -4,7 +4,7 @@ import '../../data/domain/entities/product.dart';
 
 final productsProvider =
     StateNotifierProvider<ProductNotifier, List<Product>>((ref) {
-  return ProductNotifier(); // Se devuelde la creacion de la instancia de "TodosNotifier"
+  return ProductNotifier();
 });
 
 final onMultiSelectProvider = StateProvider<bool>((ref) {
@@ -21,17 +21,18 @@ final onMultiSelectProvider = StateProvider<bool>((ref) {
 
 class ProductNotifier extends StateNotifier<List<Product>> {
   ProductNotifier() : super(List.empty());
-  // : super(
-  //     List.generate(
-  //       15,
-  //       (index) => Product(
-  //         id: const Uuid().v4(),
-  //         name: "Producto ${index + 1}",
-  //         price: index * 10.33,
-  //         amount: index,
-  //       ),
-  //     ),
-  //   );
+  // ProductNotifier()
+  //     : super(
+  //         List.generate(
+  //           15,
+  //           (index) => Product(
+  //             id: const Uuid().v4(),
+  //             name: "Producto ${index + 1}",
+  //             price: index * 10.33,
+  //             amount: index,
+  //           ),
+  //         ),
+  //       );
 
   void addProduct(Product product) {
     state = [...state, product];
@@ -57,10 +58,6 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     ];
   }
 
-  Product? findById(String id) {
-    return state.where((p) => p.id == id).first;
-  }
-
   void toggleCheck(String id) {
     state = [
       ...state.map((p) => p.id == id ? p.copyWith(isChecked: !p.isChecked) : p),
@@ -77,5 +74,19 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     state = [
       ...state.map((p) => p.isChecked ? p.copyWith(isChecked: false) : p),
     ];
+  }
+
+  double getTotalCost() {
+    if (state.any((p) => p.isChecked)) {
+      return double.parse(
+        state
+            .where((p) => p.isChecked)
+            .map((p) => p.amount * p.price)
+            .reduce((acum, actual) => acum + actual)
+            .toStringAsFixed(4),
+      );
+    }
+
+    return 0;
   }
 }

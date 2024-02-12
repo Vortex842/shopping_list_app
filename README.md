@@ -14,6 +14,7 @@ La **Shopping List App** te permite organizar tus compras de manera clara. Puede
   * [✅] Checking button with onTap
   * [✅] ClipRRect for TextFields
   * [✅] Strings and useTextEditingControllers for TextFields to performance
+  * [ ] Total cost section
   * [ ] Filter Section
   * [ ] Menu animation section
 * [✅] FIX:
