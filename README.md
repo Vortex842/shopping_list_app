@@ -5,7 +5,8 @@ The **Shopping List** application allows you to organize your purchases in a cle
 ## Add product
 <img src="ShoppingList_video_AddProduct.gif" width="240" height="460"/>
 
-## Edit and delete product<img src="ShoppingList_video_EditDeleteProduct.gif" width="240" height="460"/>
+## Edit and delete product
+<img src="ShoppingList_video_EditDeleteProduct.gif" width="240" height="460"/>
 
 ## Multiselect, deselect, and delete products
 <img src="ShoppingList_video_MultiSelectProducts.gif" width="240" height="460"/>
