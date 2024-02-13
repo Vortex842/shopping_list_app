@@ -2,9 +2,19 @@
 
 La aplicacion **Shopping List** te permite organizar tus compras de manera clara. Puedes visualizar y gestionar tus productos, ya sea marcándolos como comprados o manteniéndolos en tu lista de pendientes. Además, tienes la opción de borrar la lista completa o solo los productos marcados.
 
-## Pasos para Ejecutar la Aplicación
+## Add product
+<video controls src="assets/ShoppingList_video_AddProduct.mp4" title="Add product"></video>
 
-Clona el repositorio.
+## Edit and delete product
+<video controls src="assets/ShoppingList_video_DeleteEditProduct.mp4" title="Edit and delete product"></video>
+
+## Multiselect, deselect and delete products
+
+## Pasos para Ejecutar la Aplicación
+<video controls src="assets/ShoppingList_video_MultiSelectProducts.mp4" title="Multiselect, deselect and delete products"></video>
+
+
+## Clona el repositorio.
    ```bash
    git clone https://github.com/Vortex842/shopping_list_app
    ```
