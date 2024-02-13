@@ -9,12 +9,10 @@ La aplicacion **Shopping List** te permite organizar tus compras de manera clara
 <video controls src="assets/ShoppingList_video_DeleteEditProduct.mp4" title="Edit and delete product"></video>
 
 ## Multiselect, deselect and delete products
-
-## Pasos para Ejecutar la Aplicación
 <video controls src="assets/ShoppingList_video_MultiSelectProducts.mp4" title="Multiselect, deselect and delete products"></video>
 
-
-## Clona el repositorio.
+## Pasos para Ejecutar la Aplicación
+Clona el repositorio.
    ```bash
    git clone https://github.com/Vortex842/shopping_list_app
    ```
