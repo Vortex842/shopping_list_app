@@ -1,26 +1,26 @@
 # Shopping List App
 
-La aplicacion **Shopping List** te permite organizar tus compras de manera clara. Puedes visualizar y gestionar tus productos, ya sea marcándolos como comprados o manteniéndolos en tu lista de pendientes. Además, tienes la opción de borrar la lista completa o solo los productos marcados.
+The **Shopping List** application allows you to organize your purchases in a clear way. You can view and manage your products, either by marking them as purchased or keeping them on your pending list. Additionally, you have the option to delete the entire list or only the marked products.
 
 ## Add product
-<video controls src="ShoppingList_video_AddProduct.mp4" title="Add product"></video>
+![Add product](ShoppingList_video_AddProduct.gif)
 
 ## Edit and delete product
-<video controls src="ShoppingList_video_DeleteEditProduct.mp4" title="Edit and delete product"></video>
+![Edit and delete individual product](ShoppingList_video_DeleteEditProduct.gif)
 
-## Multiselect, deselect and delete products
-<video controls src="ShoppingList_video_MultiSelectProducts.mp4" title="Multiselect, deselect and delete products"></video>
+## Multiselect, deselect, and delete products
+![Multiselect, deselect and delete products](ShoppingList_video_MultiSelectProducts.gif)
 
-## Pasos para Ejecutar la Aplicación
-Clona el repositorio.
+## Steps to Run the Application
+Clone the repository.
    ```bash
    git clone https://github.com/Vortex842/shopping_list_app
    ```
 
-## Contribuciones
-¡Las contribuciones son bienvenidas! Si deseas contribuir al proyecto, sigue estos pasos:
+## Contributions
+Contributions are welcome! If you want to contribute to the project, follow these steps:
 
-1. Haz un fork del proyecto.
-2. Crea una rama para tus cambios.
-3. Realiza las modificaciones.
-4. Envía un pull request.
+1. Fork the project.
+2. Create a branch for your changes.
+3. Make the modifications.
+4. Submit a pull request.
