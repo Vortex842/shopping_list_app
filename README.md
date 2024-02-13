@@ -3,13 +3,13 @@
 The **Shopping List** application allows you to organize your purchases in a clear way. You can view and manage your products, either by marking them as purchased or keeping them on your pending list. Additionally, you have the option to delete the entire list or only the marked products.
 
 ## Add product
-![Add product](ShoppingList_video_AddProduct.gif)
+<img src="ShoppingList_video_AddProduct.gif" width="240" height="460"/>
 
-## Edit and delete product
-![Edit and delete individual product](ShoppingList_video_DeleteEditProduct.gif)
+## Edit and delete product<img src="ShoppingList_video_EditDeleteProduct.gif" width="240" height="460"/>
 
 ## Multiselect, deselect, and delete products
-![Multiselect, deselect and delete products](ShoppingList_video_MultiSelectProducts.gif)
+<img src="ShoppingList_video_MultiSelectProducts.gif" width="240" height="460"/>
+
 
 ## Steps to Run the Application
 Clone the repository.
