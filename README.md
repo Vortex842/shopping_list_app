@@ -11,6 +11,11 @@ The **Shopping List** application allows you to organize your purchases in a cle
 ## Multiselect, deselect, and delete products
 <img src="ShoppingList_video_MultiSelectProducts.gif" width="240" height="460"/>
 
+## Next updates
+* [ ] Side menu animated
+* [ ] Filter section for products
+* [ ] History section for previous shopping lists
+* [ ] Pop sound on tap button for his checking
 
 ## Steps to Run the Application
 Clone the repository.
