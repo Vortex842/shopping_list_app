@@ -75,7 +75,7 @@ extension ShoppingDecoration on WidgetRef {
         color: cardColor(),
       );
 
-  ButtonStyle buttonConfirmCancelStyle(bool isConfirm) => ButtonStyle(
+  ButtonStyle textButtonStyle(bool isConfirm) => ButtonStyle(
         padding: const MaterialStatePropertyAll(
           EdgeInsets.symmetric(horizontal: 12),
         ),

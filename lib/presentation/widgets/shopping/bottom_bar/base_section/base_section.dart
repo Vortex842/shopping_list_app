@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 import '/presentation/providers/providers.barrel.dart';
+import '/presentation/references/decoration_reference.dart';
 import '/presentation/references/size_reference.dart';
 
 class BaseSection extends ConsumerWidget {
@@ -16,6 +17,7 @@ class BaseSection extends ConsumerWidget {
       child: SizedBox(
         height: ref.buttonAddProductHeight,
         child: TextButton(
+          style: ref.textButtonStyle(true),
           onPressed: () {
             // ADD PRODUCT BUTTON
             ref.read(onAddEditProvider.notifier).update((state) => true);

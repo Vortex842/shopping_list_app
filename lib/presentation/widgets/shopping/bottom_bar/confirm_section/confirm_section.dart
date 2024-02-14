@@ -16,7 +16,7 @@ class ConfirmSection extends ConsumerWidget {
           spacing: 10,
           children: [
             ElevatedButton(
-              style: ref.buttonConfirmCancelStyle(true),
+              style: ref.textButtonStyle(true),
               onPressed: () {
                 ref.read(productsProvider.notifier).deleteProductsSelected();
                 ref.whenConfirmCancel();
@@ -24,7 +24,7 @@ class ConfirmSection extends ConsumerWidget {
               child: const Text("Aceptar"),
             ),
             TextButton(
-              style: ref.buttonConfirmCancelStyle(false),
+              style: ref.textButtonStyle(false),
               onPressed: () {
                 ref.whenConfirmCancel();
               },
