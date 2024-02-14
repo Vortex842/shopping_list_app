@@ -27,10 +27,7 @@ class MainApp extends ConsumerWidget {
               body: const Column(
                 children: [
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 10),
-                      child: ShoppingBody(),
-                    ),
+                    child: ShoppingBody(),
                   ),
                   ShoppingBottom(),
                 ],
