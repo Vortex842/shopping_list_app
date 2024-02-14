@@ -8,5 +8,4 @@ export 'on_confirm_delete_provider.dart';
 export 'on_done_provider.dart';
 export 'product_list_provider.dart';
 export 'scroll_controller_provider.dart';
-export 'size_screen_inherited.dart';
 export 'total_cost_provider.dart';

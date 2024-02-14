@@ -15,7 +15,6 @@ class ShoppingBottom extends ConsumerWidget {
     final onMultiSelect = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
     final onProductDelete = ref.watch(onProductDeleteProvider);
-    // final sizeScreen = SizeScreenInherited.of(context)!.sizeScreen;
 
     bool multiSelected = onMultiSelect && !onAddEdit && !onProductDelete;
 
