@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/confirm_section/confirm_section.dart';
 
 import '../../../providers/providers.barrel.dart';
@@ -18,20 +19,23 @@ class ShoppingBottom extends ConsumerWidget {
 
     bool multiSelected = onMultiSelect && !onAddEdit && !onProductDelete;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 15,
-      ),
-      child: SizedBox(
-        width: double.infinity,
-        child: multiSelected
-            ? const MultiSelectSection()
-            : onAddEdit
-                ? const AddEditSection()
-                : onProductDelete
-                    ? const ConfirmSection()
-                    : const BaseSection(),
+    return SizedBox(
+      height: ref.bottomHeight(onAddEdit),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 15,
+        ),
+        child: SizedBox(
+          width: double.infinity,
+          child: multiSelected
+              ? const MultiSelectSection()
+              : onAddEdit
+                  ? const AddEditSection()
+                  : onProductDelete
+                      ? const ConfirmSection()
+                      : const BaseSection(),
+        ),
       ),
     );
   }
