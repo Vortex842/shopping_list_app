@@ -16,16 +16,18 @@ class MainApp extends ConsumerWidget {
         fontFamily: 'ShoppingFont',
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: ref.pageColor(),
-        appBar: const ShoppingAppBar(),
-        body: const Column(
-          children: [
-            Expanded(
-              child: ShoppingBody(),
-            ),
-            ShoppingBottom(),
-          ],
+      home: SafeArea(
+        child: Scaffold(
+          backgroundColor: ref.pageColor(),
+          appBar: const ShoppingAppBar(),
+          body: const Column(
+            children: [
+              Expanded(
+                child: ShoppingBody(),
+              ),
+              ShoppingBottom(),
+            ],
+          ),
         ),
       ),
     );
