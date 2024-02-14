@@ -54,13 +54,14 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
                   );
             }
           : null,
-      child: Container(
-        height: ref.buttonProductHeight,
-        decoration: ref.buttonBackgroundDecoration(
-          actionType: buttonAction.value,
-        ),
-        child: ClipRRect(
-          borderRadius: ref.buttonRadius,
+      child: ClipRRect(
+        borderRadius: ref.buttonRadius,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Container(
+          height: ref.buttonProductHeight,
+          decoration: ref.buttonBackgroundDecoration(
+            actionType: buttonAction.value,
+          ),
           child: Stack(
             children: [
               Align(

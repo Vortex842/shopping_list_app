@@ -21,8 +21,7 @@ extension ShoppingDecoration on WidgetRef {
       ];
 
   BorderRadius get cardRadius => BorderRadius.circular(30);
-  BorderRadius get buttonRadius => BorderRadius.circular(18);
-  Radius get nothingRadius => const Radius.circular(0);
+  BorderRadius get buttonRadius => BorderRadius.circular(20);
 
   BoxDecoration bodyDecoration(bool isDark) => BoxDecoration(
         color: cardColor(),
@@ -42,11 +41,11 @@ extension ShoppingDecoration on WidgetRef {
         break;
       case ButtonActionType.edit:
         color = editIconColor(false);
-        borderRadius = BorderRadius.circular(22);
+        borderRadius = BorderRadius.circular(20);
         break;
       case ButtonActionType.delete:
         color = deleteIconColor(false);
-        borderRadius = BorderRadius.circular(22);
+        borderRadius = BorderRadius.circular(20);
         break;
       case ButtonActionType.select:
         color = selectIconColor(false);
@@ -56,7 +55,7 @@ extension ShoppingDecoration on WidgetRef {
 
     return BoxDecoration(
       color: color,
-      boxShadow: shadows,
+      // boxShadow: shadows,
       borderRadius: borderRadius,
     );
   }
@@ -65,14 +64,6 @@ extension ShoppingDecoration on WidgetRef {
         color: buttonColor(),
         boxShadow: shadows,
         borderRadius: buttonRadius,
-      );
-  BoxDecoration bottomDecoration() => BoxDecoration(
-        boxShadow: shadows,
-        borderRadius: cardRadius.copyWith(
-          bottomLeft: nothingRadius,
-          bottomRight: nothingRadius,
-        ),
-        color: cardColor(),
       );
 
   ButtonStyle textButtonStyle(bool isConfirm) => ButtonStyle(
