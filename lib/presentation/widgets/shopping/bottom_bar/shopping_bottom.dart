@@ -24,7 +24,7 @@ class ShoppingBottom extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 10,
-          vertical: 15,
+          vertical: 10,
         ),
         child: SizedBox(
           width: double.infinity,

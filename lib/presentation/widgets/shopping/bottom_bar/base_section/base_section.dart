@@ -14,9 +14,7 @@ class BaseSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: SizedBox(
-        // height: ,
         height: ref.buttonAddProductHeight,
-
         child: ElevatedButton(
           onPressed: () {
             // ADD PRODUCT BUTTON
