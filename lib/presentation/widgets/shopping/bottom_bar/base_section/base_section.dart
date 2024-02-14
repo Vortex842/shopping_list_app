@@ -15,7 +15,7 @@ class BaseSection extends ConsumerWidget {
     return Center(
       child: SizedBox(
         height: ref.buttonAddProductHeight,
-        child: ElevatedButton(
+        child: TextButton(
           onPressed: () {
             // ADD PRODUCT BUTTON
             ref.read(onAddEditProvider.notifier).update((state) => true);
