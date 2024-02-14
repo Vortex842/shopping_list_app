@@ -32,31 +32,25 @@ extension ShoppingDecoration on WidgetRef {
     ButtonActionType actionType = ButtonActionType.none,
   }) {
     Color color;
-    BorderRadius borderRadius;
 
     switch (actionType) {
       case ButtonActionType.none:
         color = buttonColor();
-        borderRadius = buttonRadius;
         break;
       case ButtonActionType.edit:
         color = editIconColor(false);
-        borderRadius = BorderRadius.circular(20);
         break;
       case ButtonActionType.delete:
         color = deleteIconColor(false);
-        borderRadius = BorderRadius.circular(20);
         break;
       case ButtonActionType.select:
         color = selectIconColor(false);
-        borderRadius = buttonRadius;
         break;
     }
 
     return BoxDecoration(
       color: color,
-      // boxShadow: shadows,
-      borderRadius: borderRadius,
+      borderRadius: buttonRadius,
     );
   }
 

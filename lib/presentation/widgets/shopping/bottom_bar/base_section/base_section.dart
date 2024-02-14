@@ -3,8 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 import '/presentation/providers/providers.barrel.dart';
-import '/presentation/references/decoration_reference.dart';
-import '/presentation/references/size_reference.dart';
 
 class BaseSection extends ConsumerWidget {
   const BaseSection({
@@ -15,9 +13,8 @@ class BaseSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Center(
       child: SizedBox(
-        height: ref.buttonAddProductHeight,
-        child: TextButton(
-          style: ref.textButtonStyle(true),
+        child: FloatingActionButton(
+          mini: true,
           onPressed: () {
             // ADD PRODUCT BUTTON
             ref.read(onAddEditProvider.notifier).update((state) => true);
