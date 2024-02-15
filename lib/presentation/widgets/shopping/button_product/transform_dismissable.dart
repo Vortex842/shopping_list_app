@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/is_dismissible_provider.dart';
 
 import '../../../references/utils/utils_reference.dart';
 import '/data/domain/entities/product.dart';
@@ -43,21 +44,19 @@ class DismissibleButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onMultiSelect = ref.watch(onMultiSelectProvider);
-    final onAddEdit = ref.watch(onAddEditProvider);
+    final isDismissible = ref.watch(isDismissibleProvider);
 
     return Dismissible(
       key: Key(product.id),
-      direction: onMultiSelect || onAddEdit
-          ? DismissDirection.none
-          : DismissDirection.horizontal,
+      direction:
+          !isDismissible ? DismissDirection.none : DismissDirection.horizontal,
       confirmDismiss: (direction) async {
         ref.read(productsProvider.notifier).toggleCheck(
               product.id,
             );
 
         if (direction == DismissDirection.endToStart) {
-          ref.read(onProductDeleteProvider.notifier).update(
+          ref.read(onConfirmCancelProvider.notifier).update(
                 (state) => true,
               );
 
