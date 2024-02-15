@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:shopping_list_app/presentation/providers/on_change_states/on_change.barrel.dart';
 
 import '../../providers/dark_mode_provider.dart';
 import '../../providers/product/product.barrel.dart';
@@ -46,22 +45,20 @@ class IconShopCart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final productsOnCart = ref.watch(productsCartProvider);
+
     return IconButton(
-      onPressed: () {
-        final onAddEdit = ref.read(onAddEditProvider);
-
-        if (!onAddEdit) {
-          ref.read(onAddCartProvider.notifier).update((state) => !state);
-          ref.read(productsCartProvider.notifier).uncheckAll();
-          ref.read(productsProvider.notifier).uncheckAll();
-
-          print("Shopping cart");
-        }
-      },
+      onPressed: productsOnCart.isEmpty
+          ? null
+          : () {
+              ref.onCartButtonPress();
+            },
       icon: Icon(
         LucideIcons.shoppingCart,
         size: 25,
-        color: ref.foregroundColor(),
+        color: productsOnCart.isEmpty
+            ? ref.foregroundDisableColor()
+            : ref.foregroundColor(),
       ),
     );
   }

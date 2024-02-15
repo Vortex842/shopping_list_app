@@ -80,4 +80,16 @@ extension ShoppingFunctions on WidgetRef {
       read(productsProvider.notifier).toggleCheck(product.id);
     }
   }
+
+  void onCartButtonPress() {
+    final onAddEdit = read(onAddEditProvider);
+
+    if (!onAddEdit) {
+      read(onAddCartProvider.notifier).update((state) => !state);
+      read(productsCartProvider.notifier).uncheckAll();
+      read(productsProvider.notifier).uncheckAll();
+
+      print("Shopping cart");
+    }
+  }
 }

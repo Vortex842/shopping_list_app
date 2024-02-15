@@ -6,11 +6,13 @@ import '../providers/dark_mode_provider.dart';
 enum _ShoppingColors {
   lightPage(0xFFFFFFFF),
   lightForeground(0xFF1D1B20),
+  lightForegroundDisable(0xFF363636),
   lightCard(0xFFF7F7F7),
   lightButton(0xFFEEEEEE),
   lightEditableText(0xFFE6E5E5),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
+  darkForegroundDisable(0xFFD2C2EB),
   darkCard(0xFF211F26),
   darkButton(0xFF2B2930),
   darkEditableText(0xFF2B2930),
@@ -63,6 +65,10 @@ extension ShoppingColors on WidgetRef {
   Color foregroundColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkForeground
           : _ShoppingColors.lightForeground)
+      .color;
+  Color foregroundDisableColor() => (watch(isDarkProvider)
+          ? _ShoppingColors.darkForegroundDisable
+          : _ShoppingColors.lightForegroundDisable)
       .color;
   Color buttonConfirmCancelBackground() =>
       read(isDarkProvider) ? const Color(0xFFE6DAFA) : const Color(0xFFF0E8FF);

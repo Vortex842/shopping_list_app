@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
-import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
 
+import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/color_reference.dart';
+import '/presentation/references/utils/utils_reference.dart';
 
 class _IconsMultiSelect extends ConsumerWidget {
   final IconData icon;
@@ -106,6 +107,11 @@ class IconUndoCartSelected extends StatelessWidget {
 
         ref.read(productsProvider.notifier).addAll(productsCart);
         ref.read(productsCartProvider.notifier).deleteProductsSelected();
+
+        final productsOnCart = ref.read(productsCartProvider);
+        if (productsOnCart.isEmpty) {
+          ref.onCartButtonPress();
+        }
       },
     );
   }
