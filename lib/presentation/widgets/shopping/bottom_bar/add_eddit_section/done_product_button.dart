@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../../../references/utils/utils_done_cancel.dart';
-import '/presentation/references/color_reference.dart';
+import '/presentation/references/references.barrel.dart';
 
 class DoneProductButton extends ConsumerWidget {
   const DoneProductButton({

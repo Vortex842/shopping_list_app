@@ -1,7 +1,7 @@
 name: shopping_list_app
 description: "A Shopping List aplication"
 publish_to: 'Vortex'
-version: 4.35.40
+version: 4.35.41
 
 environment:
   sdk: '>=3.3.0-272.0.dev <4.0.0'
@@ -42,6 +42,7 @@ flutter_launcher_icons:
     image_path: "assets/icon.png"
 
 flutter:
+  
   uses-material-design: true
   fonts:
     - family: 'ShoppingFont'
@@ -49,4 +50,5 @@ flutter:
         - asset: 'fonts/Montserrat-Regular.ttf'
         - asset: 'fonts/Montserrat-Medium.ttf'
           weight: 700
-          
+  assets:
+    - 'assets/icon.png'
