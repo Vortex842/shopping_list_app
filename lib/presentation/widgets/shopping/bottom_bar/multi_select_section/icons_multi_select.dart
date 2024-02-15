@@ -21,7 +21,7 @@ class _IconsMultiSelect extends ConsumerWidget {
       icon: Icon(
         icon,
         color: ref.foregroundColor(),
-        size: 22,
+        size: 25,
       ),
     );
   }
@@ -35,7 +35,7 @@ class IconSelectAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _IconsMultiSelect(
-      icon: LucideIcons.listChecks,
+      icon: Icons.format_list_bulleted_add,
       callback: (ref) {
         ref.read(productsProvider.notifier).checkAll();
       },
@@ -67,12 +67,11 @@ class IconDeleteSelected extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _IconsMultiSelect(
-      icon: LucideIcons.trash2,
+      icon: Icons.add_shopping_cart,
       callback: (ref) {
         ref.read(onProductDeleteProvider.notifier).update(
               (state) => true,
             );
-        // ref.read(productsProvider.notifier).deleteProductsSelected();
       },
     );
   }
