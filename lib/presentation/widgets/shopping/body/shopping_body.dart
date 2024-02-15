@@ -19,15 +19,25 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
   Widget build(BuildContext context) {
     super.build(context);
     final isDark = ref.watch(isDarkProvider);
+    final onAddCart = ref.watch(onAddCartProvider);
+    final total = onAddCart ? ref.watch(totalCostProvider) : null;
 
     return Container(
       width: double.infinity,
       decoration: ref.bodyDecoration(isDark),
-      child: const Column(
+      child: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: ShoppingProductsSection(),
           ),
+          if (onAddCart)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(
+                "Total: \$$total",
+                style: ref.totalText(),
+              ),
+            ),
         ],
       ),
     );

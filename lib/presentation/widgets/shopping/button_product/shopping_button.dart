@@ -8,8 +8,8 @@ import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import '/presentation/enums/button_action_type.dart';
+import 'button_product_actions.dart';
 import 'button_section.dart';
-import 'transform_dismissable.dart';
 
 class ShoppingButton extends StatefulHookConsumerWidget {
   final Product product;
@@ -79,10 +79,10 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
                 ),
               ),
               onAddCart
-                  ? buttonSection
+                  ? LeaveCartAction(child: buttonSection)
                   : widget.product.isChecked
-                      ? TransformButton(child: buttonSection)
-                      : DismissibleButton(
+                      ? CheckedAction(child: buttonSection)
+                      : EditDeleteAction(
                           product: widget.product,
                           dismissDirection: dismissDirection,
                           child: buttonSection,
@@ -108,13 +108,15 @@ class IconActionButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final onAddCart = ref.watch(onAddCartProvider);
+
     IconData? icon;
     Color color;
 
     switch (btnAction) {
       case ButtonActionType.none:
-        icon = null;
-        color = Colors.black;
+        icon = onAddCart ? Icons.remove_shopping_cart : null;
+        color = ref.leaveCartIconColor(true);
         break;
       case ButtonActionType.edit:
         icon = LucideIcons.edit;

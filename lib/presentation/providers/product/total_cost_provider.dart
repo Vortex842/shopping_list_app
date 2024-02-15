@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list_app/presentation/providers/product/product_list_provider.dart';
 
 final totalCostProvider = StateProvider<double>((ref) {
-  ref.watch(productsProvider);
+  ref.watch(productsCartProvider);
 
-  return ref.watch(productsProvider.notifier).getTotalCost();
+  return ref.watch(productsCartProvider.notifier).getTotalCost();
 });

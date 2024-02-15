@@ -74,11 +74,6 @@ class IconDeleteSelected extends StatelessWidget {
 
         ref.read(productsCartProvider.notifier).addAll(products);
         ref.read(productsProvider.notifier).deleteProductsSelected();
-
-        final productCart = ref.read(productsCartProvider);
-        for (var p in productCart) {
-          print(p.toString());
-        }
       },
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 
+import '../providers/on_change_states/on_add_cart_provider.dart';
+import '/presentation/enums/button_action_type.dart';
 import 'references.barrel.dart';
 
 extension ShoppingDecoration on WidgetRef {
@@ -31,11 +32,13 @@ extension ShoppingDecoration on WidgetRef {
   BoxDecoration buttonBackgroundDecoration({
     ButtonActionType actionType = ButtonActionType.none,
   }) {
+    final onAddCart = watch(onAddCartProvider);
+
     Color color;
 
     switch (actionType) {
       case ButtonActionType.none:
-        color = buttonColor();
+        color = onAddCart ? leaveCartIconColor(false) : buttonColor();
         break;
       case ButtonActionType.edit:
         color = editIconColor(false);

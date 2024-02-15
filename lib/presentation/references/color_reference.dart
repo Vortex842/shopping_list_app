@@ -20,6 +20,8 @@ enum _ShoppingColors {
   deleteBackground(0xFFFF5656),
   selectForeground(0xFF430078),
   selectBackground(0xFFAB56FF),
+  leaveCartBackground(0xFF854205),
+  leaveCartForeground(0xFFFF701D),
   buttonBottomBarForeground(0xFF430078),
   buttonBottomBarForeground2(0xFFAB56FF);
 
@@ -53,6 +55,10 @@ extension ShoppingColors on WidgetRef {
   Color selectIconColor(bool isIcon) => (isIcon
           ? _ShoppingColors.selectForeground
           : _ShoppingColors.selectBackground)
+      .color;
+  Color leaveCartIconColor(bool isIcon) => (!isIcon
+          ? _ShoppingColors.leaveCartForeground
+          : _ShoppingColors.leaveCartBackground)
       .color;
   Color foregroundColor() => (watch(isDarkProvider)
           ? _ShoppingColors.darkForeground

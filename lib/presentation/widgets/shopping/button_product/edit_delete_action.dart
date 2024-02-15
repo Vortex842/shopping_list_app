@@ -1,41 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/data/domain/entities/product.dart';
 import 'package:shopping_list_app/presentation/providers/is_dismissible_provider.dart';
+import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
+import 'package:shopping_list_app/presentation/references/utils/utils_reference.dart';
+import 'package:shopping_list_app/presentation/widgets/shopping/button_product/button_section.dart';
 
-import '../../../references/utils/utils_reference.dart';
-import '/data/domain/entities/product.dart';
-import '/presentation/providers/providers.barrel.dart';
-import 'button_section.dart';
-
-class TransformButton extends StatelessWidget {
-  final ButtonSection child;
-
-  const TransformButton({
-    super.key,
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        right: 50,
-      ),
-      child: Transform(
-        alignment: Alignment.center,
-        transform: Matrix4.identity()..scale(0.95, 0.8),
-        child: child,
-      ),
-    );
-  }
-}
-
-class DismissibleButton extends ConsumerWidget {
+class EditDeleteAction extends ConsumerWidget {
   final Product product;
   final ValueNotifier<DismissDirection> dismissDirection;
   final ButtonSection child;
 
-  const DismissibleButton({
+  const EditDeleteAction({
     super.key,
     required this.product,
     required this.dismissDirection,
