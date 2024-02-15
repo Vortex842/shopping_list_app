@@ -26,7 +26,8 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   Widget build(BuildContext context) {
     super.build(context);
     final onAddEdit = ref.watch(onAddEditProvider);
-    final onProductDelete = ref.watch(onProductDeleteProvider);
+    final onConfirm = ref.watch(onConfirmCancelProvider);
+    final onAddCart = ref.watch(onAddCartProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -46,7 +47,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
-      onTap: !onAddEdit && !onProductDelete
+      onTap: !onAddEdit && !onConfirm
           ? () {
               // ACTION ON LONG PRESS
               ref.read(productsProvider.notifier).toggleCheck(
@@ -77,13 +78,15 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
                   ),
                 ),
               ),
-              widget.product.isChecked
-                  ? TransformButton(child: buttonSection)
-                  : DismissibleButton(
-                      product: widget.product,
-                      dismissDirection: dismissDirection,
-                      child: buttonSection,
-                    ),
+              onAddCart
+                  ? buttonSection
+                  : widget.product.isChecked
+                      ? TransformButton(child: buttonSection)
+                      : DismissibleButton(
+                          product: widget.product,
+                          dismissDirection: dismissDirection,
+                          child: buttonSection,
+                        ),
             ],
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../providers/product/product_list_provider.dart';
+import '../../../providers/product/product_list_provider.dart';
 import '/presentation/references/references.barrel.dart';
 
 class ConfirmSection extends ConsumerWidget {

@@ -12,8 +12,8 @@ The **Shopping List** application allows you to organize your purchases in a cle
 <img src="ShoppingList_video_MultiSelectProducts.gif" width="240" height="460"/>
 
 ## Next updates
+* [ ] Add to cart section for products
 * [ ] Side menu animated
-* [ ] Filter section for products
 * [ ] History section for previous shopping lists
 * [ ] Pop sound on tap button for his checking
 

@@ -10,7 +10,7 @@ class ShoppingProductsSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(productsProvider);
+    final products = ref.watch(selectProductsProvider);
     final scrollController = ref.watch(scrollControllerProvider);
 
     return ClipRRect(

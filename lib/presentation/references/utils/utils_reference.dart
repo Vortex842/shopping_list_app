@@ -22,7 +22,7 @@ extension ShoppingUtils on WidgetRef {
   }
 
   void whenConfirmCancel() {
-    read(onProductDeleteProvider.notifier).update(
+    read(onConfirmCancelProvider.notifier).update(
       (state) => false,
     );
     read(productsProvider.notifier).uncheckAll();

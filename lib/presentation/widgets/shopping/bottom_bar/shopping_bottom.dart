@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/confirm_section/confirm_section.dart';
+import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/confirm_section.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../base_section.dart';
@@ -15,9 +15,9 @@ class ShoppingBottom extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final onMultiSelect = ref.watch(onMultiSelectProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
-    final onProductDelete = ref.watch(onProductDeleteProvider);
+    final onConfirm = ref.watch(onConfirmCancelProvider);
 
-    bool multiSelected = onMultiSelect && !onAddEdit && !onProductDelete;
+    bool multiSelected = onMultiSelect && !onAddEdit && !onConfirm;
 
     return SizedBox(
       height: ref.bottomHeight(onAddEdit),
@@ -32,7 +32,7 @@ class ShoppingBottom extends ConsumerWidget {
               ? const MultiSelectSection()
               : onAddEdit
                   ? const AddEditSection()
-                  : onProductDelete
+                  : onConfirm
                       ? const ConfirmSection()
                       : const BaseSection(),
         ),

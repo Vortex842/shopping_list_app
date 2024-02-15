@@ -5,7 +5,7 @@ import 'on_change_states/on_change.barrel.dart';
 final multiSelectedModeProvider = StateProvider<bool>((ref) {
   final onMultiSelect = ref.watch(onMultiSelectProvider);
   final onAddEdit = ref.watch(onAddEditProvider);
-  final onProductDelete = ref.watch(onProductDeleteProvider);
+  final onConfirm = ref.watch(onConfirmCancelProvider);
 
-  return onMultiSelect && !onAddEdit && !onProductDelete;
+  return onMultiSelect && !onAddEdit && !onConfirm;
 });
