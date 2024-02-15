@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../data/domain/entities/product.dart';
+import '../../../data/domain/entities/product.dart';
 
 final productsProvider =
     StateNotifierProvider<ProductNotifier, List<Product>>((ref) {
