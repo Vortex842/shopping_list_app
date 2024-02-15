@@ -4,12 +4,11 @@ import 'package:shopping_list_app/data/domain/entities/product.dart';
 import 'package:shopping_list_app/presentation/providers/is_dismissible_provider.dart';
 import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
 import 'package:shopping_list_app/presentation/references/utils/utils_reference.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/button_product/button_section.dart';
 
 class EditDeleteAction extends ConsumerWidget {
   final Product product;
   final ValueNotifier<DismissDirection> dismissDirection;
-  final ButtonSection child;
+  final Widget child;
 
   const EditDeleteAction({
     super.key,

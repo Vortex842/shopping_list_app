@@ -70,4 +70,14 @@ extension ShoppingFunctions on WidgetRef {
       },
     );
   }
+
+  void onTapProductButton(Product product) {
+    final onAddCart = read(onAddCartProvider);
+
+    if (onAddCart) {
+      read(productsCartProvider.notifier).toggleCheck(product.id);
+    } else {
+      read(productsProvider.notifier).toggleCheck(product.id);
+    }
+  }
 }

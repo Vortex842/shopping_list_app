@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/button_product/button_section.dart';
 
 class CheckedAction extends StatelessWidget {
-  final ButtonSection child;
+  final Widget child;
 
   const CheckedAction({
     super.key,

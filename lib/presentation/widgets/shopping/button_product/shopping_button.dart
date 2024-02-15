@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:shopping_list_app/presentation/providers/inherited/button_actions_inherited.dart';
 
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
@@ -10,6 +10,7 @@ import '/data/domain/entities/product.dart';
 import '/presentation/enums/button_action_type.dart';
 import 'button_product_actions.dart';
 import 'button_section.dart';
+import 'icon_action_button.dart';
 
 class ShoppingButton extends StatefulHookConsumerWidget {
   final Product product;
@@ -27,7 +28,6 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     super.build(context);
     final onAddEdit = ref.watch(onAddEditProvider);
     final onConfirm = ref.watch(onConfirmCancelProvider);
-    final onAddCart = ref.watch(onAddCartProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -48,18 +48,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
 
     return GestureDetector(
       onTap: !onAddEdit && !onConfirm
-          ? () {
-              // ACTION ON LONG PRESS
-              if (onAddCart) {
-                ref.read(productsCartProvider.notifier).toggleCheck(
-                      widget.product.id,
-                    );
-              } else {
-                ref.read(productsProvider.notifier).toggleCheck(
-                      widget.product.id,
-                    );
-              }
-            }
+          ? () => ref.onTapProductButton(widget.product)
           : null,
       child: ClipRRect(
         borderRadius: ref.buttonRadius,
@@ -84,18 +73,12 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
                   ),
                 ),
               ),
-              widget.product.isChecked
-                  ? onAddCart
-                      ? LeaveCartAction(
-                          product: widget.product,
-                          child: buttonSection,
-                        )
-                      : CheckedAction(child: buttonSection)
-                  : EditDeleteAction(
-                      product: widget.product,
-                      dismissDirection: dismissDirection,
-                      child: buttonSection,
-                    ),
+              ButtonDataInherited(
+                product: widget.product,
+                buttonSection: buttonSection,
+                dismissDirection: dismissDirection,
+                child: const ButtonActions(),
+              ),
             ],
           ),
         ),
@@ -107,42 +90,28 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   bool get wantKeepAlive => true;
 }
 
-class IconActionButton extends ConsumerWidget {
-  final ButtonActionType btnAction;
-
-  const IconActionButton({
-    this.btnAction = ButtonActionType.none,
-    super.key,
-  });
+class ButtonActions extends ConsumerWidget {
+  const ButtonActions({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final onAddCart = ref.watch(onAddCartProvider);
 
-    IconData? icon;
-    Color? color;
+    final product = ButtonDataInherited.of(context)!.product;
+    final buttonSection = ButtonDataInherited.of(context)!.buttonSection;
+    final dismissDirection = ButtonDataInherited.of(context)!.dismissDirection;
 
-    switch (btnAction) {
-      case ButtonActionType.none:
-        icon = null;
-        color = null;
-        break;
-      case ButtonActionType.edit:
-        icon = LucideIcons.edit;
-        color = ref.editIconColor(true);
-        break;
-      case ButtonActionType.delete:
-        icon = LucideIcons.delete;
-        color = ref.deleteIconColor(true);
-        break;
-      case ButtonActionType.select:
-        icon = onAddCart ? Icons.remove_shopping_cart : LucideIcons.check;
-        color = onAddCart
-            ? ref.leaveCartIconColor(true)
-            : ref.selectIconColor(true);
-        break;
-    }
-
-    return Icon(icon, color: color);
+    return product.isChecked
+        ? onAddCart
+            ? LeaveCartAction(
+                product: product,
+                child: buttonSection,
+              )
+            : CheckedAction(child: buttonSection)
+        : EditDeleteAction(
+            product: product,
+            dismissDirection: dismissDirection,
+            child: buttonSection,
+          );
   }
 }

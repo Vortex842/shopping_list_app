@@ -30,7 +30,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
           const Expanded(
             child: ShoppingProductsSection(),
           ),
-          if (onAddCart && total! > 0)
+          if (onAddCart)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
