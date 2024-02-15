@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'presentation/providers/on_change_states/on_add_cart_provider.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
@@ -11,6 +12,8 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final onAddCart = ref.watch(onAddCartProvider);
+
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'ShoppingFont',
@@ -20,12 +23,12 @@ class MainApp extends ConsumerWidget {
         child: Scaffold(
           backgroundColor: ref.pageColor(),
           appBar: const ShoppingAppBar(),
-          body: const Column(
+          body: Column(
             children: [
-              Expanded(
+              const Expanded(
                 child: ShoppingBody(),
               ),
-              ShoppingBottom(),
+              if (!onAddCart) const ShoppingBottom(),
             ],
           ),
         ),

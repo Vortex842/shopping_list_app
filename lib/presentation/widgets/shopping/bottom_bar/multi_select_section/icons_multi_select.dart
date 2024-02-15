@@ -69,9 +69,16 @@ class IconDeleteSelected extends StatelessWidget {
     return _IconsMultiSelect(
       icon: Icons.add_shopping_cart,
       callback: (ref) {
-        ref.read(onProductDeleteProvider.notifier).update(
-              (state) => true,
-            );
+        var products = ref.read(productsProvider);
+        products = products.where((p) => p.isChecked).toList();
+
+        ref.read(productsCartProvider.notifier).addAll(products);
+        ref.read(productsProvider.notifier).deleteProductsSelected();
+
+        final productCart = ref.read(productsCartProvider);
+        for (var p in productCart) {
+          print(p.toString());
+        }
       },
     );
   }

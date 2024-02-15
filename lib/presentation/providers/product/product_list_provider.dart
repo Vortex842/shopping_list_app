@@ -1,10 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/domain/entities/product.dart';
+import '../on_change_states/on_add_cart_provider.dart';
 
 final productsProvider =
     StateNotifierProvider<ProductNotifier, List<Product>>((ref) {
   return ProductNotifier();
+});
+
+final productsCartProvider =
+    StateNotifierProvider<ProductNotifier, List<Product>>((ref) {
+  return ProductNotifier();
+});
+
+final selectProductsProvider = StateProvider<List<Product>>((ref) {
+  final products = ref.watch(productsProvider);
+  final productsOnCart = ref.watch(productsCartProvider);
+  final onAddCart = ref.watch(onAddCartProvider);
+
+  return onAddCart ? productsOnCart : products;
 });
 
 // final filteredProducts = StateProvider<List<Product>>((ref) {
@@ -30,6 +44,14 @@ class ProductNotifier extends StateNotifier<List<Product>> {
 
   void addProduct(Product product) {
     state = [...state, product];
+  }
+
+  void addAll(List<Product> products) {
+    final productsNoCheck = products.map(
+      (p) => p.copyWith(isChecked: false),
+    );
+
+    state = [...state, ...productsNoCheck];
   }
 
   void deleteProduct(String id) {
