@@ -12,10 +12,18 @@ class SplashScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final future = useMemoized(
+    final Future future = useMemoized(
       () => Future.delayed(
-        const Duration(seconds: 2),
+        const Duration(seconds: 5),
       ),
+    );
+
+    future.timeout(
+      const Duration(seconds: 2),
+      onTimeout: () {
+        future.ignore();
+        print("no puedo esperar tanto por los productos");
+      },
     );
 
     final snapshot = useFuture(future);
