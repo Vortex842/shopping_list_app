@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/domain/entities/product.dart';
 import '../../enums/editable_text_type.dart';
-import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtils on WidgetRef {

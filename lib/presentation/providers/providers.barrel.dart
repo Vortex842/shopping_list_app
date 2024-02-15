@@ -1,11 +1,9 @@
-export 'can_done_provider.dart';
 export 'dark_mode_provider.dart';
+export 'done/done.barrel.dart';
 export 'editable_product_provider.dart';
 export 'editable_text_provider.dart';
 export 'mult_selected_mode.dart';
-export 'on_add_edit_provider.dart';
-export 'on_confirm_delete_provider.dart';
-export 'on_done_provider.dart';
+export 'on_change_states/on_change.barrel.dart';
 export 'product_list_provider.dart';
 export 'scroll_controller_provider.dart';
 export 'total_cost_provider.dart';

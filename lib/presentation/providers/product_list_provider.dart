@@ -7,12 +7,6 @@ final productsProvider =
   return ProductNotifier();
 });
 
-final onMultiSelectProvider = StateProvider<bool>((ref) {
-  final products = ref.watch(productsProvider);
-
-  return products.any((p) => p.isChecked);
-});
-
 // final filteredProducts = StateProvider<List<Product>>((ref) {
 //   final products = ref.watch(productsProvider);
 

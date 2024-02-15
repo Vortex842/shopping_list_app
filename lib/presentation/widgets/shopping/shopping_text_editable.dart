@@ -5,7 +5,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 
-import '../../providers/on_done_provider.dart';
 import '../../providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 
