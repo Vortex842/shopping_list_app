@@ -50,9 +50,15 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
       onTap: !onAddEdit && !onConfirm
           ? () {
               // ACTION ON LONG PRESS
-              ref.read(productsProvider.notifier).toggleCheck(
-                    widget.product.id,
-                  );
+              if (onAddCart) {
+                ref.read(productsCartProvider.notifier).toggleCheck(
+                      widget.product.id,
+                    );
+              } else {
+                ref.read(productsProvider.notifier).toggleCheck(
+                      widget.product.id,
+                    );
+              }
             }
           : null,
       child: ClipRRect(
@@ -78,15 +84,18 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
                   ),
                 ),
               ),
-              onAddCart
-                  ? LeaveCartAction(child: buttonSection)
-                  : widget.product.isChecked
-                      ? CheckedAction(child: buttonSection)
-                      : EditDeleteAction(
+              widget.product.isChecked
+                  ? onAddCart
+                      ? LeaveCartAction(
                           product: widget.product,
-                          dismissDirection: dismissDirection,
                           child: buttonSection,
-                        ),
+                        )
+                      : CheckedAction(child: buttonSection)
+                  : EditDeleteAction(
+                      product: widget.product,
+                      dismissDirection: dismissDirection,
+                      child: buttonSection,
+                    ),
             ],
           ),
         ),
@@ -111,12 +120,12 @@ class IconActionButton extends ConsumerWidget {
     final onAddCart = ref.watch(onAddCartProvider);
 
     IconData? icon;
-    Color color;
+    Color? color;
 
     switch (btnAction) {
       case ButtonActionType.none:
-        icon = onAddCart ? Icons.remove_shopping_cart : null;
-        color = ref.leaveCartIconColor(true);
+        icon = null;
+        color = null;
         break;
       case ButtonActionType.edit:
         icon = LucideIcons.edit;
@@ -127,8 +136,10 @@ class IconActionButton extends ConsumerWidget {
         color = ref.deleteIconColor(true);
         break;
       case ButtonActionType.select:
-        icon = LucideIcons.check;
-        color = ref.selectIconColor(true);
+        icon = onAddCart ? Icons.remove_shopping_cart : LucideIcons.check;
+        color = onAddCart
+            ? ref.leaveCartIconColor(true)
+            : ref.selectIconColor(true);
         break;
     }
 

@@ -4,6 +4,7 @@ import 'package:lucide_icons/lucide_icons.dart';
 import 'package:shopping_list_app/presentation/providers/on_change_states/on_change.barrel.dart';
 
 import '../../providers/dark_mode_provider.dart';
+import '../../providers/product/product.barrel.dart';
 import '../../references/references.barrel.dart';
 
 class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -51,6 +52,9 @@ class IconShopCart extends ConsumerWidget {
 
         if (!onAddEdit) {
           ref.read(onAddCartProvider.notifier).update((state) => !state);
+          ref.read(productsCartProvider.notifier).uncheckAll();
+          ref.read(productsProvider.notifier).uncheckAll();
+
           print("Shopping cart");
         }
       },

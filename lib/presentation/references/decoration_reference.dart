@@ -38,7 +38,7 @@ extension ShoppingDecoration on WidgetRef {
 
     switch (actionType) {
       case ButtonActionType.none:
-        color = onAddCart ? leaveCartIconColor(false) : buttonColor();
+        color = buttonColor();
         break;
       case ButtonActionType.edit:
         color = editIconColor(false);
@@ -47,7 +47,7 @@ extension ShoppingDecoration on WidgetRef {
         color = deleteIconColor(false);
         break;
       case ButtonActionType.select:
-        color = selectIconColor(false);
+        color = onAddCart ? leaveCartIconColor(false) : selectIconColor(false);
         break;
     }
 

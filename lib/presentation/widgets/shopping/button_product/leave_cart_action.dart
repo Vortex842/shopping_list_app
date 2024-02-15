@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '/data/domain/entities/product.dart';
+
 class LeaveCartAction extends ConsumerWidget {
+  final Product product;
   final Widget child;
 
-  const LeaveCartAction({super.key, required this.child});
+  const LeaveCartAction({
+    super.key,
+    required this.product,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Transform(
-      origin: const Offset(-2, 0),
-      alignment: Alignment.centerLeft,
-      transform: Matrix4.identity()..scale(0.85, 1.0),
-      child: child,
+    return Padding(
+      padding: const EdgeInsets.only(
+        right: 50,
+      ),
+      child: Transform(
+        alignment: Alignment.center,
+        transform: Matrix4.identity()..scale(0.95, 0.8),
+        child: child,
+      ),
     );
   }
 }

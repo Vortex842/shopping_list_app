@@ -27,40 +27,52 @@ class _IconsMultiSelect extends ConsumerWidget {
   }
 }
 
-class IconSelectAll extends StatelessWidget {
+class IconSelectAll extends ConsumerWidget {
   const IconSelectAll({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final onAddCart = ref.watch(onAddCartProvider);
+
     return _IconsMultiSelect(
       icon: Icons.format_list_bulleted_add,
       callback: (ref) {
-        ref.read(productsProvider.notifier).checkAll();
+        if (onAddCart) {
+          ref.read(productsCartProvider.notifier).checkAll();
+        } else {
+          ref.read(productsProvider.notifier).checkAll();
+        }
       },
     );
   }
 }
 
-class IconUnselectAll extends StatelessWidget {
+class IconUnselectAll extends ConsumerWidget {
   const IconUnselectAll({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final onAddCart = ref.watch(onAddCartProvider);
+
     return _IconsMultiSelect(
       icon: LucideIcons.listX,
       callback: (ref) {
-        ref.read(productsProvider.notifier).uncheckAll();
+        if (onAddCart) {
+          ref.read(productsCartProvider.notifier).uncheckAll();
+        } else {
+          ref.read(productsProvider.notifier).uncheckAll();
+        }
       },
     );
   }
 }
 
-class IconDeleteSelected extends StatelessWidget {
-  const IconDeleteSelected({
+class IconAddCartSelected extends StatelessWidget {
+  const IconAddCartSelected({
     super.key,
   });
 
@@ -74,6 +86,26 @@ class IconDeleteSelected extends StatelessWidget {
 
         ref.read(productsCartProvider.notifier).addAll(products);
         ref.read(productsProvider.notifier).deleteProductsSelected();
+      },
+    );
+  }
+}
+
+class IconUndoCartSelected extends StatelessWidget {
+  const IconUndoCartSelected({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _IconsMultiSelect(
+      icon: Icons.remove_shopping_cart,
+      callback: (ref) {
+        var productsCart = ref.read(productsCartProvider);
+        productsCart = productsCart.where((p) => p.isChecked).toList();
+
+        ref.read(productsProvider.notifier).addAll(productsCart);
+        ref.read(productsCartProvider.notifier).deleteProductsSelected();
       },
     );
   }
