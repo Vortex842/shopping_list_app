@@ -20,7 +20,7 @@ class ShoppingProductsSection extends ConsumerWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 15,
-            vertical: 15,
+            vertical: 5,
           ),
           child: Wrap(
             direction: Axis.horizontal,

@@ -31,9 +31,6 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
-    final buttonSection = useMemoized(
-      () => ButtonSection(widget.product),
-    );
 
     useEffect(() {
       buttonAction.value = widget.product.isChecked
@@ -75,7 +72,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
               ),
               ButtonDataInherited(
                 product: widget.product,
-                buttonSection: buttonSection,
+                buttonSection: ButtonSection(widget.product),
                 dismissDirection: dismissDirection,
                 child: const ButtonActions(),
               ),

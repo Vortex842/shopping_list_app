@@ -27,12 +27,19 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
       decoration: ref.bodyDecoration(isDark),
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 5),
+            child: Text(
+              onAddCart ? "Comprado" : "Por comprar",
+              style: ref.normalText(),
+            ),
+          ),
           const Expanded(
             child: ShoppingProductsSection(),
           ),
           if (onAddCart)
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.only(top: 5, bottom: 10),
               child: Text(
                 "Total: \$$total",
                 style: ref.totalText(),
