@@ -11,14 +11,14 @@ dependencies:
     sdk: flutter
   lucide_icons: ^0.257.0
   flutter_riverpod: ^2.4.9
-  equatable: ^2.0.5
   uuid: ^4.3.3
   hooks_riverpod: ^2.4.9
   flutter_hooks: ^0.20.4
   text_scroll: ^0.2.0
-  cloud_firestore: ^4.15.4
-  firebase_core: ^2.25.4
-
+  supabase_flutter: ^2.3.3
+  google_sign_in: ^6.2.1
+  firebase_auth: ^4.16.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

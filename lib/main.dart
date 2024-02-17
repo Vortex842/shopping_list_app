@@ -1,51 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
-void main() => runApp(const ProviderScope(child: SplashScreen()));
+final supabase = Supabase.instance.client;
 
-class SplashScreen extends HookConsumerWidget {
-  const SplashScreen({super.key});
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final Future future = useMemoized(
-      () => Future.delayed(
-        const Duration(seconds: 5),
-      ),
-    );
+  await Supabase.initialize(
+    url: 'https://mjsddegvhgttoqgxgpzd.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1qc2RkZWd2aGd0dG9xZ3hncHpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgwNDg2MjIsImV4cCI6MjAyMzYyNDYyMn0.1rg49gGogJGNb6X5iOSN8SuYo5rYxPubgqNstgybLbI',
+  );
 
-    future.timeout(
-      const Duration(seconds: 2),
-      onTimeout: () {
-        future.ignore();
-        print("no puedo esperar tanto por los productos");
-      },
-    );
-
-    final snapshot = useFuture(future);
-
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'ShoppingFont',
-      ),
-      debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          body: Center(
-            child: snapshot.connectionState == ConnectionState.waiting
-                ? const Image(
-                    image: AssetImage('assets/icon.png'),
-                  )
-                : const MainApp(),
-          ),
-        ),
-      ),
-    );
-  }
+  runApp(
+    const ProviderScope(
+      child: SplashScreen(),
+    ),
+  );
 }
 
 class MainApp extends ConsumerWidget {
@@ -69,6 +44,46 @@ class MainApp extends ConsumerWidget {
               ),
               ShoppingBottom(),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class SplashScreen extends HookConsumerWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final future = Supabase.instance.client
+        .from(
+          'main_products',
+        )
+        .select();
+
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //             ref.read(productsProvider.notifier).addAllFromMap(
+    //                   products,
+    //                 );
+    //           });
+
+    return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'ShoppingFont',
+      ),
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: FutureBuilder(
+              future: future,
+              builder: (context, snapshot) {
+                return !snapshot.hasData
+                    ? const Image(image: AssetImage('assets/icon.png'))
+                    : const MainApp();
+              },
+            ),
           ),
         ),
       ),

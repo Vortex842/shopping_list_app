@@ -1,9 +1,7 @@
-import 'package:equatable/equatable.dart';
-
-class Product implements Equatable {
+class Product {
   final String id;
   final String name;
-  final double price;
+  final num price;
   final int amount;
 
   final bool isChecked;
@@ -18,7 +16,7 @@ class Product implements Equatable {
 
   Product copyWith({
     String? name,
-    double? price,
+    num? price,
     int? amount,
     bool? isChecked,
   }) {
@@ -35,10 +33,4 @@ class Product implements Equatable {
   String toString() {
     return "[${isChecked ? "✅" : "❌"}] $amount units of $name at a price of \$$price ";
   }
-
-  @override
-  List<Object?> get props => [name, price, amount, isChecked];
-
-  @override
-  bool? get stringify => false;
 }

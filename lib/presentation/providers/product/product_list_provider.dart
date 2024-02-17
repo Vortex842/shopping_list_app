@@ -54,6 +54,20 @@ class ProductNotifier extends StateNotifier<List<Product>> {
     state = [...state, ...productsNoCheck];
   }
 
+  void addAllFromMap(List<Map<String, dynamic>> productMap) {
+    final productsNoCheck = List.generate(
+      productMap.length,
+      (index) => Product(
+        id: productMap[index]['id'],
+        name: productMap[index]['name'],
+        amount: productMap[index]['amount'],
+        price: productMap[index]['price'],
+      ),
+    );
+
+    state = [...state, ...productsNoCheck];
+  }
+
   void deleteProduct(String id) {
     state = [...state..removeWhere((p) => p.id == id)];
   }
