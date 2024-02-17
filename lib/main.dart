@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'presentation/providers/product/product_list_provider.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
-
-final supabase = Supabase.instance.client;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,11 +61,7 @@ class SplashScreen extends HookConsumerWidget {
         )
         .select();
 
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //             ref.read(productsProvider.notifier).addAllFromMap(
-    //                   products,
-    //                 );
-    //           });
+    //
 
     return MaterialApp(
       theme: ThemeData(
@@ -79,9 +74,19 @@ class SplashScreen extends HookConsumerWidget {
             child: FutureBuilder(
               future: future,
               builder: (context, snapshot) {
-                return !snapshot.hasData
-                    ? const Image(image: AssetImage('assets/icon.png'))
-                    : const MainApp();
+                if (!snapshot.hasData) {
+                  return const Image(image: AssetImage('assets/icon.png'));
+                }
+
+                final products = snapshot.data!;
+
+                WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  ref.read(productsProvider.notifier).addAllFromMap(
+                        products,
+                      );
+                });
+
+                return const MainApp();
               },
             ),
           ),
