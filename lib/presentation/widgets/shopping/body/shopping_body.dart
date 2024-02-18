@@ -25,7 +25,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
     return Container(
       width: double.infinity,
       decoration: ref.bodyDecoration(),
-      child: products.isEmpty
+      child: products.isEmpty && !onAddCart
           ? const EmptyProductsBody()
           : Column(
               children: [
