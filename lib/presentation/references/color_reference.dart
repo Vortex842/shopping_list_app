@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/on_change_states/on_add_cart_provider.dart';
 
 import '../providers/dark_mode_provider.dart';
 
@@ -9,12 +10,16 @@ enum _ShoppingColors {
   lightForegroundDisable(0xFFCECECE),
   lightCard(0xFFF7F7F7),
   lightButton(0xFFEEEEEE),
+  lightCardAddCart(0xFFFFDFD6),
+  lightButtonAddCart(0xFFFFD4C6),
   lightEditableText(0xFFE6E5E5),
   darkPage(0xFF1D1B20),
   darkForeground(0xFFD2C2EB),
   darkForegroundDisable(0xFF494949),
   darkCard(0xFF211F26),
   darkButton(0xFF2B2930),
+  darkCardAddCart(0xFF331C16),
+  darkButtonAddCart(0xFF472319),
   darkEditableText(0xFF2B2930),
   editForeground(0xFF0B4B01),
   editBackground(0xFF59FF56),
@@ -40,12 +45,20 @@ extension ShoppingColors on WidgetRef {
           : _ShoppingColors.lightPage)
       .color;
   Color cardColor() => (watch(isDarkProvider)
-          ? _ShoppingColors.darkCard
-          : _ShoppingColors.lightCard)
+          ? watch(onAddCartProvider)
+              ? _ShoppingColors.darkCardAddCart
+              : _ShoppingColors.darkCard
+          : watch(onAddCartProvider)
+              ? _ShoppingColors.lightCardAddCart
+              : _ShoppingColors.lightCard)
       .color;
   Color buttonColor() => (watch(isDarkProvider)
-          ? _ShoppingColors.darkButton
-          : _ShoppingColors.lightButton)
+          ? watch(onAddCartProvider)
+              ? _ShoppingColors.darkButtonAddCart
+              : _ShoppingColors.darkButton
+          : watch(onAddCartProvider)
+              ? _ShoppingColors.lightButtonAddCart
+              : _ShoppingColors.lightButton)
       .color;
   Color editIconColor(bool isIcon) =>
       (isIcon ? _ShoppingColors.editForeground : _ShoppingColors.editBackground)
