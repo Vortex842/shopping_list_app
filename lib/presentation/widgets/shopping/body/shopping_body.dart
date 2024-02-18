@@ -92,7 +92,8 @@ class EmptyProductsBody extends ConsumerWidget {
             const SizedBox(height: 25),
             Text(
               'Para agregar un producto apreta el +',
-              style: ref.normalText().copyWith(fontSize: 16),
+              style: ref.normalText().copyWith(fontSize: 20),
+              textAlign: TextAlign.center,
             ),
           ],
         ),

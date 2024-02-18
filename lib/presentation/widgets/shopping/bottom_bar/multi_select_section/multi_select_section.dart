@@ -23,6 +23,10 @@ class MultiSelectSection extends ConsumerWidget {
           onAddCart
               ? const IconUndoCartSelected()
               : const IconAddCartSelected(),
+          Visibility(
+            visible: !onAddCart,
+            child: const IconDeleteSelected(),
+          ),
         ],
       ),
     );

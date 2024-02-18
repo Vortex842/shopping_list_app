@@ -116,3 +116,21 @@ class IconUndoCartSelected extends StatelessWidget {
     );
   }
 }
+
+class IconDeleteSelected extends StatelessWidget {
+  const IconDeleteSelected({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return _IconsMultiSelect(
+      icon: LucideIcons.trash2,
+      callback: (ref) {
+        ref.read(onConfirmCancelProvider.notifier).update(
+              (state) => true,
+            );
+      },
+    );
+  }
+}
