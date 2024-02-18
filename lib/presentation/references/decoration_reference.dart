@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../providers/on_change_states/on_add_cart_provider.dart';
 import '/presentation/enums/button_action_type.dart';
+import '../providers/on_change_states/on_add_cart_provider.dart';
 import 'references.barrel.dart';
 
 extension ShoppingDecoration on WidgetRef {
@@ -24,7 +24,7 @@ extension ShoppingDecoration on WidgetRef {
   BorderRadius get cardRadius => BorderRadius.circular(30);
   BorderRadius get buttonRadius => BorderRadius.circular(20);
 
-  BoxDecoration bodyDecoration(bool isDark) => BoxDecoration(
+  BoxDecoration bodyDecoration() => BoxDecoration(
         color: cardColor(),
         boxShadow: shadows,
         borderRadius: cardRadius,

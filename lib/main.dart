@@ -5,6 +5,11 @@ import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() async {
+  // var env = DotEnv()..load();
+
+  // print(env["SUPABASE_URL"]);
+  // print(env["SUPABASE_ANON_KEY"]);
+
   runApp(
     const ProviderScope(
       child: MainApp(),

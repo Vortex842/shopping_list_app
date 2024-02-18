@@ -4,10 +4,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/providers/inherited/button_actions_inherited.dart';
 
-import '../../../providers/providers.barrel.dart';
-import '../../../references/references.barrel.dart';
 import '/data/domain/entities/product.dart';
 import '/presentation/enums/button_action_type.dart';
+import '../../../providers/providers.barrel.dart';
+import '../../../references/references.barrel.dart';
 import 'button_product_actions.dart';
 import 'button_section.dart';
 import 'icon_action_button.dart';

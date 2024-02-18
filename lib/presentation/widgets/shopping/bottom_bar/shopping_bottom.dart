@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/presentation/providers/visibility/multi_select_visibility_provider.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/confirm_section.dart';
 
@@ -13,11 +14,9 @@ class ShoppingBottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onMultiSelect = ref.watch(onMultiSelectProvider);
+    final onMultiSelect = ref.watch(multiSelectVisibilityProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
     final onConfirm = ref.watch(onConfirmCancelProvider);
-
-    bool multiSelected = onMultiSelect && !onAddEdit && !onConfirm;
 
     return SizedBox(
       height: ref.bottomHeight(onAddEdit),
@@ -28,7 +27,7 @@ class ShoppingBottom extends ConsumerWidget {
         ),
         child: SizedBox(
           width: double.infinity,
-          child: multiSelected
+          child: onMultiSelect
               ? const MultiSelectSection()
               : onAddEdit
                   ? const AddEditSection()

@@ -17,38 +17,73 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final isDark = ref.watch(isDarkProvider);
+
+    final products = ref.watch(productsProvider);
     final onAddCart = ref.watch(onAddCartProvider);
     final total = onAddCart ? ref.watch(totalCostProvider) : null;
 
     return Container(
       width: double.infinity,
-      decoration: ref.bodyDecoration(isDark),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 5),
-            child: Text(
-              onAddCart ? "Comprado" : "Por comprar",
-              style: ref.normalText(),
+      decoration: ref.bodyDecoration(),
+      child: products.isEmpty
+          ? const EmptyProductsBody()
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 5),
+                  child: Text(
+                    onAddCart ? "Comprado" : "Por comprar",
+                    style: ref.normalText(),
+                  ),
+                ),
+                const Expanded(
+                  child: ShoppingProductsSection(),
+                ),
+                Visibility(
+                  visible: onAddCart,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5, bottom: 10),
+                    child: Text(
+                      "Total: \$$total",
+                      style: ref.totalText(),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          const Expanded(
-            child: ShoppingProductsSection(),
-          ),
-          if (onAddCart)
-            Padding(
-              padding: const EdgeInsets.only(top: 5, bottom: 10),
-              child: Text(
-                "Total: \$$total",
-                style: ref.totalText(),
-              ),
-            ),
-        ],
-      ),
     );
   }
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class EmptyProductsBody extends ConsumerWidget {
+  const EmptyProductsBody({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    const double imgSize = 240;
+
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const ColoredBox(
+            color: Colors.green,
+            child: Image(
+              image: AssetImage('assets/icon.png'),
+              width: imgSize,
+              height: imgSize,
+            ),
+          ),
+          Text(
+            'Para agregar un producto apreta el +',
+            style: ref.normalText(),
+          ),
+        ],
+      ),
+    );
+  }
 }

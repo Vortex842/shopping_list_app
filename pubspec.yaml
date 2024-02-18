@@ -17,6 +17,7 @@ dependencies:
   text_scroll: ^0.2.0
   supabase_flutter: ^2.3.3
   connectivity_plus: ^5.0.2
+  dotenv: ^4.2.0
   
 dev_dependencies:
   flutter_test:
