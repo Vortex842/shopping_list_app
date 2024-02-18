@@ -63,26 +63,27 @@ class EmptyProductsBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const double imgSize = 240;
+    const double imgSize = 140;
 
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const ColoredBox(
-            color: Colors.green,
-            child: Image(
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Image(
               image: AssetImage('assets/icon.png'),
               width: imgSize,
               height: imgSize,
             ),
-          ),
-          Text(
-            'Para agregar un producto apreta el +',
-            style: ref.normalText(),
-          ),
-        ],
+            const SizedBox(height: 25),
+            Text(
+              'Para agregar un producto apreta el +',
+              style: ref.normalText().copyWith(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

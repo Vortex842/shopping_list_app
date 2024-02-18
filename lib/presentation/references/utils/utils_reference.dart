@@ -31,9 +31,13 @@ extension ShoppingUtils on WidgetRef {
   void scrollToFinal() {
     final scrollController = read(scrollControllerProvider);
 
-    scrollController.jumpTo(
-      scrollController.position.maxScrollExtent,
-    );
+    try {
+      scrollController.jumpTo(
+        scrollController.position.maxScrollExtent,
+      );
+    } catch (error) {
+      print(error);
+    }
   }
 
   String errorText(EditableTextType textType) {
