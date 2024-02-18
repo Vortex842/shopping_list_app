@@ -20,35 +20,54 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
 
     final products = ref.watch(productsProvider);
     final onAddCart = ref.watch(onAddCartProvider);
-    final total = onAddCart ? ref.watch(totalCostProvider) : null;
 
     return Container(
       width: double.infinity,
       decoration: ref.bodyDecoration(),
       child: products.isEmpty && !onAddCart
           ? const EmptyProductsBody()
-          : Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  const Expanded(
-                    child: ShoppingProductsSection(),
-                  ),
-                  Visibility(
-                    visible: onAddCart,
-                    child: Text(
-                      "Total: \$$total",
-                      style: ref.totalText(),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          : const ScrollableProductBody(),
     );
   }
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class ScrollableProductBody extends ConsumerWidget {
+  const ScrollableProductBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final onAddCart = ref.watch(onAddCartProvider);
+    final total = onAddCart ? ref.watch(totalCostProvider) : null;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
+      ),
+      child: Column(
+        children: [
+          Text(
+            !onAddCart ? "Por comprar" : "Ya comprado",
+          ),
+          const Expanded(
+            child: ShoppingProductsSection(),
+          ),
+          Visibility(
+            visible: onAddCart,
+            child: Text(
+              "Total: \$$total",
+              style: ref.totalText(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class EmptyProductsBody extends ConsumerWidget {

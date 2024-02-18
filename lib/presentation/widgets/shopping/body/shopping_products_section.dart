@@ -18,14 +18,17 @@ class ShoppingProductsSection extends ConsumerWidget {
       borderRadius: ref.cardRadius,
       child: SingleChildScrollView(
         controller: scrollController,
-        child: Wrap(
-          direction: Axis.horizontal,
-          runSpacing: 10,
-          children: List.generate(
-            products.length,
-            (index) => ShoppingButton(
-              key: Key(products[index].hashCode.toString()),
-              product: products[index],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Wrap(
+            direction: Axis.horizontal,
+            runSpacing: 10,
+            children: List.generate(
+              products.length,
+              (index) => ShoppingButton(
+                key: Key(products[index].hashCode.toString()),
+                product: products[index],
+              ),
             ),
           ),
         ),
