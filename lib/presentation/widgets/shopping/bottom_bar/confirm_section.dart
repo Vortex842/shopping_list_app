@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../providers/product/product_list_provider.dart';
+import '/presentation/providers/on_change_states/on_add_cart_provider.dart';
+import '/presentation/providers/product/product_list_provider.dart';
 import '/presentation/references/references.barrel.dart';
 
 class ConfirmSection extends ConsumerWidget {
@@ -17,7 +18,21 @@ class ConfirmSection extends ConsumerWidget {
           ElevatedButton(
             style: ref.textButtonStyle(true),
             onPressed: () {
-              ref.read(productsProvider.notifier).deleteProductsSelected();
+              final onAddCart = ref.watch(onAddCartProvider);
+              final productsCart = ref.read(productsCartProvider);
+
+              if (onAddCart) {
+                ref
+                    .read(productsCartProvider.notifier)
+                    .deleteProductsSelected();
+
+                if (productsCart.isEmpty) {
+                  ref.onCartButtonPress();
+                }
+              } else {
+                ref.read(productsProvider.notifier).deleteProductsSelected();
+              }
+
               ref.whenConfirmCancel();
             },
             child: const Text("Aceptar"),

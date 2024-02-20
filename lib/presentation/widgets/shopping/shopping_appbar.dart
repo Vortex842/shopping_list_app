@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-import '../../providers/dark_mode_provider.dart';
-import '../../providers/product/product.barrel.dart';
+import '../../providers/providers.barrel.dart';
 import '../../references/references.barrel.dart';
 
 class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -89,7 +88,7 @@ class IconSideMenu extends ConsumerWidget {
 
     return IconButton(
       onPressed: () {
-        ref.read(isDarkProvider.notifier).update(
+        ref.read(onSideMenuActiveProvider.notifier).update(
               (state) => !state,
             );
       },
