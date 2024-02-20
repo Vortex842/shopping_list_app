@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '/presentation//providers/providers.barrel.dart';
-import '/presentation//references/references.barrel.dart';
-import '/presentation/providers/visibility/multi_select_visibility_provider.dart';
+import '../../providers/providers.barrel.dart';
+import '../../references/references.barrel.dart';
 
 class ShoppingAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ShoppingAppBar({super.key});
@@ -89,19 +88,9 @@ class IconSideMenu extends ConsumerWidget {
 
     return IconButton(
       onPressed: () {
-        final onAddEdit = ref.read(onAddEditProvider);
-
         ref.read(onSideMenuActiveProvider.notifier).update(
               (state) => !state,
             );
-
-        if (onAddEdit) {
-          ref.closeAddEditSection();
-        }
-
-        ref
-            .read(multiSelectVisibilityProvider.notifier)
-            .update((state) => false);
       },
       icon: Icon(
         isDark ? LucideIcons.alignRight : LucideIcons.alignLeft,

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '/data/domain/entities/product.dart';
-import '/presentation/providers/on_change_states/on_add_cart_provider.dart';
+import '../../../data/domain/entities/product.dart';
+import '../on_change_states/on_add_cart_provider.dart';
 
 final productsProvider =
     StateNotifierProvider<ProductNotifier, List<Product>>((ref) {
