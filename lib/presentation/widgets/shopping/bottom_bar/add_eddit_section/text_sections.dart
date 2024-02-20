@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../shopping_text_editable.dart';
 import '/presentation/references/color_reference.dart';
+import '../../shopping_text_editable.dart';
 
 class _TextSection extends ConsumerWidget {
   final bool isExpanded;

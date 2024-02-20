@@ -1,11 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:lucide_icons/lucide_icons.dart';
-import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
-import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
-import 'package:shopping_list_app/presentation/references/references.barrel.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+
+import '/presentation/enums/button_action_type.dart';
+import '/presentation/providers/providers.barrel.dart';
+import '/presentation/references/references.barrel.dart';
 
 class IconActionButton extends ConsumerWidget {
   final ButtonActionType btnAction;
@@ -28,7 +27,7 @@ class IconActionButton extends ConsumerWidget {
         color = null;
         break;
       case ButtonActionType.edit:
-        icon = LucideIcons.edit;
+        icon = LucideIcons.pen;
         color = ref.editIconColor(true);
         break;
       case ButtonActionType.delete:
