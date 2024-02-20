@@ -24,9 +24,12 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
     return Container(
       width: double.infinity,
       decoration: ref.bodyDecoration(),
-      child: products.isEmpty && !onAddCart
-          ? const EmptyProductsBody()
-          : const ScrollableProductBody(),
+      child: ClipRRect(
+        borderRadius: ref.cardRadius,
+        child: products.isEmpty && !onAddCart
+            ? const EmptyProductsBody()
+            : const ScrollableProductBody(),
+      ),
     );
   }
 
