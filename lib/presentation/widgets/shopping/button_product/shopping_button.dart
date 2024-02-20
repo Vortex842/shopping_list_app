@@ -6,11 +6,11 @@ import 'package:shopping_list_app/presentation/providers/inherited/button_action
 
 import '/data/domain/entities/product.dart';
 import '/presentation/enums/button_action_type.dart';
-import '../../../providers/providers.barrel.dart';
+import '../../../providers/on_change_states/on_tap_product_provider.dart';
 import '../../../references/references.barrel.dart';
-import 'button_product_actions.dart';
+import 'button_actions.dart';
 import 'button_section.dart';
-import 'icon_action_button.dart';
+import 'icons_product_section.dart';
 
 class ShoppingButton extends StatefulHookConsumerWidget {
   final Product product;
@@ -26,8 +26,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final onAddEdit = ref.watch(onAddEditProvider);
-    final onConfirm = ref.watch(onConfirmCancelProvider);
+    final onTapProduct = ref.watch(onTapProductProvider);
 
     final buttonAction = useState(ButtonActionType.none);
     final dismissDirection = useState(DismissDirection.none);
@@ -44,9 +43,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
     }, [widget.product.isChecked, dismissDirection.value]);
 
     return GestureDetector(
-      onTap: !onAddEdit && !onConfirm
-          ? () => ref.onTapProductButton(widget.product)
-          : null,
+      onTap: onTapProduct ? () => ref.onTapProductButton(widget.product) : null,
       child: ClipRRect(
         borderRadius: ref.buttonRadius,
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -57,19 +54,7 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
           ),
           child: Stack(
             children: [
-              Align(
-                alignment: buttonAction.value == ButtonActionType.edit
-                    ? Alignment.centerLeft
-                    : Alignment.centerRight,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: IconActionButton(
-                    btnAction: buttonAction.value,
-                  ),
-                ),
-              ),
+              IconsProductSection(buttonAction: buttonAction),
               ButtonDataInherited(
                 product: widget.product,
                 buttonSection: ButtonSection(widget.product),
@@ -85,30 +70,4 @@ class _ShoppingButtonState extends ConsumerState<ShoppingButton>
 
   @override
   bool get wantKeepAlive => true;
-}
-
-class ButtonActions extends ConsumerWidget {
-  const ButtonActions({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final onAddCart = ref.watch(onAddCartProvider);
-
-    final product = ButtonDataInherited.of(context)!.product;
-    final buttonSection = ButtonDataInherited.of(context)!.buttonSection;
-    final dismissDirection = ButtonDataInherited.of(context)!.dismissDirection;
-
-    return product.isChecked
-        ? onAddCart
-            ? LeaveCartAction(
-                product: product,
-                child: buttonSection,
-              )
-            : CheckedAction(child: buttonSection)
-        : EditDeleteAction(
-            product: product,
-            dismissDirection: dismissDirection,
-            child: buttonSection,
-          );
-  }
 }
