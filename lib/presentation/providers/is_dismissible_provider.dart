@@ -6,6 +6,7 @@ final isDismissibleProvider = StateProvider<bool>((ref) {
   final onMultiSelect = ref.watch(onMultiSelectProvider);
   final onAddEdit = ref.watch(onAddEditProvider);
   final onAddCart = ref.watch(onAddCartProvider);
+  final onSideMenuActive = ref.watch(onSideMenuActiveProvider);
 
-  return !(onMultiSelect || onAddEdit || onAddCart);
+  return !(onMultiSelect || onAddEdit || onAddCart || onSideMenuActive);
 });

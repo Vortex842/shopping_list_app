@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'presentation/references/references.barrel.dart';
+import 'presentation/widgets/shopping/body/shopping_body_animated.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ void main() async {
   );
 }
 
-class MainApp extends ConsumerWidget {
+class MainApp extends HookConsumerWidget {
   const MainApp({super.key});
 
   @override
@@ -31,14 +32,7 @@ class MainApp extends ConsumerWidget {
         child: Scaffold(
           backgroundColor: ref.pageColor(),
           appBar: const ShoppingAppBar(),
-          body: const Column(
-            children: [
-              Expanded(
-                child: ShoppingBody(),
-              ),
-              ShoppingBottom(),
-            ],
-          ),
+          body: const ShoppingAnimatedBody(),
         ),
       ),
     );
