@@ -2,8 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../data/domain/entities/product.dart';
-import '../../providers/providers.barrel.dart';
+import '/data/domain/entities/product.dart';
+import '/presentation/providers/providers.barrel.dart';
 
 extension ShoppingUtilsAddEdit on WidgetRef {
   bool isFailController(EditableTextType textType) {

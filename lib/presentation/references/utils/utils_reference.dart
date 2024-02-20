@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../data/domain/entities/product.dart';
-import '../../enums/editable_text_type.dart';
-import '../../providers/providers.barrel.dart';
+import '/data/domain/entities/product.dart';
+import '/presentation/enums/editable_text_type.dart';
+import '/presentation/providers/providers.barrel.dart';
 
 extension ShoppingUtils on WidgetRef {
   void activeEditableProduct(Product product) {

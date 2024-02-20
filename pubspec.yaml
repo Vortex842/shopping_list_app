@@ -10,10 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   lucide_icons_flutter: ^1.0.5
-  flutter_riverpod: ^2.4.10
+  flutter_riverpod: ^2.4.9
   uuid: ^4.3.3
-  hooks_riverpod: ^2.4.10
-  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.4.9
+  flutter_hooks: ^0.20.4
   text_scroll: ^0.2.0
   # supabase_flutter: ^2.3.4
   # connectivity_plus: ^5.0.2
