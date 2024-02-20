@@ -34,15 +34,12 @@ class ShoppingAnimatedBody extends HookConsumerWidget {
       animation: controller,
       builder: (context, child) => BodyTransform(
         value: controller.value,
-        body: Column(
+        body: const Column(
           children: [
-            const Expanded(
+            Expanded(
               child: ShoppingBody(),
             ),
-            Visibility(
-              visible: !onSideMenuActive,
-              child: const ShoppingBottom(),
-            ),
+            ShoppingBottom(),
           ],
         ),
       ),
