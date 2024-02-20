@@ -57,16 +57,10 @@ class IconUnselectAll extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onAddCart = ref.watch(onAddCartProvider);
-
     return _IconsMultiSelect(
       icon: LucideIcons.listX,
       callback: (ref) {
-        if (onAddCart) {
-          ref.read(productsCartProvider.notifier).uncheckAll();
-        } else {
-          ref.read(productsProvider.notifier).uncheckAll();
-        }
+        ref.unselectList();
       },
     );
   }

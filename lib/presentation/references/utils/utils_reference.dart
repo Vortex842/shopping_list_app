@@ -96,4 +96,14 @@ extension ShoppingFunctions on WidgetRef {
       print("Shopping cart");
     }
   }
+
+  void unselectList() {
+    final onAddCart = read(onAddCartProvider);
+
+    if (onAddCart) {
+      read(productsCartProvider.notifier).uncheckAll();
+    } else {
+      read(productsProvider.notifier).uncheckAll();
+    }
+  }
 }

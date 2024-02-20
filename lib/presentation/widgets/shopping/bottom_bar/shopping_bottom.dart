@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/providers/visibility/multi_select_visibility_provider.dart';
+import 'package:shopping_list_app/presentation/providers/visibility/multi_select_visible_provider.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 import 'package:shopping_list_app/presentation/widgets/shopping/bottom_bar/confirm_section.dart';
 
@@ -14,7 +14,7 @@ class ShoppingBottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onMultiSelect = ref.watch(multiSelectVisibilityProvider);
+    final onMultiSelect = ref.watch(multiSelectVisibleProvider);
     final onAddEdit = ref.watch(onAddEditProvider);
     final onConfirm = ref.watch(onConfirmCancelProvider);
 

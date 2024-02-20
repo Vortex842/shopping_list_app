@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
-import 'package:shopping_list_app/presentation/references/references.barrel.dart';
+
+import '/presentation/providers/providers.barrel.dart';
+import '/presentation/references/references.barrel.dart';
 
 class IconSideMenu extends ConsumerWidget {
   const IconSideMenu({
@@ -15,6 +16,17 @@ class IconSideMenu extends ConsumerWidget {
 
     return IconButton(
       onPressed: () {
+        final onAddEdit = ref.read(onAddEditProvider);
+        final onMultiSelect = ref.read(multiSelectVisibleProvider);
+
+        if (onAddEdit) {
+          ref.closeAddEditSection();
+        }
+
+        if (onMultiSelect) {
+          ref.unselectList();
+        }
+
         ref.read(onSideMenuActiveProvider.notifier).update(
               (state) => !state,
             );
