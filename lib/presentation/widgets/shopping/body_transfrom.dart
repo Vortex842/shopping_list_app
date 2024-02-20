@@ -17,7 +17,7 @@ class BodyTransform extends StatelessWidget {
     return LayoutBuilder(
       builder: (_, constraints) => Transform(
         alignment: Alignment.center,
-        origin: Offset(constraints.maxWidth * (1 - 0.2 * value), 0),
+        origin: Offset(constraints.maxWidth * (1 - 0.3 * value), 0),
         transform: Matrix4.identity()
           ..setEntry(3, 2, 0.001)
           ..rotateY(pi * value / 5)
