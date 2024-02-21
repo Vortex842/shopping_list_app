@@ -1,23 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '/presentation/references/references.barrel.dart';
 import '/presentation/widgets/shopping/side%20menu/side_menu_element.dart';
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends ConsumerWidget {
   const SideMenu({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return LayoutBuilder(
       builder: (_, constraints) => SizedBox(
         width: constraints.maxWidth * 0.75,
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DarkModeSection(),
+              const Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    children: [
+                      DarkModeSection(),
+                    ],
+                  ),
+                ),
+              ),
+              Text(
+                "v5.42.53",
+                style: ref.normalText(),
+              ),
             ],
           ),
         ),

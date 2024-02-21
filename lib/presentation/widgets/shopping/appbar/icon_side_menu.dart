@@ -18,6 +18,7 @@ class IconSideMenu extends ConsumerWidget {
       onPressed: () {
         final onAddEdit = ref.read(onAddEditProvider);
         final onMultiSelect = ref.read(multiSelectVisibleProvider);
+        final onConfirm = ref.watch(onConfirmCancelProvider);
 
         if (onAddEdit) {
           ref.closeAddEditSection();
@@ -25,6 +26,10 @@ class IconSideMenu extends ConsumerWidget {
 
         if (onMultiSelect) {
           ref.unselectList();
+        }
+
+        if (onConfirm) {
+          ref.whenConfirmCancel();
         }
 
         ref.read(onSideMenuActiveProvider.notifier).update(
