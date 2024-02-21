@@ -29,7 +29,7 @@ class SideMenu extends ConsumerWidget {
                 ),
               ),
               Text(
-                "v5.42.55",
+                "v5.42.56",
                 style: ref.normalText(),
               ),
             ],
