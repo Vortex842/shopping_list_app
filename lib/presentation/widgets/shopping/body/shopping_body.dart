@@ -56,6 +56,7 @@ class ScrollableProductBody extends ConsumerWidget {
         children: [
           Text(
             !onAddCart ? "Por comprar" : "Ya comprado",
+            style: ref.normalText(),
           ),
           const Expanded(
             child: ShoppingProductsSection(),
