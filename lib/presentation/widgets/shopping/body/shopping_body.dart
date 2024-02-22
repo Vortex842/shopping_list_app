@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../providers/providers.barrel.dart';
-import '../../../references/references.barrel.dart';
+import '/data/classes/product_class/hive_data.dart';
+import '/data/classes/product_class/product.dart';
+import '/presentation/providers/providers.barrel.dart';
+import '/presentation/references/references.barrel.dart';
 import 'shopping_products_section.dart';
 
 class ShoppingBody extends StatefulHookConsumerWidget {
@@ -27,7 +29,7 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
       child: ClipRRect(
         borderRadius: ref.cardRadius,
         child: products.isEmpty && !onAddCart
-            ? const EmptyProductsBody()
+            ? const LoadingProductData()
             : const ScrollableProductBody(),
       ),
     );
@@ -35,6 +37,48 @@ class _ShoppingBodyState extends ConsumerState<ShoppingBody>
 
   @override
   bool get wantKeepAlive => true;
+}
+
+class LoadingProductData extends ConsumerWidget {
+  const LoadingProductData({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SafeArea(
+        child: Scaffold(
+          body: FutureBuilder<List<Product>>(
+            future: HiveData.products,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                const double sizeImg = 120;
+
+                return const Center(
+                  child: Image(
+                    image: AssetImage('assets/icon.png'),
+                    width: sizeImg,
+                    height: sizeImg,
+                  ),
+                );
+              }
+
+              final products = snapshot.data!;
+
+              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                ref.read(productsProvider.notifier).addAll(
+                      products,
+                    );
+                HiveData.closeDB();
+              });
+
+              return const EmptyProductsBody();
+            },
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class ScrollableProductBody extends ConsumerWidget {
