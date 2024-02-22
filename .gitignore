@@ -2,7 +2,7 @@
 *.env
 
 # HIVE files
-*.hive
+products.hive
 
 # Miscellaneous
 *.class
