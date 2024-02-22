@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '/data/domain/entities/product.dart';
+import '../../../data/classes/product class/product.dart';
 
 class ButtonDataInherited extends InheritedWidget {
   final Product product;

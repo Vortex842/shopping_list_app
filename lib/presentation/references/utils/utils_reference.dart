@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../data/domain/entities/product.dart';
+import '../../../data/classes/product class/product.dart';
 import '../../enums/editable_text_type.dart';
 import '../../providers/providers.barrel.dart';
 

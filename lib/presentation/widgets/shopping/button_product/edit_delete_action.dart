@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/data/domain/entities/product.dart';
+import 'package:shopping_list_app/data/classes/product%20class/product.dart';
 import 'package:shopping_list_app/presentation/providers/is_dismissible_provider.dart';
 import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
 import 'package:shopping_list_app/presentation/references/utils/utils_reference.dart';
