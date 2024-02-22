@@ -16,7 +16,9 @@ void main() async {
   // print(env["SUPABASE_URL"]);
   // print(env["SUPABASE_ANON_KEY"]);
 
-  var path = Directory.current.path;
+  var path = Directory.systemTemp.path;
+
+  print(path);
 
   Hive
     ..init(path)
