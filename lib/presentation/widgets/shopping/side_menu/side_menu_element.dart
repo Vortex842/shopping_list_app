@@ -61,13 +61,13 @@ class _SideMenuElement extends ConsumerWidget {
           borderRadius: BorderRadius.circular(15),
           child: Padding(
             padding: const EdgeInsets.all(5),
-            child: Wrap(
-              spacing: 10,
+            child: Row(
               children: [
                 Icon(
                   icon,
                   color: ref.foregroundColor(),
                 ),
+                const SizedBox(width: 10),
                 Text(info, style: ref.normalText()),
               ],
             ),

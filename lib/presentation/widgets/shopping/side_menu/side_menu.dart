@@ -13,7 +13,7 @@ class SideMenuOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const _SideMenu(
-      sideMenuTitle: "Menu de opciones",
+      sideMenuTitle: "Opciones",
       sideMenuElements: [
         DarkModeAction(),
         ClearTablesDB(),
@@ -43,7 +43,11 @@ class _SideMenu extends HookConsumerWidget {
         builder: (_, constraints) => SizedBox(
           width: constraints.maxWidth * 0.75,
           child: Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10),
+            padding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+              bottom: 10,
+            ),
             child: Column(
               children: [
                 Text(
@@ -54,10 +58,13 @@ class _SideMenu extends HookConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: sideMenuElements,
+                      alignment: Alignment.topLeft,
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          direction: Axis.vertical,
+                          spacing: 10,
+                          children: sideMenuElements,
+                        ),
                       ),
                     ),
                   ),
