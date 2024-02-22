@@ -13,7 +13,7 @@ class ClearTablesDB extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return _SideMenuElement(
       icon: LucideIcons.fileX2,
-      info: "Borrar lista de productos",
+      info: "Borrar base de datos",
       action: () {
         HiveData.clearAll();
       },

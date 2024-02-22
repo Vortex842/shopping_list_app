@@ -45,8 +45,6 @@ class HiveData {
   static Future<void> clearAll() async {
     final box = await Hive.openBox<Product>('products');
 
-    print(box.values);
-
     box.clear();
   }
 
