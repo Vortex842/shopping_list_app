@@ -1,6 +1,9 @@
 # ENV files
 .env
 
+# HIVE files
+.hive
+
 # Miscellaneous
 *.class
 *.log
