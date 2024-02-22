@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '/presentation/providers/providers.barrel.dart';
+import '/presentation/providers/visibility/side_menu_shown.dart';
 import '/presentation/references/references.barrel.dart';
 
 class IconSideMenu extends ConsumerWidget {
@@ -12,7 +13,7 @@ class IconSideMenu extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDark = ref.watch(isDarkProvider);
+    final onSideMenuShown = ref.watch(sideMenuShownProvider);
 
     return IconButton(
       onPressed: () {
@@ -37,7 +38,7 @@ class IconSideMenu extends ConsumerWidget {
             );
       },
       icon: Icon(
-        isDark ? LucideIcons.alignRight : LucideIcons.alignLeft,
+        onSideMenuShown ? LucideIcons.alignRight : LucideIcons.alignLeft,
         size: 25,
         color: ref.foregroundColor(),
       ),
