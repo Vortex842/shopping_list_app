@@ -15,7 +15,8 @@ class SideMenuOptions extends StatelessWidget {
     return const _SideMenu(
       sideMenuTitle: "Menu de opciones",
       sideMenuElements: [
-        DarkModeSection(),
+        DarkModeAction(),
+        ClearTablesDB(),
       ],
     );
   }
@@ -55,6 +56,7 @@ class _SideMenu extends HookConsumerWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: sideMenuElements,
                       ),
                     ),

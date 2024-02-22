@@ -3,21 +3,34 @@ import 'package:hive/hive.dart';
 import 'product.dart';
 
 class HiveData {
+  static Future<List<Product>> get products async {
+    final box = await Hive.openBox<Product>('products');
+    return box.values.toList();
+  }
+
   static Future<void> saveProduct(Product product) async {
     final box = await Hive.openBox<Product>('products');
     box.put(product.id, product);
     closeDB();
   }
 
-  static Future<void> deleteProduct(String id) async {
+  static Future<void> saveAlLProducts(List<Product> products) async {
     final box = await Hive.openBox<Product>('products');
-    box.delete(id);
+
+    for (var p in products) {
+      box.put(p.id, p);
+    }
+
     closeDB();
   }
 
-  static Future<void> clearAll() async {
+  static Future<void> saveAllChecked(List<Product> products) async {
+    saveAlLProducts(products.where((p) => p.isChecked).toList());
+  }
+
+  static Future<void> deleteProduct(String id) async {
     final box = await Hive.openBox<Product>('products');
-    box.clear();
+    box.delete(id);
     closeDB();
   }
 
@@ -29,10 +42,13 @@ class HiveData {
     closeDB();
   }
 
-  static closeDB() => Hive.close();
-
-  static Future<List<Product>> get products async {
+  static Future<void> clearAll() async {
     final box = await Hive.openBox<Product>('products');
-    return box.values.toList();
+
+    print(box.values);
+
+    box.clear();
   }
+
+  static closeDB() => Hive.close();
 }

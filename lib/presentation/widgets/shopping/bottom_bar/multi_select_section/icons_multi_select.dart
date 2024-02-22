@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
+import '/data/classes/product_class/hive_data.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/color_reference.dart';
 import '/presentation/references/utils/utils_reference.dart';
@@ -75,12 +76,14 @@ class IconAddCartSelected extends StatelessWidget {
   Widget build(BuildContext context) {
     return _IconsMultiSelect(
       icon: Icons.add_shopping_cart,
-      callback: (ref) {
+      callback: (ref) async {
         var products = ref.read(productsProvider);
         products = products.where((p) => p.isChecked).toList();
 
         ref.read(productsCartProvider.notifier).addAll(products);
         ref.read(productsProvider.notifier).deleteProductsSelected();
+
+        await HiveData.clearAllChecked(products);
       },
     );
   }
@@ -95,7 +98,7 @@ class IconUndoCartSelected extends StatelessWidget {
   Widget build(BuildContext context) {
     return _IconsMultiSelect(
       icon: Icons.remove_shopping_cart,
-      callback: (ref) {
+      callback: (ref) async {
         var productsCart = ref.read(productsCartProvider);
         productsCart = productsCart.where((p) => p.isChecked).toList();
 
@@ -106,6 +109,8 @@ class IconUndoCartSelected extends StatelessWidget {
         if (productsOnCart.isEmpty) {
           ref.onCartButtonPress();
         }
+
+        await HiveData.saveAllChecked(productsCart);
       },
     );
   }

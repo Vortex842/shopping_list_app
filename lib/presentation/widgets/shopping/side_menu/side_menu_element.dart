@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:shopping_list_app/data/classes/product_class/hive_data.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 
 import '/presentation/providers/dark_mode_provider.dart';
 
-class DarkModeSection extends ConsumerWidget {
-  const DarkModeSection({
+class ClearTablesDB extends ConsumerWidget {
+  const ClearTablesDB({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return _SideMenuElement(
+      icon: LucideIcons.fileX2,
+      info: "Borrar lista de productos",
+      action: () {
+        HiveData.clearAll();
+      },
+    );
+  }
+}
+
+class DarkModeAction extends ConsumerWidget {
+  const DarkModeAction({
     super.key,
   });
 
@@ -15,7 +32,7 @@ class DarkModeSection extends ConsumerWidget {
 
     return _SideMenuElement(
       icon: isDarkMode ? Icons.light_mode : Icons.dark_mode,
-      info: Text("Modo oscuro", style: ref.normalText()),
+      info: "Modo oscuro",
       action: () {
         ref.read(isDarkProvider.notifier).update((state) => !state);
       },
@@ -25,14 +42,13 @@ class DarkModeSection extends ConsumerWidget {
 
 class _SideMenuElement extends ConsumerWidget {
   final IconData icon;
-  final Widget info;
+  final String info;
   final void Function() action;
 
   const _SideMenuElement({
     required this.icon,
     required this.info,
     required this.action,
-    super.key,
   });
 
   @override
@@ -52,7 +68,7 @@ class _SideMenuElement extends ConsumerWidget {
                   icon,
                   color: ref.foregroundColor(),
                 ),
-                info,
+                Text(info, style: ref.normalText()),
               ],
             ),
           ),
