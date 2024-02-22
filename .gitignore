@@ -1,8 +1,8 @@
 # ENV files
-.env
+*.env
 
 # HIVE files
-.hive
+*.hive
 
 # Miscellaneous
 *.class
