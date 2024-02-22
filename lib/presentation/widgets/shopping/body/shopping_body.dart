@@ -51,7 +51,7 @@ class LoadingProductData extends ConsumerWidget {
           body: FutureBuilder<List<Product>>(
             future: HiveData.products,
             builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+              if (!snapshot.hasData) {
                 const double sizeImg = 120;
 
                 return const Center(
