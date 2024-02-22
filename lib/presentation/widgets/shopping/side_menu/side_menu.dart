@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '/presentation/providers/visibility/side_menu_shown.dart';
 import '/presentation/references/references.barrel.dart';
@@ -19,7 +21,7 @@ class SideMenuOptions extends StatelessWidget {
   }
 }
 
-class _SideMenu extends ConsumerWidget {
+class _SideMenu extends HookConsumerWidget {
   final String sideMenuTitle;
   final List<Widget> sideMenuElements;
 
@@ -31,6 +33,8 @@ class _SideMenu extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final onSideMenuShown = ref.watch(sideMenuShownProvider);
+
+    final pubspecInfo = useFuture(PackageInfo.fromPlatform());
 
     return Visibility(
       visible: onSideMenuShown,
@@ -57,7 +61,7 @@ class _SideMenu extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  "v5.42.56",
+                  "By Vortex - v${pubspecInfo.data!.version}",
                   style: ref.normalText(),
                 ),
               ],

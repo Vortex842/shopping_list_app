@@ -1,7 +1,7 @@
 name: shopping_list_app
 description: "A Shopping List aplication"
 publish_to: 'Vortex'
-version: 5.42.56
+version: 5.45.57
 
 environment:
   sdk: '>=3.3.0-272.0.dev <4.0.0'
@@ -15,6 +15,7 @@ dependencies:
   hooks_riverpod: ^2.4.9
   flutter_hooks: ^0.20.4
   text_scroll: ^0.2.0
+  package_info_plus: ^5.0.1
   # supabase_flutter: ^2.3.4
   # connectivity_plus: ^5.0.2
   # dotenv: ^4.2.0
