@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'presentation/providers/visibility/side_menu_shown.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/body/shopping_body_animated.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';
-import 'presentation/widgets/shopping/side menu/side_menu.dart';
+import 'presentation/widgets/shopping/side_menu/side_menu.dart';
 
 void main() async {
   // var env = DotEnv()..load();
@@ -25,8 +24,6 @@ class MainApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final onSideMenuShown = ref.watch(sideMenuShownProvider);
-
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'ShoppingFont',
@@ -36,10 +33,10 @@ class MainApp extends HookConsumerWidget {
         child: Scaffold(
           backgroundColor: ref.pageColor(),
           appBar: const ShoppingAppBar(),
-          body: Stack(
+          body: const Stack(
             children: [
-              if (onSideMenuShown) const SideMenu(),
-              const ShoppingAnimatedBody(),
+              SideMenuOptions(),
+              ShoppingAnimatedBody(),
             ],
           ),
         ),

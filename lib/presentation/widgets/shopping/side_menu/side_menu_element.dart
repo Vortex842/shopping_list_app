@@ -15,10 +15,7 @@ class DarkModeSection extends ConsumerWidget {
 
     return _SideMenuElement(
       icon: isDarkMode ? Icons.light_mode : Icons.dark_mode,
-      info: Text(
-        "Modo oscuro",
-        style: ref.normalText(),
-      ),
+      info: Text("Modo oscuro", style: ref.normalText()),
       action: () {
         ref.read(isDarkProvider.notifier).update((state) => !state);
       },
