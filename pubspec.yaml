@@ -17,6 +17,7 @@ dependencies:
   text_scroll: ^0.2.0
   package_info_plus: ^5.0.1
   hive: ^2.2.3
+  shared_preferences: ^2.2.2
   # supabase_flutter: ^2.3.4
   # connectivity_plus: ^5.0.2
   # dotenv: ^4.2.0

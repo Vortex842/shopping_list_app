@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shopping_list_app/data/classes/product_class/hive_data.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../data/classes/product class/product.dart';
+import '../../../data/classes/product_class/product.dart';
 import '../../providers/providers.barrel.dart';
 
 extension ShoppingUtilsAddEdit on WidgetRef {
@@ -24,7 +25,7 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     return EditableTextType.values.any((type) => isFailController(type));
   }
 
-  void toAddEdit() {
+  void toAddEdit() async {
     final nameController = read(nameControllerProvider);
     final amountController = read(amountControllerProvider);
     final priceController = read(priceControllerProvider);
@@ -42,5 +43,7 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     } else {
       read(productsProvider.notifier).addProduct(product);
     }
+
+    await HiveData.saveProduct(product);
   }
 }

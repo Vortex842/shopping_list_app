@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../data/classes/product class/product.dart';
+import '../../../../data/classes/product_class/product.dart';
 import '../../../providers/providers.barrel.dart';
 import '../../../references/references.barrel.dart';
 import '../scrollable_text.dart';
