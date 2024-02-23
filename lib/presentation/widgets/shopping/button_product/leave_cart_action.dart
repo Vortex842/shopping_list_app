@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../data/classes/product_class/product.dart';
+import '../../../../classes/product_class/product.dart';
 
 class LeaveCartAction extends ConsumerWidget {
   final Product product;

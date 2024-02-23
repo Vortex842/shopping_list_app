@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '/data/classes/product_class/hive_data.dart';
-import '/data/classes/product_class/product.dart';
+import '/classes/product_class/hive_data.dart';
+import '/classes/product_class/product.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 import 'shopping_products_section.dart';

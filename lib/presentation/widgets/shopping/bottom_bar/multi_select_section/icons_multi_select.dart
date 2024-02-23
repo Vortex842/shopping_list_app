@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '/data/classes/product_class/hive_data.dart';
+import '/classes/product_class/hive_data.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/color_reference.dart';
 import '/presentation/references/utils/utils_reference.dart';
