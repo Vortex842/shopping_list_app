@@ -3,19 +3,23 @@ import 'package:hive/hive.dart';
 import 'product.dart';
 
 class HiveData {
-  static Future<List<Product>> get products async {
-    final box = await Hive.openBox<Product>('products');
+  final String nameTable;
+
+  HiveData({required this.nameTable});
+
+  Future<List<Product>> get products async {
+    final box = await Hive.openBox<Product>(nameTable);
     return box.values.toList();
   }
 
-  static Future<void> saveProduct(Product product) async {
-    final box = await Hive.openBox<Product>('products');
+  Future<void> saveProduct(Product product) async {
+    final box = await Hive.openBox<Product>(nameTable);
     box.put(product.id, product);
     closeDB();
   }
 
-  static Future<void> saveAlLProducts(List<Product> products) async {
-    final box = await Hive.openBox<Product>('products');
+  Future<void> saveAlLProducts(List<Product> products) async {
+    final box = await Hive.openBox<Product>(nameTable);
 
     for (var p in products) {
       box.put(p.id, p);
@@ -24,26 +28,26 @@ class HiveData {
     closeDB();
   }
 
-  static Future<void> saveAllChecked(List<Product> products) async {
+  Future<void> saveAllChecked(List<Product> products) async {
     saveAlLProducts(products.where((p) => p.isChecked).toList());
   }
 
-  static Future<void> deleteProduct(String id) async {
-    final box = await Hive.openBox<Product>('products');
+  Future<void> deleteProduct(String id) async {
+    final box = await Hive.openBox<Product>(nameTable);
     box.delete(id);
     closeDB();
   }
 
-  static Future<void> clearAllChecked(List<Product> products) async {
-    final box = await Hive.openBox<Product>('products');
+  Future<void> clearAllChecked(List<Product> products) async {
+    final box = await Hive.openBox<Product>(nameTable);
 
     box.deleteAll(products.where((p) => p.isChecked).map((p) => p.id));
 
     closeDB();
   }
 
-  static Future<void> clearAll() async {
-    final box = await Hive.openBox<Product>('products');
+  Future<void> clearAll() async {
+    final box = await Hive.openBox<Product>(nameTable);
 
     box.clear();
   }

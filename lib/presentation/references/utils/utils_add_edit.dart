@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/classes/product_class/hive_data.dart';
 import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import 'package:uuid/uuid.dart';
 
@@ -26,6 +25,8 @@ extension ShoppingUtilsAddEdit on WidgetRef {
   }
 
   void toAddEdit() async {
+    final hiveDataMain = read(hiveDataMainProvider);
+
     final nameController = read(nameControllerProvider);
     final amountController = read(amountControllerProvider);
     final priceController = read(priceControllerProvider);
@@ -44,6 +45,6 @@ extension ShoppingUtilsAddEdit on WidgetRef {
       read(productsProvider.notifier).addProduct(product);
     }
 
-    await HiveData.saveProduct(product);
+    await hiveDataMain.saveProduct(product);
   }
 }

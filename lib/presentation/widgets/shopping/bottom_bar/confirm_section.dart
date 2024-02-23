@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '/classes/product_class/hive_data.dart';
-import '/presentation/providers/on_change_states/on_add_cart_provider.dart';
-import '/presentation/providers/product/product_list_provider.dart';
+import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 
 class ConfirmSection extends ConsumerWidget {
@@ -19,6 +17,8 @@ class ConfirmSection extends ConsumerWidget {
           ElevatedButton(
             style: ref.textButtonStyle(true),
             onPressed: () async {
+              final hiveDataMain = ref.read(hiveDataMainProvider);
+
               final onAddCart = ref.read(onAddCartProvider);
               final products = ref.read(productsProvider);
               final productsCart = ref.read(productsCartProvider);
@@ -34,7 +34,7 @@ class ConfirmSection extends ConsumerWidget {
               } else {
                 // print(products);
 
-                await HiveData.clearAllChecked(products);
+                await hiveDataMain.clearAllChecked(products);
 
                 ref.read(productsProvider.notifier).deleteProductsSelected();
               }
