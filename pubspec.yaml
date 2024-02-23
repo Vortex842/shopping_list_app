@@ -1,7 +1,7 @@
 name: shopping_list_app
 description: "A Shopping List aplication"
 publish_to: 'Vortex'
-version: 6.54.71
+version: 6.55.71
 
 environment:
   sdk: '>=3.3.0-272.0.dev <4.0.0'
