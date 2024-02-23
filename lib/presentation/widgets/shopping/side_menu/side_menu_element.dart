@@ -15,7 +15,12 @@ class ClearTablesDB extends ConsumerWidget {
       info: "Borrar base de datos",
       action: () {
         final hiveDataMain = ref.read(hiveDataMainProvider);
+        final hiveDataCart = ref.read(hiveDataCartProvider);
+
         final onAddCart = ref.read(onAddCartProvider);
+
+        hiveDataMain.clearAll();
+        hiveDataCart.clearAll();
 
         ref.read(productsProvider.notifier)
           ..checkAll()
@@ -28,8 +33,6 @@ class ClearTablesDB extends ConsumerWidget {
         if (onAddCart) {
           ref.onCartButtonPress();
         }
-
-        hiveDataMain.clearAll();
       },
     );
   }

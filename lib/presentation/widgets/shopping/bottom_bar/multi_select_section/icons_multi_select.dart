@@ -77,13 +77,16 @@ class IconAddCartSelected extends StatelessWidget {
       icon: Icons.add_shopping_cart,
       callback: (ref) async {
         final hiveDataMain = ref.read(hiveDataMainProvider);
+        final hiveDataCart = ref.read(hiveDataCartProvider);
+
         final products = ref.read(productsProvider);
         final productsChecked = products.where((p) => p.isChecked).toList();
 
         ref.read(productsCartProvider.notifier).addAll(productsChecked);
         ref.read(productsProvider.notifier).deleteProductsSelected();
 
-        await hiveDataMain.clearAllChecked(productsChecked);
+        await hiveDataMain.clearAllProducts(productsChecked);
+        await hiveDataCart.saveAlLProducts(productsChecked);
       },
     );
   }
@@ -100,6 +103,8 @@ class IconUndoCartSelected extends StatelessWidget {
       icon: Icons.remove_shopping_cart,
       callback: (ref) async {
         final hiveDataMain = ref.read(hiveDataMainProvider);
+        final hiveDataCart = ref.read(hiveDataCartProvider);
+
         final productsCart = ref.read(productsCartProvider);
         final productsCartChecked =
             productsCart.where((p) => p.isChecked).toList();
@@ -112,7 +117,8 @@ class IconUndoCartSelected extends StatelessWidget {
           ref.onCartButtonPress();
         }
 
-        await hiveDataMain.saveAllChecked(productsCartChecked);
+        await hiveDataMain.saveAlLProducts(productsCartChecked);
+        await hiveDataCart.clearAllProducts(productsCartChecked);
       },
     );
   }

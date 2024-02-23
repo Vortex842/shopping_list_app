@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '/classes/product_class/hive_data.dart';
-import '/classes/product_class/product.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 import 'empty_products_body.dart';
@@ -45,30 +43,19 @@ class LoadingProductData extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hiveDataMain = ref.watch(hiveDataMainProvider);
+    final hiveDataMain = ref.read(hiveDataMainProvider);
+    final hiveDataCart = ref.read(hiveDataCartProvider);
 
-    return FutureBuilder<List<Product>>(
-      future: hiveDataMain.products,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          const double sizeImg = 120;
-
-          return const Center(
-            child: Image(
-              image: AssetImage('assets/icon.png'),
-              width: sizeImg,
-              height: sizeImg,
-            ),
-          );
-        }
-
-        final products = snapshot.data!;
-
+    return Builder(
+      builder: (context) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          ref.read(productsProvider.notifier).addAll(
-                products,
-              );
-          HiveData.closeDB();
+          hiveDataMain.products.then((mainList) {
+            ref.read(productsProvider.notifier).addAll(mainList);
+          });
+
+          hiveDataCart.products.then((cartList) {
+            ref.read(productsCartProvider.notifier).addAll(cartList);
+          });
         });
 
         return const EmptyProductsBody();
