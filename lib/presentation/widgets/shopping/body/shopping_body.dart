@@ -5,7 +5,8 @@ import '/classes/product_class/hive_data.dart';
 import '/classes/product_class/product.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
-import 'shopping_products_section.dart';
+import 'empty_products_body.dart';
+import 'scrollable_product_body.dart';
 
 class ShoppingBody extends StatefulHookConsumerWidget {
   const ShoppingBody({super.key});
@@ -44,108 +45,34 @@ class LoadingProductData extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          body: FutureBuilder<List<Product>>(
-            future: HiveData.products,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                const double sizeImg = 120;
+    final hiveDataMain = ref.watch(hiveDataMainProvider);
 
-                return const Center(
-                  child: Image(
-                    image: AssetImage('assets/icon.png'),
-                    width: sizeImg,
-                    height: sizeImg,
-                  ),
-                );
-              }
+    return FutureBuilder<List<Product>>(
+      future: hiveDataMain.products,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          const double sizeImg = 120;
 
-              final products = snapshot.data!;
-
-              WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-                ref.read(productsProvider.notifier).addAll(
-                      products,
-                    );
-                HiveData.closeDB();
-              });
-
-              return const EmptyProductsBody();
-            },
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ScrollableProductBody extends ConsumerWidget {
-  const ScrollableProductBody({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final onAddCart = ref.watch(onAddCartProvider);
-    final total = onAddCart ? ref.watch(totalCostProvider) : null;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-        vertical: 10,
-      ),
-      child: Column(
-        children: [
-          Text(
-            !onAddCart ? "Por comprar" : "Ya comprado",
-            style: ref.normalText(),
-          ),
-          const Expanded(
-            child: ShoppingProductsSection(),
-          ),
-          Visibility(
-            visible: onAddCart,
-            child: Text(
-              "Total: \$$total",
-              style: ref.totalText(),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class EmptyProductsBody extends ConsumerWidget {
-  const EmptyProductsBody({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    const double imgSize = 140;
-
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Image(
+          return const Center(
+            child: Image(
               image: AssetImage('assets/icon.png'),
-              width: imgSize,
-              height: imgSize,
+              width: sizeImg,
+              height: sizeImg,
             ),
-            const SizedBox(height: 20),
-            Text(
-              'Apreta el boton + para agregar un nuevo producto',
-              style: ref.normalText().copyWith(fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      ),
+          );
+        }
+
+        final products = snapshot.data!;
+
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          ref.read(productsProvider.notifier).addAll(
+                products,
+              );
+          HiveData.closeDB();
+        });
+
+        return const EmptyProductsBody();
+      },
     );
   }
 }
