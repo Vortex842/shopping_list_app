@@ -1,10 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shopping_list_app/presentation/providers/inherited/button_actions_inherited.dart';
-import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/button_product/button_product_actions.dart';
+
+import '/presentation/providers/providers.barrel.dart';
+import 'button_product_actions.dart';
 
 class ButtonActions extends ConsumerWidget {
   const ButtonActions({super.key});

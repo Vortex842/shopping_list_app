@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:flutter/material.dart';
 import 'package:shopping_list_app/presentation/enums/button_action_type.dart';
 import 'package:shopping_list_app/presentation/widgets/shopping/button_product/icon_action_button.dart';
