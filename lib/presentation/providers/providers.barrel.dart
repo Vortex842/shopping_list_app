@@ -1,12 +1,9 @@
 export 'dark_mode_provider.dart';
 export 'done/done.barrel.dart';
+export 'inherited/button_actions_inherited.dart';
 export 'is_dismissible_provider.dart';
 export 'multi_selected_mode.dart';
 export 'on_change_states/on_change.barrel.dart';
-export 'product/editable_product_provider.dart';
-export 'product/editable_text_provider.dart';
-export 'product/product_list_provider.dart';
-export 'product/total_cost_provider.dart';
+export 'product/product.barrel.dart';
 export 'scroll_controller_provider.dart';
-export 'visibility/add_cart_button_visible_provider.dart';
-export 'visibility/multi_select_visible_provider.dart';
+export 'visibility/visibilty.barrel.dart';
