@@ -18,8 +18,6 @@ void main() async {
 
   var path = Directory.systemTemp.path;
 
-  print(path);
-
   Hive
     ..init(path)
     ..registerAdapter(ProductAdapter());

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:shopping_list_app/data/classes/product_class/hive_data.dart';
-import 'package:shopping_list_app/presentation/references/references.barrel.dart';
 
+import '/data/classes/product_class/hive_data.dart';
 import '/presentation/providers/dark_mode_provider.dart';
+import '/presentation/providers/on_change_states/on_add_cart_provider.dart';
+import '/presentation/providers/product/product.barrel.dart';
+import '/presentation/references/references.barrel.dart';
 
 class ClearTablesDB extends ConsumerWidget {
   const ClearTablesDB({super.key});
@@ -15,6 +17,20 @@ class ClearTablesDB extends ConsumerWidget {
       icon: LucideIcons.fileX2,
       info: "Borrar base de datos",
       action: () {
+        final onAddCart = ref.read(onAddCartProvider);
+
+        ref.read(productsProvider.notifier)
+          ..checkAll()
+          ..deleteProductsSelected();
+
+        ref.read(productsCartProvider.notifier)
+          ..checkAll()
+          ..deleteProductsSelected();
+
+        if (onAddCart) {
+          ref.onCartButtonPress();
+        }
+
         HiveData.clearAll();
       },
     );
