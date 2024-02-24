@@ -46,19 +46,19 @@ class LoadingProductData extends ConsumerWidget {
     return Builder(
       builder: (context) {
         WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          final DBProductsMain = ref.read(DBProductsMainProvider);
-          final DBProductsCart = ref.read(DBProductsCartProvider);
+          final dbProductsMain = ref.read(dbProductsMainProvider);
+          final dbProductsCart = ref.read(dbProductsCartProvider);
 
           final products = ref.read(productsProvider);
           final productsCart = ref.read(productsCartProvider);
 
           if (products.isEmpty) {
-            DBProductsMain.products.then((mainList) {
+            dbProductsMain.products.then((mainList) {
               ref.read(productsProvider.notifier).addAll(mainList);
             });
           }
           if (productsCart.isEmpty) {
-            DBProductsCart.products.then((cartList) {
+            dbProductsCart.products.then((cartList) {
               ref.read(productsCartProvider.notifier).addAll(cartList);
             });
           }

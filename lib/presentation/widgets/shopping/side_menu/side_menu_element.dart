@@ -14,13 +14,13 @@ class ClearTablesDB extends ConsumerWidget {
       icon: LucideIcons.fileX2,
       info: "Borrar base de datos",
       action: () {
-        final DBProductsMain = ref.read(DBProductsMainProvider);
-        final DBProductsCart = ref.read(DBProductsCartProvider);
+        final dbProductsMain = ref.read(dbProductsMainProvider);
+        final dbProductsCart = ref.read(dbProductsCartProvider);
 
         final onAddCart = ref.read(onAddCartProvider);
 
-        DBProductsMain.clearAll();
-        DBProductsCart.clearAll();
+        dbProductsMain.deleteAll();
+        dbProductsCart.deleteAll();
 
         ref.read(productsProvider.notifier)
           ..checkAll()

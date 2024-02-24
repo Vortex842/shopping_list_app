@@ -25,7 +25,7 @@ extension ShoppingUtilsAddEdit on WidgetRef {
   }
 
   void toAddEdit() async {
-    final DBProductsMain = read(DBProductsMainProvider);
+    final dbProductsMain = read(dbProductsMainProvider);
 
     final nameController = read(nameControllerProvider);
     final amountController = read(amountControllerProvider);
@@ -45,6 +45,6 @@ extension ShoppingUtilsAddEdit on WidgetRef {
       read(productsProvider.notifier).addProduct(product);
     }
 
-    await DBProductsMain.saveProduct(product);
+    await dbProductsMain.saveProduct(product);
   }
 }
