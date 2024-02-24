@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/presentation/references/references.barrel.dart';
-import '/presentation/widgets/bottom_bar/confirm_section.dart';
 import '../../providers/providers.barrel.dart';
 import 'add_eddit_section/add_edit_section.dart';
 import 'base_section.dart';
+import 'confirm_section.dart';
 import 'multi_select_section/multi_select_section.dart';
 
 class ShoppingBottomBar extends ConsumerWidget {

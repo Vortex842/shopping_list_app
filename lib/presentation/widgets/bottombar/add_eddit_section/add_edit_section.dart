@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shopping_list_app/presentation/widgets/bottom_bar/add_eddit_section/text_sections.dart';
+import 'package:shopping_list_app/presentation/widgets/bottombar/add_eddit_section/text_sections.dart';
 
 import 'close_product_button.dart';
 import 'done_product_button.dart';

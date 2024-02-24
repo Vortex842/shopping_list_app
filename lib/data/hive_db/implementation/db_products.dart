@@ -1,10 +1,10 @@
-import '../classes/product_class/product.dart';
-import 'db_hive.dart';
+import '../../classes/product_class/product.dart';
+import '../repository/db_hive.dart';
 
-// class DBProducts {
+// class ProductsDB {
 //   final String nameTable;
 
-//   DBProducts({required this.nameTable});
+//   ProductsDB({required this.nameTable});
 
 //   Future<List<Product>> get products async {
 //     final box = await Hive.openBox<Product>(nameTable);
@@ -46,8 +46,8 @@ import 'db_hive.dart';
 //   }
 // }
 
-class DBProducts extends DataBaseHive<Product> {
-  DBProducts({required super.nameTable});
+class ProductsDB extends DataBaseHive<Product> {
+  ProductsDB({required super.nameTable});
 
   Future<List<Product>> get products async =>
       dataMap.then((value) => value.values.toList());

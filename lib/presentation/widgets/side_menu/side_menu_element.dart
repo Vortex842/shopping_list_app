@@ -12,7 +12,7 @@ class ClearTablesDB extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return _SideMenuElement(
       icon: LucideIcons.fileX2,
-      info: "Borrar base de datos",
+      info: "Borrar productos",
       action: () {
         final dbProductsMain = ref.read(dbProductsMainProvider);
         final dbProductsCart = ref.read(dbProductsCartProvider);

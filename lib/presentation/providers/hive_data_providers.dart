@@ -1,10 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/data/hive_db/db_products.dart';
+import 'package:shopping_list_app/data/hive_db/implementation/db_products.dart';
+import 'package:shopping_list_app/data/hive_db/implementation/db_settings.dart';
 
-final dbProductsMainProvider = Provider<DBProducts>((ref) {
-  return DBProducts(nameTable: 'products');
+final dbProductsMainProvider = Provider<ProductsDB>((ref) {
+  return ProductsDB(nameTable: 'products');
 });
 
-final dbProductsCartProvider = Provider<DBProducts>((ref) {
-  return DBProducts(nameTable: 'cart');
+final dbProductsCartProvider = Provider<ProductsDB>((ref) {
+  return ProductsDB(nameTable: 'cart');
+});
+
+final dbSettingsProvider = Provider<SettingsDB>((ref) {
+  return SettingsDB();
 });
