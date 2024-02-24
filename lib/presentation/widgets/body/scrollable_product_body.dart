@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/providers/providers.barrel.dart';
 import 'package:shopping_list_app/presentation/references/references.barrel.dart';
-import 'package:shopping_list_app/presentation/widgets/shopping/body/shopping_products_section.dart';
+import 'package:shopping_list_app/presentation/widgets/body/shopping_products_section.dart';
 
 class ScrollableProductBody extends ConsumerWidget {
   const ScrollableProductBody({

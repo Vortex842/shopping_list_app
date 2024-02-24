@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/presentation/providers/dark_mode_provider.dart';
 import '/presentation/references/references.barrel.dart';
-import '../../../../data/classes/product_class/product.dart';
+import '../../../data/classes/product_class/product.dart';
 import '../scrollable_text.dart';
 
 class ButtonSection extends ConsumerStatefulWidget {

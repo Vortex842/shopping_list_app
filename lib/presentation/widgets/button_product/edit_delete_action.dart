@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/utils/utils_reference.dart';
-import '../../../../data/classes/product_class/product.dart';
+import '../../../data/classes/product_class/product.dart';
 
 class EditDeleteAction extends ConsumerWidget {
   final Product product;

@@ -7,16 +7,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '/presentation/providers/providers.barrel.dart';
 import 'data/classes/product_class/product.dart';
 import 'presentation/references/references.barrel.dart';
-import 'presentation/widgets/shopping/body/shopping_body_animated.dart';
-import 'presentation/widgets/shopping/shopping.barrel.dart';
-import 'presentation/widgets/shopping/side_menu/side_menu.dart';
+import 'presentation/widgets/body/shopping_body_animated.dart';
+import 'presentation/widgets/shopping.barrel.dart';
+import 'presentation/widgets/side_menu/side_menu.dart';
 
 void main() async {
-  // var env = DotEnv()..load();
-
-  // print(env["SUPABASE_URL"]);
-  // print(env["SUPABASE_ANON_KEY"]);
-
   var path = Directory.systemTemp.path;
 
   Hive
