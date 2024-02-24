@@ -5,6 +5,31 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '/presentation/providers/providers.barrel.dart';
 import '/presentation/references/references.barrel.dart';
 
+class DarkModeAction extends ConsumerWidget {
+  const DarkModeAction({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(isDarkProvider);
+
+    return _SideMenuElement(
+      icon: isDarkMode ? Icons.light_mode : Icons.dark_mode,
+      info: "Modo ${isDarkMode ? "claro" : "oscuro"}",
+      action: () {
+        final dbSettings = ref.read(dbSettingsProvider);
+
+        ref.read(isDarkProvider.notifier).update((state) {
+          dbSettings.save('dark_mode', !state);
+
+          return !state;
+        });
+      },
+    );
+  }
+}
+
 class ClearTablesDB extends ConsumerWidget {
   const ClearTablesDB({super.key});
 
@@ -33,25 +58,6 @@ class ClearTablesDB extends ConsumerWidget {
         if (onAddCart) {
           ref.onCartButtonPress();
         }
-      },
-    );
-  }
-}
-
-class DarkModeAction extends ConsumerWidget {
-  const DarkModeAction({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkProvider);
-
-    return _SideMenuElement(
-      icon: isDarkMode ? Icons.light_mode : Icons.dark_mode,
-      info: "Modo ${isDarkMode ? "claro" : "oscuro"}",
-      action: () {
-        ref.read(isDarkProvider.notifier).update((state) => !state);
       },
     );
   }

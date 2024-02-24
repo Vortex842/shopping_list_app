@@ -17,8 +17,19 @@ void main() async {
     ..registerAdapter(ProductAdapter());
 
   runApp(
-    const ProviderScope(
-      child: LoadingProductData(),
+    ProviderScope(
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'ShoppingFont',
+        ),
+        debugShowCheckedModeBanner: false,
+        home: const SafeArea(
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            body: LoadingProductData(),
+          ),
+        ),
+      ),
     ),
   );
 }
@@ -49,33 +60,44 @@ class MainApp extends ConsumerWidget {
   }
 }
 
-class LoadingProductData extends ConsumerWidget {
+class LoadingProductData extends HookConsumerWidget {
   const LoadingProductData({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Builder(
       builder: (context) {
-        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-          final dbProductsMain = ref.read(dbProductsMainProvider);
-          final dbProductsCart = ref.read(dbProductsCartProvider);
+        final dbSettings = ref.read(dbSettingsProvider);
 
-          final products = ref.read(productsProvider);
-          final productsCart = ref.read(productsCartProvider);
+        return FutureBuilder(
+          future: dbSettings.dataMap,
+          builder: (_, snapshot) {
+            if (!snapshot.hasData) {
+              return const SizedBox();
+            }
 
-          if (products.isEmpty) {
-            dbProductsMain.products.then((mainList) {
-              ref.read(productsProvider.notifier).addAll(mainList);
+            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+              final dbProductsMain = ref.read(dbProductsMainProvider);
+              final dbProductsCart = ref.read(dbProductsCartProvider);
+
+              final settings = snapshot.data ?? {};
+
+              ref
+                  .read(isDarkProvider.notifier)
+                  .update((state) => settings['dark_mode'] ?? false);
+
+              dbProductsMain.products.then((mainList) {
+                ref.read(productsProvider.notifier).addAll(mainList);
+              });
+
+              dbProductsCart.products.then((cartList) {
+                ref.read(productsCartProvider.notifier).addAll(cartList);
+              });
             });
-          }
-          if (productsCart.isEmpty) {
-            dbProductsCart.products.then((cartList) {
-              ref.read(productsCartProvider.notifier).addAll(cartList);
-            });
-          }
-        });
 
-        return const MainApp();
+            return const MainApp();
+          },
+        );
       },
     );
   }
