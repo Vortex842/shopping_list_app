@@ -4,12 +4,12 @@ import 'package:shopping_list_app/presentation/references/references.barrel.dart
 import 'package:shopping_list_app/presentation/widgets/bottom_bar/confirm_section.dart';
 
 import '../../providers/providers.barrel.dart';
-import '../base_section.dart';
 import 'add_eddit_section/add_edit_section.dart';
+import 'base_section.dart';
 import 'multi_select_section/multi_select_section.dart';
 
-class ShoppingBottom extends ConsumerWidget {
-  const ShoppingBottom({super.key});
+class ShoppingBottomBar extends ConsumerWidget {
+  const ShoppingBottomBar({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

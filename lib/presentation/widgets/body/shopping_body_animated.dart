@@ -3,8 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '/presentation/providers/providers.barrel.dart';
-import '../body_transform.dart';
-import '../shopping.barrel.dart';
+import '../widgets.barrel.dart';
 
 class ShoppingAnimatedBody extends HookConsumerWidget {
   const ShoppingAnimatedBody({
@@ -50,7 +49,7 @@ class ShoppingAnimatedBody extends HookConsumerWidget {
             Expanded(
               child: ShoppingBody(),
             ),
-            ShoppingBottom(),
+            ShoppingBottomBar(),
           ],
         ),
       ),
