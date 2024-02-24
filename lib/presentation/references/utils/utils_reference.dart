@@ -106,4 +106,10 @@ extension ShoppingFunctions on WidgetRef {
       read(productsProvider.notifier).uncheckAll();
     }
   }
+
+  bool isNumberTextField(String value) {
+    final num number = num.tryParse(value) ?? -1;
+
+    return number >= 0;
+  }
 }

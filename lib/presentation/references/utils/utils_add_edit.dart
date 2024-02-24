@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/enums/editable_text_type.dart';
 import 'package:uuid/uuid.dart';
 
+import '/data/classes/product_class/product.dart';
+import '/presentation/enums/editable_text_type.dart';
 import '/presentation/providers/providers.barrel.dart';
-import '../../../data/classes/product_class/product.dart';
+import '/presentation/references/utils/utils_reference.dart';
 
 extension ShoppingUtilsAddEdit on WidgetRef {
   bool isFailController(EditableTextType textType) {
@@ -13,8 +14,8 @@ extension ShoppingUtilsAddEdit on WidgetRef {
 
     return textType.returnType(
       name.isEmpty,
-      amount.isEmpty || (int.parse(amount) < 0),
-      price.isEmpty || (double.parse(price) < 0),
+      amount.isEmpty || !isNumberTextField(amount),
+      price.isEmpty || !isNumberTextField(price),
     );
   }
 
