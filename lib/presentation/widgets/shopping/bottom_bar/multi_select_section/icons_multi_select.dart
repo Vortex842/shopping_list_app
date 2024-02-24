@@ -82,11 +82,11 @@ class IconAddCartSelected extends StatelessWidget {
         final products = ref.read(productsProvider);
         final productsChecked = products.where((p) => p.isChecked).toList();
 
+        dbProductsMain.clearAllProducts(productsChecked);
+        dbProductsCart.saveAllProducts(productsChecked);
+
         ref.read(productsCartProvider.notifier).addAll(productsChecked);
         ref.read(productsProvider.notifier).deleteProductsSelected();
-
-        await dbProductsMain.clearAllProducts(productsChecked);
-        await dbProductsCart.saveAllProducts(productsChecked);
       },
     );
   }
@@ -109,6 +109,9 @@ class IconUndoCartSelected extends StatelessWidget {
         final productsCartChecked =
             productsCart.where((p) => p.isChecked).toList();
 
+        dbProductsMain.saveAllProducts(productsCartChecked);
+        dbProductsCart.clearAllProducts(productsCartChecked);
+
         ref.read(productsProvider.notifier).addAll(productsCartChecked);
         ref.read(productsCartProvider.notifier).deleteProductsSelected();
 
@@ -116,9 +119,6 @@ class IconUndoCartSelected extends StatelessWidget {
         if (productsOnCart.isEmpty) {
           ref.onCartButtonPress();
         }
-
-        await dbProductsMain.saveAllProducts(productsCartChecked);
-        await dbProductsCart.clearAllProducts(productsCartChecked);
       },
     );
   }

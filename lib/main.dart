@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '/presentation/providers/providers.barrel.dart';
 import 'data/classes/product_class/product.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/body/shopping_body_animated.dart';
@@ -24,7 +25,7 @@ void main() async {
 
   runApp(
     const ProviderScope(
-      child: MainApp(),
+      child: LoadingProductData(),
     ),
   );
 }
@@ -51,6 +52,38 @@ class MainApp extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class LoadingProductData extends ConsumerWidget {
+  const LoadingProductData({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Builder(
+      builder: (context) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          final dbProductsMain = ref.read(dbProductsMainProvider);
+          final dbProductsCart = ref.read(dbProductsCartProvider);
+
+          final products = ref.read(productsProvider);
+          final productsCart = ref.read(productsCartProvider);
+
+          if (products.isEmpty) {
+            dbProductsMain.products.then((mainList) {
+              ref.read(productsProvider.notifier).addAll(mainList);
+            });
+          }
+          if (productsCart.isEmpty) {
+            dbProductsCart.products.then((cartList) {
+              ref.read(productsCartProvider.notifier).addAll(cartList);
+            });
+          }
+        });
+
+        return const MainApp();
+      },
     );
   }
 }

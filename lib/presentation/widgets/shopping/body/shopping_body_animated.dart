@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '/presentation/providers/on_change_states/on_side_menu_active_provider.dart';
-import '/presentation/providers/visibility/side_menu_shown.dart';
+import '/presentation/providers/providers.barrel.dart';
 import '/presentation/widgets/shopping/shopping.barrel.dart';
 import '../body_transform.dart';
 
