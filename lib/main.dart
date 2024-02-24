@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'classes/product_class/product.dart';
+import 'data/classes/product_class/product.dart';
 import 'presentation/references/references.barrel.dart';
 import 'presentation/widgets/shopping/body/shopping_body_animated.dart';
 import 'presentation/widgets/shopping/shopping.barrel.dart';

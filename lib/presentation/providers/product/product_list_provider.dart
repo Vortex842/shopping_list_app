@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../classes/product_class/product.dart';
+import '../../../data/classes/product_class/product.dart';
 import '../on_change_states/on_add_cart_provider.dart';
 
 final productsProvider =

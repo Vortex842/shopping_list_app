@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shopping_list_app/presentation/providers/inherited/button_actions_inherited.dart';
 
 import '/presentation/enums/button_action_type.dart';
-import '../../../../classes/product_class/product.dart';
+import '../../../../data/classes/product_class/product.dart';
 import '../../../providers/on_change_states/on_tap_product_provider.dart';
 import '../../../references/references.barrel.dart';
 import 'button_actions.dart';

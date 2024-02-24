@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/classes/product_class/hive_data.dart';
+import 'package:shopping_list_app/data/classes/product_class/hive_data.dart';
 
 final DBProductsMainProvider = Provider<DBProducts>((ref) {
   return DBProducts(nameTable: 'products');
