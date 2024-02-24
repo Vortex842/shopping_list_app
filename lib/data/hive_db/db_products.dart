@@ -17,7 +17,7 @@ class DBProducts {
     box.put(product.id, product);
   }
 
-  Future<void> saveAlLProducts(List<Product> products) async {
+  Future<void> saveAllProducts(List<Product> products) async {
     final box = await Hive.openBox<Product>(nameTable);
 
     for (var p in products) {
@@ -26,7 +26,7 @@ class DBProducts {
   }
 
   Future<void> saveAllChecked(List<Product> products) async {
-    saveAlLProducts(products.where((p) => p.isChecked).toList());
+    saveAllProducts(products.where((p) => p.isChecked).toList());
   }
 
   Future<void> deleteProduct(String id) async {

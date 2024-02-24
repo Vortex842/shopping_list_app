@@ -86,7 +86,7 @@ class IconAddCartSelected extends StatelessWidget {
         ref.read(productsProvider.notifier).deleteProductsSelected();
 
         await DBProductsMain.clearAllProducts(productsChecked);
-        await DBProductsCart.saveAlLProducts(productsChecked);
+        await DBProductsCart.saveAllProducts(productsChecked);
       },
     );
   }
@@ -117,7 +117,7 @@ class IconUndoCartSelected extends StatelessWidget {
           ref.onCartButtonPress();
         }
 
-        await DBProductsMain.saveAlLProducts(productsCartChecked);
+        await DBProductsMain.saveAllProducts(productsCartChecked);
         await DBProductsCart.clearAllProducts(productsCartChecked);
       },
     );
