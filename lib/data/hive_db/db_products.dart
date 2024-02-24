@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-import 'product.dart';
+import '../classes/product_class/product.dart';
 
 class DBProducts {
   final String nameTable;
