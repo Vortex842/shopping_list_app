@@ -2,10 +2,10 @@ import 'package:hive/hive.dart';
 
 import 'product.dart';
 
-class HiveData {
+class DBProducts {
   final String nameTable;
 
-  HiveData({required this.nameTable});
+  DBProducts({required this.nameTable});
 
   Future<List<Product>> get products async {
     final box = await Hive.openBox<Product>(nameTable);

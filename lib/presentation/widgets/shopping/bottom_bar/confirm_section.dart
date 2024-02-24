@@ -17,15 +17,15 @@ class ConfirmSection extends ConsumerWidget {
           ElevatedButton(
             style: ref.textButtonStyle(true),
             onPressed: () async {
-              final hiveDataMain = ref.read(hiveDataMainProvider);
-              final hiveDataCart = ref.read(hiveDataCartProvider);
+              final DBProductsMain = ref.read(DBProductsMainProvider);
+              final DBProductsCart = ref.read(DBProductsCartProvider);
 
               final onAddCart = ref.read(onAddCartProvider);
               final products = ref.read(productsProvider);
               final productsCart = ref.read(productsCartProvider);
 
               if (onAddCart) {
-                await hiveDataCart.clearAllProducts(productsCart);
+                await DBProductsCart.clearAllProducts(productsCart);
 
                 ref
                     .read(productsCartProvider.notifier)
@@ -37,7 +37,7 @@ class ConfirmSection extends ConsumerWidget {
               } else {
                 // print(products);
 
-                await hiveDataMain.clearAllProducts(products);
+                await DBProductsMain.clearAllProducts(products);
 
                 ref.read(productsProvider.notifier).deleteProductsSelected();
               }

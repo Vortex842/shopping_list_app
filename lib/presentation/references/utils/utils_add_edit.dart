@@ -25,7 +25,7 @@ extension ShoppingUtilsAddEdit on WidgetRef {
   }
 
   void toAddEdit() async {
-    final hiveDataMain = read(hiveDataMainProvider);
+    final DBProductsMain = read(DBProductsMainProvider);
 
     final nameController = read(nameControllerProvider);
     final amountController = read(amountControllerProvider);
@@ -45,6 +45,6 @@ extension ShoppingUtilsAddEdit on WidgetRef {
       read(productsProvider.notifier).addProduct(product);
     }
 
-    await hiveDataMain.saveProduct(product);
+    await DBProductsMain.saveProduct(product);
   }
 }
