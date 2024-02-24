@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shopping_list_app/presentation/references/references.barrel.dart';
-import 'package:shopping_list_app/presentation/widgets/bottom_bar/confirm_section.dart';
 
+import '/presentation/references/references.barrel.dart';
+import '/presentation/widgets/bottom_bar/confirm_section.dart';
 import '../../providers/providers.barrel.dart';
 import 'add_eddit_section/add_edit_section.dart';
 import 'base_section.dart';
