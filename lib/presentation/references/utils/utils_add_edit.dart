@@ -33,7 +33,7 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     final priceController = read(priceControllerProvider);
     final editableID = read(editableProductProviderID);
 
-    final product = Product(
+    final newProduct = Product(
       id: editableID ?? const Uuid().v4(),
       name: nameController,
       amount: int.parse(amountController),
@@ -41,11 +41,11 @@ extension ShoppingUtilsAddEdit on WidgetRef {
     );
 
     if (editableID != null) {
-      read(productsProvider.notifier).editProductById(product);
+      read(productsProvider.notifier).editProductById(newProduct);
     } else {
-      read(productsProvider.notifier).addProduct(product);
+      read(productsProvider.notifier).addProduct(newProduct);
     }
 
-    await dbProductsMain.saveProduct(product);
+    await dbProductsMain.saveProduct(newProduct);
   }
 }
