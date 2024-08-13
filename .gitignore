@@ -4,6 +4,9 @@
 # HIVE files
 products.hive
 
+# KEY PROPERTIES
+key.properties
+
 # Miscellaneous
 *.class
 *.log
